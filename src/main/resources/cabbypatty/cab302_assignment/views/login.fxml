@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cabbypatty.cab302_assignment.controller.LoginController" style="-fx-background-color: #FFFFFF;">
+
+    <!-- Title: Mindful Moments -->
+    <Label alignment="CENTER" layoutY="14.0" prefWidth="600.0" text="Mindful Moments" textAlignment="CENTER" textFill="#717171">
+      <font>
+         <Font name="System Bold" size="36.0" />
+      </font></Label>
+
+    <!-- Subtitle: Login -->
+    <Label alignment="CENTER" layoutY="68.0" prefHeight="26.0" prefWidth="600.0" text="Login" textAlignment="CENTER" textFill="#949494">
+      <font>
+         <Font name="System Bold" size="24.0" />
+      </font></Label>
+
+    <!-- Email Address Field -->
+    <Label layoutX="151.0" layoutY="132.0" text="Email Address" />
+    <TextField fx:id="emailField" layoutX="151.0" layoutY="150.0" prefHeight="26.0" prefWidth="300.0" />
+
+    <!-- Password Field -->
+    <Label layoutX="151.0" layoutY="199.0" text="Password" />
+    <PasswordField fx:id="passwordField" layoutX="151.0" layoutY="217.0" prefWidth="300.0" />
+
+    <!-- Register Link -->
+    <Hyperlink layoutX="179.0" layoutY="310.0" onAction="#navigateToRegistrationPage" text="Or register here if you don't have an account" textAlignment="CENTER" />
+
+
+    <!-- Login Button -->
+    <Button layoutX="251.0" layoutY="263.0" onAction="#login" prefWidth="100.0" text="Login" textAlignment="CENTER" />
+
+
+
+</AnchorPane>
