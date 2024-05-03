@@ -1,7 +1,12 @@
 package cabbypatty.cab302_assignment.controller;
 
+import cabbypatty.cab302_assignment.model.User;
+import cabbypatty.cab302_assignment.store.IUserDAO;
+import cabbypatty.cab302_assignment.store.sqlite.SqliteConnection;
+import cabbypatty.cab302_assignment.store.sqlite.UserDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,11 +15,14 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ResourceBundle;
 
 import static cabbypatty.cab302_assignment.utils.Alert.showAlert;
 import static cabbypatty.cab302_assignment.utils.Email.isValidEmail;
 
-public class LoginController {
+public class LoginController implements Initializable {
+    private IUserDAO userDAO;
+
     @FXML
     private TextField emailField;
     @FXML
@@ -71,6 +79,26 @@ public class LoginController {
             return;
         }
 
+        User user = userDAO.getUser(email);
+        if (user == null) {
+            // User does not exist, show an error message
+            showAlert("User Not Found", "No user with that email address exists.");
+            return;
+        }
 
+        if (!user.hash_password.equals(password)) {
+            // Password is incorrect, show an error message
+            showAlert("Incorrect Password", "The password you entered is incorrect.");
+            return;
+        }
+
+        navigateToMainPage(event);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        userDAO = new UserDAO( new SqliteConnection() );
+        System.out.println("LoginController initialized");
+        System.out.println(userDAO);
     }
 }

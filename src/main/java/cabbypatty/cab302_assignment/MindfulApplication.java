@@ -1,5 +1,9 @@
 package cabbypatty.cab302_assignment;
 
+import cabbypatty.cab302_assignment.model.User;
+import cabbypatty.cab302_assignment.store.IUserDAO;
+import cabbypatty.cab302_assignment.store.sqlite.SqliteConnection;
+import cabbypatty.cab302_assignment.store.sqlite.UserDAO;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -14,8 +18,11 @@ public class MindfulApplication extends Application {
     public static final int WIDTH = 640;
     public static final int HEIGHT = 360;
 
+    private final SqliteConnection sqliteConnection = new SqliteConnection();
+
     @Override
     public void start(Stage stage) throws IOException {
+        sqliteConnection.setupTables();
         URL main_view = MindfulApplication.class.getResource("views/login.fxml");
         FXMLLoader fxmlLoader = new FXMLLoader(main_view);
         Scene scene = new Scene(fxmlLoader.load(), WIDTH, HEIGHT);
