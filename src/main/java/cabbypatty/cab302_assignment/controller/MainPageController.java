@@ -45,10 +45,116 @@ public class MainPageController implements Initializable {
     }
 
     @FXML
+    private void navigateToSupport(ActionEvent event) {
+        try {
+            // Load the FXML file for the journal entry page
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/support.fxml"));
+
+            fxmlLoader.setControllerFactory((Class<?> type) -> {
+                if (type == SupportController.class) {
+                    return new SupportController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
+            Scene journalEntryScene = new Scene(fxmlLoader.load());
+
+            // Get the stage from the event source
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Set the new scene on the stage
+            stage.setScene(journalEntryScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+    }
+
+    @FXML
+    private void navigateToSettings(ActionEvent event) {
+        try {
+            // Load the FXML file for the journal entry page
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/settings.fxml"));
+
+            fxmlLoader.setControllerFactory((Class<?> type) -> {
+                if (type == SettingsController.class) {
+                    return new SettingsController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
+            Scene journalEntryScene = new Scene(fxmlLoader.load());
+
+            // Get the stage from the event source
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Set the new scene on the stage
+            stage.setScene(journalEntryScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+    }
+
+    @FXML
     private void navigateToJournalPage(ActionEvent event) {
         try {
             // Load the FXML file for the journal entry page
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/journal-entry-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/journal-entries.fxml"));
+
+            fxmlLoader.setControllerFactory((Class<?> type) -> {
+                if (type == JournalEntriesController.class) {
+                    return new JournalEntriesController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
+            Scene journalEntryScene = new Scene(fxmlLoader.load());
+
+            // Get the stage from the event source
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Set the new scene on the stage
+            stage.setScene(journalEntryScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+    }
+
+    @FXML
+    private void navigateToCalendar(ActionEvent event) {
+        try {
+            // Load the FXML file for the journal entry page
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/calendar.fxml"));
+
+            fxmlLoader.setControllerFactory((Class<?> type) -> {
+                if (type == CalendarController.class) {
+                    return new CalendarController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
             Scene journalEntryScene = new Scene(fxmlLoader.load());
 
             // Get the stage from the event source

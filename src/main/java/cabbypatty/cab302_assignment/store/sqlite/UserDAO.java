@@ -41,7 +41,7 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public User createUser(String name, String email, String password, Date dob, String gender) {
-        String query = "INSERT INTO user (name, email, password, dob, gender) VALUES ('"+name+"', '"+email+"', '"+password+"', '"+dob+"', '"+gender+"')";
+        String query = "INSERT INTO user (name, email, password, dob, gender, created_at, updated_at) VALUES ('"+name+"', '"+email+"', '"+password+"', '"+dob+"', '"+gender+"', strftime(\"%Y-%m-%dT%H:%M:%SZ\", \"now\"), strftime(\"%Y-%m-%dT%H:%M:%SZ\", \"now\"))";
         connection.exec(query);
         return getUser(email);
     }

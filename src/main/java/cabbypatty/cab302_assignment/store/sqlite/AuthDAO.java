@@ -4,6 +4,7 @@ import cabbypatty.cab302_assignment.model.Session;
 import cabbypatty.cab302_assignment.model.SessionAndUser;
 import cabbypatty.cab302_assignment.store.IAuthDAO;
 
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
@@ -40,6 +41,10 @@ public class AuthDAO implements IAuthDAO {
         try {
             if (result.next()) {
                 Date date = new SimpleDateFormat("yyyy-MM-dd").parse(result.getString("dob"));
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+                String expiresAt = result.getString("expires_at");
+                Date expires = sdf.parse(expiresAt);
+
                 return new SessionAndUser(
                         result.getString("id"),
                         result.getInt("user_id"),
@@ -47,7 +52,7 @@ public class AuthDAO implements IAuthDAO {
                         result.getString("email"),
                         date,
                         result.getString("gender"),
-                        result.getTimestamp("expires_at")
+                        expires
                 );
             } else {
                 return null;
@@ -82,13 +87,17 @@ public class AuthDAO implements IAuthDAO {
 
     @Override
     public void setSession(Session session) {
-        String query = "INSERT INTO session (id, user_id, expires_at) VALUES ('"+session.sessionID+"', "+session.userID+", '"+session.expiresAt+"')";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        sdf.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));
+        String query = "INSERT INTO session (id, user_id, expires_at) VALUES ('"+session.sessionID+"', "+session.userID+", '"+sdf.format(session.expiresAt)+"')";
         connection.exec(query);
     }
 
     @Override
     public void updateSessionExpiration(String sessionId, Date expiresAt) {
-        String query = "UPDATE session SET expires_at = '"+expiresAt+"' WHERE id = '"+sessionId+"'";
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        sdf.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));
+        String query = "UPDATE session SET expires_at = '"+sdf.format(expiresAt)+"' WHERE id = '"+sessionId+"'";
         connection.exec(query);
     }
 }

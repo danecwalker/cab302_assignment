@@ -12,7 +12,7 @@ public class SessionAndUser {
         this.user = user;
     }
 
-    public SessionAndUser(String sessionId, Integer userId, String name, String email, Date dob, String gender, Timestamp expiresAt) {
+    public SessionAndUser(String sessionId, Integer userId, String name, String email, Date dob, String gender, Date expiresAt) {
         this.session = new Session(sessionId, userId, expiresAt);
         this.user = new User(userId, email, name, null, dob, gender);
     }

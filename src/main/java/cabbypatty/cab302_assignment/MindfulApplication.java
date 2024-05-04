@@ -5,8 +5,10 @@ import cabbypatty.cab302_assignment.controller.MainPageController;
 import cabbypatty.cab302_assignment.model.SessionAndUser;
 import cabbypatty.cab302_assignment.model.User;
 import cabbypatty.cab302_assignment.store.IAuthDAO;
+import cabbypatty.cab302_assignment.store.IJournalDAO;
 import cabbypatty.cab302_assignment.store.IUserDAO;
 import cabbypatty.cab302_assignment.store.sqlite.AuthDAO;
+import cabbypatty.cab302_assignment.store.sqlite.JournalDAO;
 import cabbypatty.cab302_assignment.store.sqlite.SqliteConnection;
 import cabbypatty.cab302_assignment.store.sqlite.UserDAO;
 import javafx.application.Application;
@@ -35,8 +37,9 @@ public class MindfulApplication extends Application {
         try {
             IAuthDAO authDAO = new AuthDAO(sqliteConnection);
             IUserDAO userDao = new UserDAO(sqliteConnection);
+            IJournalDAO journalDAO = new JournalDAO(sqliteConnection);
 
-            config = new Config(userDao, authDAO);
+            config = new Config(userDao, authDAO, journalDAO);
         } catch (Exception e) {
             e.printStackTrace();
         }

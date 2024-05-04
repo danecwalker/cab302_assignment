@@ -36,7 +36,7 @@
             <ImageView fitHeight="16.0" fitWidth="16.0">
                 <Image url="@../image/calendar_icon.png" />
             </ImageView>
-            <Label prefHeight="25.0" prefWidth="47.0" style="-fx-text-fill: white;" text="Calendar" />
+            <Hyperlink onAction="#navigateToCalendar" style="-fx-text-fill: white;" text="Calendar" />
         </HBox>
 
         <!-- Journal -->
@@ -44,7 +44,7 @@
             <ImageView fitHeight="16.0" fitWidth="16.0">
                 <Image url="@../image/journal_icon.png" />
             </ImageView>
-            <Label prefHeight="25.0" prefWidth="38.0" style="-fx-text-fill: white;" text="Journal" />
+            <Hyperlink onAction="#navigateToJournalPage" style="-fx-text-fill: white;" text="Journal" />
         </HBox>
 
         <Label prefHeight="35.0" prefWidth="20.0" style="-fx-text-fill: white;" text="" />
@@ -54,7 +54,7 @@
             <ImageView fitHeight="16.0" fitWidth="16.0">
                 <Image url="@../image/support_icon.png" />
             </ImageView>
-            <Label prefHeight="25.0" prefWidth="44.0" style="-fx-text-fill: white;" text="Support" />
+            <Label style="-fx-text-fill: white;" text="Support" />
         </HBox>
 
         <!-- Setting -->
@@ -62,7 +62,7 @@
             <ImageView fitHeight="16.0" fitWidth="16.0">
                 <Image url="@../image/setting_icon.png" />
             </ImageView>
-            <Label prefHeight="26.0" prefWidth="44.0" style="-fx-text-fill: white;" text="Settings" />
+            <Hyperlink onAction="#navigateToSettings" style="-fx-text-fill: white;" text="Settings" />
         </HBox>
 
 

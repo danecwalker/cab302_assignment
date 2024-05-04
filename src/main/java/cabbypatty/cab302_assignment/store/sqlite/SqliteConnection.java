@@ -68,8 +68,8 @@ public class SqliteConnection {
                     + "password TEXT NOT NULL,"
                     + "dob DATE NOT NULL,"
                     + "gender TEXT NOT NULL,"
-                    + "created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,"
-                    + "updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP"
+                    + "created_at TIMESTAMP NOT NULL,"
+                    + "updated_at TIMESTAMP NOT NULL"
                 + ")";
             statement.execute(query);
         } catch (SQLException sqlEx) {
@@ -88,6 +88,22 @@ public class SqliteConnection {
             statement.execute(query);
         } catch (SQLException sqlEx) {
             System.err.println("Error creating `session` table: "+sqlEx.getMessage());
+        }
+
+        // Create Journal Entry table
+        try {
+            Statement statement = instance.createStatement();
+            String query = "CREATE TABLE IF NOT EXISTS journal_entry ("
+                    + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
+                    + "author_id INTEGER NOT NULL,"
+                    + "body TEXT NOT NULL,"
+                    + "created_at TIMESTAMP NOT NULL,"
+                    + "updated_at TIMESTAMP NOT NULL,"
+                    + "FOREIGN KEY(author_id) REFERENCES user(id)"
+                + ")";
+            statement.execute(query);
+        } catch (SQLException sqlEx) {
+            System.err.println("Error creating `journal_entry` table: "+sqlEx.getMessage());
         }
     }
 }

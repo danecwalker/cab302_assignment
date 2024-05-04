@@ -5,10 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="cabbypatty.cab302_assignment.controller.JournalEntriesController"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cabbypatty.cab302_assignment.controller.JournalEntriesController">
 
     <VBox alignment="CENTER" prefHeight="400.0" prefWidth="150" style="-fx-background-color: #181819;">
 
@@ -36,7 +33,7 @@
             <ImageView fitHeight="16.0" fitWidth="16.0">
                 <Image url="@../image/calendar_icon.png" />
             </ImageView>
-            <Label prefHeight="25.0" prefWidth="47.0" style="-fx-text-fill: white;" text="Calendar" />
+            <Hyperlink onAction="#navigateToCalendar" style="-fx-text-fill: white;" text="Calendar" />
         </HBox>
 
         <!-- Journal -->
@@ -44,7 +41,7 @@
             <ImageView fitHeight="16.0" fitWidth="16.0">
                 <Image url="@../image/journal_icon.png" />
             </ImageView>
-            <Label prefHeight="25.0" prefWidth="38.0" style="-fx-text-fill: white;" text="Journal" />
+            <Label style="-fx-text-fill: white;" text="Journal" />
         </HBox>
 
         <Label prefHeight="35.0" prefWidth="20.0" style="-fx-text-fill: white;" text="" />
@@ -54,7 +51,7 @@
             <ImageView fitHeight="16.0" fitWidth="16.0">
                 <Image url="@../image/support_icon.png" />
             </ImageView>
-            <Label prefHeight="25.0" prefWidth="44.0" style="-fx-text-fill: white;" text="Support" />
+            <Hyperlink onAction="#navigateToSupport" style="-fx-text-fill: white;" text="Support" />
         </HBox>
 
         <!-- Setting -->
@@ -62,7 +59,7 @@
             <ImageView fitHeight="16.0" fitWidth="16.0">
                 <Image url="@../image/setting_icon.png" />
             </ImageView>
-            <Label prefHeight="26.0" prefWidth="44.0" style="-fx-text-fill: white;" text="Settings" />
+            <Hyperlink onAction="#navigateToSettings" style="-fx-text-fill: white;" text="Settings" />
         </HBox>
 
 
@@ -92,8 +89,6 @@
             <Font name="System Bold" size="23.0" />
         </font>
     </Label>
-    <TextArea layoutX="163.0" layoutY="84.0" prefHeight="116.0" prefWidth="292.0" text="Today, the happiest moment for me was when I received an unexpected phone call from my best friend. We hadn't spoken in a while because of our busy schedules, so hearing their voice really brightened my day." wrapText="true" />
-    <TextArea layoutX="163.0" layoutY="248.0" prefHeight="124.0" prefWidth="292.0" text="We ended up talking for over an hour, catching up on each other's lives, sharing funny stories, and reminiscing about old times. It felt like no time had passed at all, and I was reminded of how lucky I am to have such a supportive and caring friend." wrapText="true" />
     <Button layoutX="486.0" layoutY="314.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #A6E873;" text="New Entry" textFill="#666666">
         <font>
             <Font name="System Bold" size="12.0" />
@@ -104,16 +99,34 @@
             <Font name="System Bold" size="12.0" />
         </font>
     </Button>
-    <Label layoutX="163.0" layoutY="56.0" text="14 June, 2022" textAlignment="CENTER" textFill="#666666">
-        <font>
-            <Font name="System Bold" size="14.0" />
-        </font>
-    </Label>
-    <Label layoutX="163.0" layoutY="215.0" text="19 August, 2023" textAlignment="CENTER" textFill="#666666">
-        <font>
-            <Font name="System Bold" size="14.0" />
-        </font>
-    </Label>
     <ComboBox layoutX="305.0" layoutY="51.0" prefWidth="150.0" promptText="Sort " />
+   <ScrollPane fitToWidth="true" hbarPolicy="NEVER" hmax="0.0" layoutX="159.0" layoutY="86.0" prefHeight="300.0" prefWidth="292.0" style="-fx-border-color: transparent; -fx-border-width: 0; -fx-background-color: transparent;">
+    <content>
+            <VBox fx:id="journalEntries" prefWidth="290.0" spacing="20" style="-fx-padding: 4;">
+                <children>
+                    <VBox prefHeight="124.0">
+                        <children>
+                            <Label text="19 August, 2023" textAlignment="CENTER" textFill="#666666">
+                                <font>
+                                    <Font name="System Bold" size="14.0" />
+                                </font>
+                            </Label>
+                            <TextArea layoutY="33.0" text="" wrapText="true" />
+                        </children>
+                    </VBox>
+                    <VBox prefHeight="124.0" prefWidth="292.0">
+                        <children>
+                            <Label text="14 June, 2022" textAlignment="CENTER" textFill="#666666">
+                                <font>
+                                    <Font name="System Bold" size="14.0" />
+                                </font>
+                            </Label>
+                            <TextArea layoutY="28.0" text="Today, the happiest moment for me was when I received an unexpected phone call from my best friend. We hadn't spoken in a while because of our busy schedules, so hearing their voice really brightened my day." wrapText="true" />
+                        </children>
+                    </VBox>
+                </children>
+            </VBox>
+        </content>
+   </ScrollPane>
 
 </AnchorPane>
