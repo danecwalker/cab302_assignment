@@ -152,12 +152,6 @@ public class RegistrationController implements Initializable {
             return;
         }
 
-        // Create a session for the user
-        Session session = new Session(user.id);
-        config.getAuthDAO().setSession(session);
-
-        SessionStorage.saveToken(session.sessionID);
-
 
         // If everything is valid, continue with registration process
         // Close the current registration window
