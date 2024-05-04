@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="cabbypatty.cab302_assignment.controller.CalendarController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox alignment="CENTER" prefHeight="400.0" prefWidth="150" style="-fx-background-color: #181819;">
+
+        <!-- Labels for the navigation menu -->
+        <Label prefHeight="45.0" prefWidth="46.0" style="-fx-text-fill: white;" text="" />
+        <!-- Mindful Moments Title -->
+        <Label prefHeight="20.0" prefWidth="120.0" style="-fx-text-fill: white;" text="Mindful Moments">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+
+        <Label prefHeight="0.0" prefWidth="2.0" style="-fx-text-fill: white;" text="" />
+
+        <!-- Home -->
+        <HBox alignment="CENTER" spacing="5">
+            <ImageView fitHeight="16.0" fitWidth="16.0">
+                <Image url="@../image/home_icon.png" />
+            </ImageView>
+            <Hyperlink onAction="#home" style="-fx-text-fill: white;" text="Home" />
+        </HBox>
+
+        <!-- Calendar -->
+        <HBox alignment="CENTER" spacing="5">
+            <ImageView fitHeight="16.0" fitWidth="16.0">
+                <Image url="@../image/calendar_icon.png" />
+            </ImageView>
+            <Label prefHeight="25.0" prefWidth="47.0" style="-fx-text-fill: white;" text="Calendar" />
+        </HBox>
+
+        <!-- Journal -->
+        <HBox alignment="CENTER" spacing="5">
+            <ImageView fitHeight="16.0" fitWidth="16.0">
+                <Image url="@../image/journal_icon.png" />
+            </ImageView>
+            <Label prefHeight="25.0" prefWidth="38.0" style="-fx-text-fill: white;" text="Journal" />
+        </HBox>
+
+        <Label prefHeight="35.0" prefWidth="20.0" style="-fx-text-fill: white;" text="" />
+
+        <!-- Support -->
+        <HBox alignment="CENTER" spacing="5">
+            <ImageView fitHeight="16.0" fitWidth="16.0">
+                <Image url="@../image/support_icon.png" />
+            </ImageView>
+            <Label prefHeight="25.0" prefWidth="44.0" style="-fx-text-fill: white;" text="Support" />
+        </HBox>
+
+        <!-- Setting -->
+        <HBox alignment="CENTER" spacing="5">
+            <ImageView fitHeight="16.0" fitWidth="16.0">
+                <Image url="@../image/setting_icon.png" />
+            </ImageView>
+            <Label prefHeight="26.0" prefWidth="44.0" style="-fx-text-fill: white;" text="Settings" />
+        </HBox>
+
+
+        <Label prefHeight="35.0" prefWidth="46.0" style="-fx-text-fill: white;" text="" />
+
+        <HBox alignment="CENTER" spacing="5">
+            <ImageView fitHeight="16.0" fitWidth="16.0">
+                <Image url="@../image/logout_icon.png" />
+            </ImageView>
+            <Hyperlink onAction="#logout" style="-fx-text-fill: white;" text="Logout" />
+        </HBox>
+
+    </VBox>
+
+    <!-- Logo Image -->
+    <ImageView fitHeight="130.0" fitWidth="150.0" layoutX="1.0" layoutY="-9.0">
+        <Image url="@../image/Logo.png" />
+    </ImageView>
+
+    <ImageView fitHeight="295.0" fitWidth="316.0" layoutX="158.0" layoutY="70.0">
+        <Image url="@../image/calendar_image.png" />
+    </ImageView>
+
+    <!-- Profile -->
+    <ImageView fitHeight="35.0" fitWidth="110.0" layoutX="473.0" layoutY="14.0">
+        <Image url="@../image/Profile.png" />
+    </ImageView>
+
+    <Label layoutX="158.0" layoutY="6.0" text="Calendar" textAlignment="CENTER">
+        <font>
+            <Font name="System Bold" size="23.0" />
+        </font>
+    </Label>
+    <Button layoutX="495.0" layoutY="352.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: #A6E873;" text="Add Entry" textFill="#666666">
+        <font>
+            <Font name="System Bold" size="12.0" />
+        </font>
+    </Button>
+
+</AnchorPane>
