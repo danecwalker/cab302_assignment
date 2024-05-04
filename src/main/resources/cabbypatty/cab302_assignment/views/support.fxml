@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="cabbypatty.cab302_assignment.controller.SupportController"
+            prefHeight="400.0" prefWidth="600.0">
+
+    <VBox alignment="CENTER" prefHeight="400.0" prefWidth="150" style="-fx-background-color: #181819;">
+
+        <!-- Labels for the navigation menu -->
+        <Label prefHeight="45.0" prefWidth="46.0" style="-fx-text-fill: white;" text="" />
+        <!-- Mindful Moments Title -->
+        <Label prefHeight="20.0" prefWidth="120.0" style="-fx-text-fill: white;" text="Mindful Moments">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+        </Label>
+
+        <Label prefHeight="0.0" prefWidth="2.0" style="-fx-text-fill: white;" text="" />
+
+        <!-- Home -->
+        <HBox alignment="CENTER" spacing="5">
+            <ImageView fitHeight="16.0" fitWidth="16.0">
+                <Image url="@../image/home_icon.png" />
+            </ImageView>
+            <Hyperlink onAction="#home" style="-fx-text-fill: white;" text="Home" />
+        </HBox>
+
+        <!-- Calendar -->
+        <HBox alignment="CENTER" spacing="5">
+            <ImageView fitHeight="16.0" fitWidth="16.0">
+                <Image url="@../image/calendar_icon.png" />
+            </ImageView>
+            <Label prefHeight="25.0" prefWidth="47.0" style="-fx-text-fill: white;" text="Calendar" />
+        </HBox>
+
+        <!-- Journal -->
+        <HBox alignment="CENTER" spacing="5">
+            <ImageView fitHeight="16.0" fitWidth="16.0">
+                <Image url="@../image/journal_icon.png" />
+            </ImageView>
+            <Label prefHeight="25.0" prefWidth="38.0" style="-fx-text-fill: white;" text="Journal" />
+        </HBox>
+
+        <Label prefHeight="35.0" prefWidth="20.0" style="-fx-text-fill: white;" text="" />
+
+        <!-- Support -->
+        <HBox alignment="CENTER" spacing="5">
+            <ImageView fitHeight="16.0" fitWidth="16.0">
+                <Image url="@../image/support_icon.png" />
+            </ImageView>
+            <Label prefHeight="25.0" prefWidth="44.0" style="-fx-text-fill: white;" text="Support" />
+        </HBox>
+
+        <!-- Setting -->
+        <HBox alignment="CENTER" spacing="5">
+            <ImageView fitHeight="16.0" fitWidth="16.0">
+                <Image url="@../image/setting_icon.png" />
+            </ImageView>
+            <Label prefHeight="26.0" prefWidth="44.0" style="-fx-text-fill: white;" text="Settings" />
+        </HBox>
+
+
+        <Label prefHeight="35.0" prefWidth="46.0" style="-fx-text-fill: white;" text="" />
+
+        <HBox alignment="CENTER" spacing="5">
+            <ImageView fitHeight="16.0" fitWidth="16.0">
+                <Image url="@../image/logout_icon.png" />
+            </ImageView>
+            <Hyperlink onAction="#logout" style="-fx-text-fill: white;" text="Logout" />
+        </HBox>
+
+    </VBox>
+
+    <!-- Logo Image -->
+    <ImageView fitHeight="130.0" fitWidth="150.0" layoutX="1.0" layoutY="-9.0">
+        <Image url="@../image/Logo.png" />
+    </ImageView>
+
+    <!-- Profile -->
+    <ImageView fitHeight="35.0" fitWidth="110.0" layoutX="473.0" layoutY="14.0">
+        <Image url="@../image/Profile.png" />
+    </ImageView>
+
+    <Label layoutX="158.0" layoutY="6.0" text="Support " textAlignment="CENTER">
+        <font>
+            <Font name="System Bold" size="23.0" />
+        </font>
+    </Label>
+    <Button layoutX="486.0" layoutY="347.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #A6E873;" text="Send" textFill="#666666">
+        <font>
+            <Font name="System Bold" size="12.0" />
+        </font>
+    </Button>
+    <Label layoutX="158.0" layoutY="49.0" text="Feedback">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Label>
+    <Label layoutX="158.0" layoutY="76.0" text="Rate">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Label>
+    <Slider layoutX="168.0" layoutY="127.0" />
+    <Label layoutX="168.0" layoutY="149.0" text="1">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Label>
+    <Label layoutX="284.0" layoutY="149.0" text="10">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Label>
+    <Label layoutX="158.0" layoutY="186.0" text="What can we fix/improve">
+        <font>
+            <Font name="System Bold" size="18.0" />
+        </font>
+    </Label>
+    <TextArea layoutX="160.0" layoutY="224.0" prefHeight="130.0" prefWidth="214.0" promptText="Write Here..." />
+    <Label layoutX="387.0" layoutY="315.0" text="We appreciate your support">
+        <font>
+            <Font name="System Bold" size="15.0" />
+        </font>
+    </Label>
+
+</AnchorPane>
