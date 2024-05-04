@@ -1,8 +1,5 @@
 package cabbypatty.cab302_assignment.store.sqlite;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class SqliteConnection {
     private static Connection instance = null;
@@ -17,9 +14,31 @@ public class SqliteConnection {
             try {
                 instance = DriverManager.getConnection(url);
             } catch (SQLException sqlEx) {
-                System.err.println(STR."Error connecting to database: \{sqlEx.getMessage()}");
+                System.err.println("Error connecting to database: "+sqlEx.getMessage());
             }
         }
+    }
+
+    public void query(String query) {
+        try {
+            Statement statement = instance.createStatement();
+            statement.execute(query);
+        } catch (SQLException sqlEx) {
+            System.err.println("Error executing query: "+sqlEx.getMessage());
+        }
+    }
+
+    public ResultSet exec(String query)  {
+        try {
+            Statement statement = instance.createStatement();
+            statement.execute(query);
+
+            return statement.getResultSet();
+        } catch (SQLException sqlEx) {
+            System.err.println("Error executing query: "+sqlEx.getMessage());
+        }
+
+        return null;
     }
 
     public Connection getInstance() {
@@ -32,17 +51,9 @@ public class SqliteConnection {
     public void close() {
         try {
             instance.close();
-        } catch (SQLException sqlEx) {
-            System.err.println(STR."Error closing database connection: \{sqlEx.getMessage()}");
-        }
-    }
-
-    public void reset() {
-        try {
-            instance.close();
             instance = null;
         } catch (SQLException sqlEx) {
-            System.err.println(STR."Error closing database connection: \{sqlEx.getMessage()}");
+            System.err.println("Error closing database connection: "+sqlEx.getMessage());
         }
     }
 
@@ -62,7 +73,7 @@ public class SqliteConnection {
                 + ")";
             statement.execute(query);
         } catch (SQLException sqlEx) {
-            System.err.println(STR."Error creating `user` table: \{sqlEx.getMessage()}");
+            System.err.println("Error creating `user` table: "+sqlEx.getMessage());
         }
 
         // Create Session table
@@ -76,7 +87,7 @@ public class SqliteConnection {
                 + ")";
             statement.execute(query);
         } catch (SQLException sqlEx) {
-            System.err.println(STR."Error creating `session` table: \{sqlEx.getMessage()}");
+            System.err.println("Error creating `session` table: "+sqlEx.getMessage());
         }
     }
 }

@@ -2,6 +2,7 @@ module cabbypatty.cab302_assignment {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.sql;
+    requires java.prefs;
 
 
     opens cabbypatty.cab302_assignment.controller to javafx.fxml;

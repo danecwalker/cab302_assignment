@@ -2,6 +2,13 @@ package cabbypatty.cab302_assignment.controller;
 
 import static cabbypatty.cab302_assignment.utils.Alert.showAlert;
 import static cabbypatty.cab302_assignment.utils.Email.*;
+
+import cabbypatty.cab302_assignment.Config;
+import cabbypatty.cab302_assignment.SessionStorage;
+import cabbypatty.cab302_assignment.model.Session;
+import cabbypatty.cab302_assignment.model.User;
+import cabbypatty.cab302_assignment.store.IAuthDAO;
+import cabbypatty.cab302_assignment.store.IUserDAO;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +22,7 @@ import javafx.scene.Scene;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
@@ -39,6 +47,12 @@ public class RegistrationController implements Initializable {
     @FXML
     private DatePicker dobDatePicker;
 
+    private Config config;
+
+    public RegistrationController(Config config) {
+        System.out.println("RegistrationController created");
+        this.config = config;
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resource) {
@@ -54,6 +68,19 @@ public class RegistrationController implements Initializable {
         // Open the login-view page
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/login.fxml"));
+
+            loader.setControllerFactory((Class<?> type) -> {
+                if (type == LoginController.class) {
+                    return new LoginController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage loginStage = new Stage();
@@ -66,7 +93,7 @@ public class RegistrationController implements Initializable {
 
     //DO USER REGISTRATION WITH DATABASE HERE -> LOGAN AND DANE
     @FXML
-    private void onRegisterClick(ActionEvent event) {
+    private void onRegisterClick(ActionEvent event) throws Exception {
         String name = nameField.getText();
         String email = emailField.getText();
         String password = passwordField.getText();
@@ -111,6 +138,27 @@ public class RegistrationController implements Initializable {
             return;
         }
 
+        User user = config.getUserDAO().createUser(
+                name,
+                email,
+                password,
+                Date.valueOf(dob),
+                genderCombo.getValue()
+        );
+
+        if (user == null) {
+            // User already exists, show an error message
+            showAlert("User Already Exists", "An account with this email already exists.");
+            return;
+        }
+
+        // Create a session for the user
+        Session session = new Session(user.id);
+        config.getAuthDAO().setSession(session);
+
+        SessionStorage.saveToken(session.sessionID);
+
+
         // If everything is valid, continue with registration process
         // Close the current registration window
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -119,6 +167,19 @@ public class RegistrationController implements Initializable {
         // Open the main page or perform registration process
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/login.fxml"));
+
+            loader.setControllerFactory((Class<?> type) -> {
+                if (type == LoginController.class) {
+                    return new LoginController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage mainStage = new Stage();

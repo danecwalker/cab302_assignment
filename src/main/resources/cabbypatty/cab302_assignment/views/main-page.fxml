@@ -69,7 +69,7 @@
             <ImageView fitHeight="16.0" fitWidth="16.0">
                 <Image url="@../image/logout_icon.png" />
             </ImageView>
-            <Hyperlink style="-fx-text-fill: white;" text="Logout" onAction="#logout" />
+            <Hyperlink onAction="#logout" style="-fx-text-fill: white;" text="Logout" />
         </HBox>
 
     </VBox>
@@ -98,7 +98,7 @@
     <Region layoutX="255.0" layoutY="240.0" prefHeight="86.0" prefWidth="236.0" style="-fx-background-color: C8FF9E; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" />
 
     <!-- Main Region Heading -->
-    <Label layoutX="265.0" layoutY="249.0" text="How Do You Feel Today, Dianne?" textAlignment="CENTER">
+    <Label layoutX="265.0" layoutY="249.0" text="How Do You Feel Today?" textAlignment="CENTER" fx:id="welcomeText">
       <font>
          <Font name="System Bold" size="14.0" />
       </font></Label>

@@ -1,6 +1,10 @@
 package cabbypatty.cab302_assignment.controller;
 
+import cabbypatty.cab302_assignment.Config;
+import cabbypatty.cab302_assignment.SessionStorage;
+import cabbypatty.cab302_assignment.model.Session;
 import cabbypatty.cab302_assignment.model.User;
+import cabbypatty.cab302_assignment.store.IAuthDAO;
 import cabbypatty.cab302_assignment.store.IUserDAO;
 import cabbypatty.cab302_assignment.store.sqlite.SqliteConnection;
 import cabbypatty.cab302_assignment.store.sqlite.UserDAO;
@@ -20,13 +24,18 @@ import java.util.ResourceBundle;
 import static cabbypatty.cab302_assignment.utils.Alert.showAlert;
 import static cabbypatty.cab302_assignment.utils.Email.isValidEmail;
 
-public class LoginController implements Initializable {
-    private IUserDAO userDAO;
+public class LoginController {
+    private Config config;
 
     @FXML
     private TextField emailField;
     @FXML
     private PasswordField passwordField;
+
+    public LoginController(Config config) {
+        System.out.println("LoginController created");
+        this.config = config;
+    }
 
     @FXML
     private void navigateToRegistrationPage(ActionEvent event) {
@@ -34,6 +43,19 @@ public class LoginController implements Initializable {
             // Load the FXML file for the registration page
             URL registrationView = getClass().getResource("/cabbypatty/cab302_assignment/views/registration.fxml");
             FXMLLoader fxmlLoader = new FXMLLoader(registrationView);
+
+            fxmlLoader.setControllerFactory((Class<?> type) -> {
+                if (type == RegistrationController.class) {
+                    return new RegistrationController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
             // Get the stage from the event source
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             // Set the new scene on the stage
@@ -50,6 +72,19 @@ public class LoginController implements Initializable {
         try {
             // Load the FXML file for the registration page
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/main-page.fxml"));
+
+            fxmlLoader.setControllerFactory((Class<?> type) -> {
+                if (type == MainPageController.class) {
+                    return new MainPageController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
             Scene registrationScene = new Scene(fxmlLoader.load());
 
             // Get the stage from the event source
@@ -63,7 +98,7 @@ public class LoginController implements Initializable {
         }
     }
 
-    public void login(ActionEvent event) {
+    public void login(ActionEvent event) throws Exception {
         // Get the email and password from the fields
         String email = emailField.getText();
         String password = passwordField.getText();
@@ -79,7 +114,7 @@ public class LoginController implements Initializable {
             return;
         }
 
-        User user = userDAO.getUser(email);
+        User user = config.getUserDAO().getUser(email);
         if (user == null) {
             // User does not exist, show an error message
             showAlert("User Not Found", "No user with that email address exists.");
@@ -88,17 +123,15 @@ public class LoginController implements Initializable {
 
         if (!user.hash_password.equals(password)) {
             // Password is incorrect, show an error message
-            showAlert("Incorrect Password", "The password you entered is incorrect.");
+            showAlert("Incorrect Password", "Incorrect email or password. Please try again.");
             return;
         }
 
-        navigateToMainPage(event);
-    }
+        Session session = new Session(user.id);
+        config.getAuthDAO().setSession(session);
+        SessionStorage.saveToken(session.sessionID);
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        userDAO = new UserDAO( new SqliteConnection() );
-        System.out.println("LoginController initialized");
-        System.out.println(userDAO);
+
+        navigateToMainPage(event);
     }
 }
