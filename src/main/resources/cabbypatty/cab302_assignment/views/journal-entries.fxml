@@ -84,7 +84,7 @@
             <Font name="System Bold" size="23.0" />
         </font>
     </Label>
-    <Button layoutX="486.0" layoutY="314.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #A6E873;" text="New Entry" textFill="#666666">
+    <Button layoutX="486.0" layoutY="314.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #A6E873;" text="New Entry" onAction="#newJournalPage" textFill="#666666">
         <font>
             <Font name="System Bold" size="12.0" />
         </font>
@@ -99,26 +99,7 @@
     <content>
             <VBox fx:id="journalEntries" prefWidth="290.0" spacing="20" style="-fx-padding: 4;">
                 <children>
-                    <VBox prefHeight="124.0">
-                        <children>
-                            <Label text="19 August, 2023" textAlignment="CENTER" textFill="#666666">
-                                <font>
-                                    <Font name="System Bold" size="14.0" />
-                                </font>
-                            </Label>
-                            <TextArea layoutY="33.0" style="-fx-background-color: #FFFFFF;" text="" wrapText="true" />
-                        </children>
-                    </VBox>
-                    <VBox prefHeight="124.0" prefWidth="292.0" style="-fx-background-color: #FFFFFF;">
-                        <children>
-                            <Label text="14 June, 2022" textAlignment="CENTER" textFill="#666666">
-                                <font>
-                                    <Font name="System Bold" size="14.0" />
-                                </font>
-                            </Label>
-                            <TextArea layoutY="28.0" text="Today, the happiest moment for me was when I received an unexpected phone call from my best friend. We hadn't spoken in a while because of our busy schedules, so hearing their voice really brightened my day." wrapText="true" />
-                        </children>
-                    </VBox>
+
                 </children>
             </VBox>
         </content>

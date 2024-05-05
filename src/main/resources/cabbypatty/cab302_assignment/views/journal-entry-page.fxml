@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cabbypatty.cab302_assignment.controller.JournalEntriesController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cabbypatty.cab302_assignment.controller.JournalEntryPageController">
 
     <VBox alignment="CENTER" prefHeight="400.0" prefWidth="150" style="-fx-background-color: #181819;">
 
@@ -41,7 +41,7 @@
             <ImageView fitHeight="16.0" fitWidth="16.0">
                 <Image url="@../image/journal_icon.png" />
             </ImageView>
-            <Label style="-fx-text-fill: white;" text="Journal" />
+            <Hyperlink onAction="#navigateToJournalPage" style="-fx-text-fill: white;" text="Journal" />
         </HBox>
 
         <Label prefHeight="35.0" prefWidth="20.0" style="-fx-text-fill: white;" text="" />
@@ -84,18 +84,18 @@
             <Font name="System Bold" size="23.0" />
         </font>
     </Label>
-    <Button layoutX="486.0" layoutY="347.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #A6E873;" text="Cancel" textFill="#666666">
+    <Button layoutX="486.0" layoutY="347.0" mnemonicParsing="false" onAction="#navigateToJournalPage" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #A6E873;" text="Cancel" textFill="#666666">
         <font>
             <Font name="System Bold" size="12.0" />
         </font>
     </Button>
-    <Button layoutX="389.0" layoutY="347.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #A6E873;" text="Save" textFill="#666666">
+    <Button layoutX="389.0" layoutY="347.0" mnemonicParsing="false" onAction="#submitJournal" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #A6E873;" text="Save" textFill="#666666">
         <font>
             <Font name="System Bold" size="12.0" />
         </font>
     </Button>
-   <TextArea layoutX="158.0" layoutY="75.0" prefHeight="147.0" prefWidth="296.0" />
-   <Slider layoutX="153.0" layoutY="268.0" max="10.0" />
+   <TextArea fx:id="journalEntry" layoutX="158.0" layoutY="75.0" prefHeight="147.0" prefWidth="296.0" />
+   <Slider fx:id="moodSlider" layoutX="153.0" layoutY="268.0" majorTickUnit="1" max="10.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
    <Label layoutX="158.0" layoutY="234.0" text="Mood" textAlignment="CENTER">
       <font>
          <Font name="System Bold" size="23.0" />
