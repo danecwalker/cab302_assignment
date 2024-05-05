@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.*?>
+<?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
@@ -80,11 +80,6 @@
         <Image url="@../image/Logo.png" />
     </ImageView>
 
-    <!-- Chart -->
-    <ImageView fitHeight="150.0" fitWidth="300.0" layoutX="153.0" layoutY="55.0">
-        <Image url="@../image/chart_v2.png" />
-    </ImageView>
-
     <!-- Profile -->
     <ImageView fitHeight="35.0" fitWidth="110.0" layoutX="473.0" layoutY="14.0">
         <Image url="@../image/Profile.png" />
@@ -96,16 +91,16 @@
     </ImageView>
 
     <!-- Green Box -->
-    <Region layoutX="255.0" layoutY="240.0" prefHeight="86.0" prefWidth="236.0" style="-fx-background-color: C8FF9E; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" />
+    <Region layoutX="173.0" layoutY="195.0" prefHeight="86.0" prefWidth="236.0" style="-fx-background-color: C8FF9E; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" />
 
     <!-- Main Region Heading -->
-    <Label fx:id="welcomeText" layoutX="265.0" layoutY="249.0" text="How Do You Feel Today?" textAlignment="CENTER">
+    <Label fx:id="welcomeText" layoutX="186.0" layoutY="206.0" text="How Do You Feel Today?" textAlignment="CENTER">
       <font>
          <Font name="System Bold" size="14.0" />
       </font></Label>
 
     <!-- Main Button -->
-    <Button layoutX="323.0" layoutY="283.0" onAction="#navigateToJournalPage" prefWidth="100.0" style="-fx-background-color: #A6E873;" text="Mark Now" textAlignment="CENTER">
+    <Button layoutX="241.0" layoutY="238.0" onAction="#navigateToJournalPage" prefWidth="100.0" style="-fx-background-color: #A6E873;" text="Mark Now" textAlignment="CENTER">
       <font>
          <Font name="System Bold" size="12.0" />
       </font></Button>
@@ -116,5 +111,14 @@
          <Font name="System Bold" size="14.0" />
       </font>
    </Label>
+
+    <LineChart layoutX="150.0" layoutY="46.0" prefHeight="150.0" prefWidth="300.0">
+        <xAxis>
+            <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+            <NumberAxis side="LEFT" />
+        </yAxis>
+    </LineChart>
 
 </AnchorPane>
