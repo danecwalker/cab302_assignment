@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cabbypatty.cab302_assignment.controller.JournalEntriesController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cabbypatty.cab302_assignment.controller.JournalEntriesController">
 
     <VBox alignment="CENTER" prefHeight="400.0" prefWidth="150" style="-fx-background-color: #181819;">
 
@@ -111,10 +111,10 @@
                                     <Font name="System Bold" size="14.0" />
                                 </font>
                             </Label>
-                            <TextArea layoutY="33.0" text="" wrapText="true" />
+                            <TextArea layoutY="33.0" style="-fx-background-color: #FFFFFF;" text="" wrapText="true" />
                         </children>
                     </VBox>
-                    <VBox prefHeight="124.0" prefWidth="292.0">
+                    <VBox prefHeight="124.0" prefWidth="292.0" style="-fx-background-color: #FFFFFF;">
                         <children>
                             <Label text="14 June, 2022" textAlignment="CENTER" textFill="#666666">
                                 <font>
