@@ -1,12 +1,14 @@
 package cabbypatty.cab302_assignment.model;
 
 import java.sql.Timestamp;
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 public class Journal {
     private int id;
@@ -25,7 +27,8 @@ public class Journal {
         ZonedDateTime localDateTime = date.toInstant().atZone(systemTimeZone);
         // 19 August 2021 - 12:00pm local time
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy - h:mma");
-        this.title = localDateTime.format(formatter) + " - Mood: " + mood;
+
+        this.title = localDateTime.format(formatter).replace("AM", "am").replace("PM","pm") + " - Mood: " + mood;
         this.body = body;
         this.date = date;
         this.mood = mood;
