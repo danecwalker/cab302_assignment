@@ -4,6 +4,8 @@ package cabbypatty.cab302_assignment.controller;
 import cabbypatty.cab302_assignment.Config;
 import cabbypatty.cab302_assignment.SessionStorage;
 import cabbypatty.cab302_assignment.model.Journal;
+import cabbypatty.cab302_assignment.model.Session;
+import cabbypatty.cab302_assignment.model.SessionAndUser;
 import cabbypatty.cab302_assignment.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -19,9 +21,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.prefs.BackingStoreException;
 
 public class JournalEntriesController implements Initializable {
     private Config config;
+    private SessionAndUser sessionAndUser;
 
     @FXML
     private VBox journalEntries;
@@ -30,10 +34,65 @@ public class JournalEntriesController implements Initializable {
     public JournalEntriesController(Config config) {
         System.out.println("JournalEntriesController created");
         this.config = config;
+        try {
+            String sessionID = SessionStorage.loadToken();
+            this.sessionAndUser = Session.validateSession(sessionID, config.getAuthDAO());
+        } catch (BackingStoreException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (sessionAndUser == null) {
+            navigateToLogin();
+        }
     }
 
-    private User getUser() throws Exception {
-        return config.getAuthDAO().getSessionAndUser(SessionStorage.loadToken()).getUser();
+    //Navigate to Login
+    private void navigateToLogin() {
+        try {
+            // Load the FXML file for the login page
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/login.fxml"));
+
+            fxmlLoader.setControllerFactory((Class<?> type) -> {
+                if (type == LoginController.class) {
+                    return new LoginController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
+            Scene loginScene = new Scene(fxmlLoader.load());
+
+            // Get the stage from the event source
+            Stage stage = new Stage();
+
+            // Set the new scene on the stage
+            stage.setScene(loginScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+    }
+    private User getUser() {
+        try {
+            String sessionID = SessionStorage.loadToken();
+            sessionAndUser = Session.validateSession(sessionID, config.getAuthDAO());
+            if (sessionAndUser == null) {
+                navigateToLogin();
+            } else {
+                return sessionAndUser.getUser();
+            }
+        } catch (BackingStoreException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        return null;
     }
 
     @FXML

@@ -3,6 +3,8 @@ package cabbypatty.cab302_assignment.controller;
 //Imports
 import cabbypatty.cab302_assignment.Config;
 import cabbypatty.cab302_assignment.SessionStorage;
+import cabbypatty.cab302_assignment.model.Session;
+import cabbypatty.cab302_assignment.model.SessionAndUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,18 +12,63 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.util.prefs.BackingStoreException;
 
 //Settings Controller Methods
 public class SupportController {
 
     private Config config;
 
+    private SessionAndUser sessionAndUser;
+
     //Constructor
     public SupportController(Config config) {
         System.out.println("SupportController created");
         this.config = config;
+        try {
+            String sessionID = SessionStorage.loadToken();
+            this.sessionAndUser = Session.validateSession(sessionID, config.getAuthDAO());
+        } catch (BackingStoreException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (sessionAndUser == null) {
+            navigateToLogin();
+        }
     }
 
+    //Navigate to Login
+    private void navigateToLogin() {
+        try {
+            // Load the FXML file for the login page
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/login.fxml"));
+
+            fxmlLoader.setControllerFactory((Class<?> type) -> {
+                if (type == LoginController.class) {
+                    return new LoginController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
+            Scene loginScene = new Scene(fxmlLoader.load());
+
+            // Get the stage from the event source
+            Stage stage = new Stage();
+
+            // Set the new scene on the stage
+            stage.setScene(loginScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+    }
 
     @FXML
     private void navigateToSettings(ActionEvent event) {

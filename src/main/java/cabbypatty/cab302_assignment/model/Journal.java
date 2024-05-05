@@ -15,6 +15,8 @@ public class Journal {
     private Date date;
     private Integer author_id;
 
+    private Integer mood;
+
     public Journal(int id, String body, Date date, Integer author_id) {
         this.id = id;
         ZoneId systemTimeZone = ZoneId.systemDefault();
