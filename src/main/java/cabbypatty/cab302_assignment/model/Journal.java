@@ -25,7 +25,7 @@ public class Journal {
         ZonedDateTime localDateTime = date.toInstant().atZone(systemTimeZone);
         // 19 August 2021 - 12:00pm local time
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy - h:mma");
-        this.title = localDateTime.format(formatter) + " - Mood: " + mood;
+        this.title = localDateTime.format(formatter) + " - Mood: " + mood.toString();
         this.body = body;
         this.date = date;
         this.mood = mood;
