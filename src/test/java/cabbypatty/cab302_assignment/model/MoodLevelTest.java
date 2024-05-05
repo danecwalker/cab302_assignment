@@ -15,14 +15,4 @@ class MoodLevelTest {
         assertEquals(3, Mood.GOOD.ordinal());
         assertEquals(4, Mood.VERY_GOOD.ordinal());
     }
-
-//    @Test
-//    void testOutOfBoundLevel() {
-//        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-//            MoodLevel.fromLevel(0);
-//        });
-//        assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
-//            MoodLevel.fromLevel(6);
-//        });
-//    }
 }
