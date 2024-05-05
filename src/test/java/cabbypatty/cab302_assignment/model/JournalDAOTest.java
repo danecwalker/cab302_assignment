@@ -13,46 +13,46 @@ class JournalDAOTest {
 
     @BeforeEach
     void setUp() {
-        journalDAO = new MockJournalDAO();
+        this.journalDAO = new MockJournalDAO();
     }
 
     @Test
     void testCreateJournal() {
-        journalDAO.createJournal("Test Body", new MoodLevel(Mood.GOOD), 1);
+        this.journalDAO.createJournal("Test Body", new MoodLevel(Mood.GOOD), 1);
 
-        assertEquals(1, journalDAO.getJournals(1).length);
+        assertEquals(1, this.journalDAO.getJournals(1).length);
     }
 
     @Test
     void testGetJournal() {
         Journal journal = new Journal(1, "Test Body", new Date(2003 - 1900, Calendar.JUNE, 1), 1,
                 new MoodLevel(Mood.GOOD));
-        journalDAO.createJournal("Test Body", new MoodLevel(Mood.GOOD), 1);
+        this.journalDAO.createJournal("Test Body", new MoodLevel(Mood.GOOD), 1);
 
-        assertEquals(journal.getId(), journalDAO.getJournal(1).getId());
+        assertEquals(journal.getId(), this.journalDAO.getJournal(1).getId());
     }
 
     @Test
     void testGetJournals() {
-        journalDAO.createJournal("Test Body 1", new MoodLevel(Mood.GOOD), 1);
-        journalDAO.createJournal("Test Body 2", new MoodLevel(Mood.BAD), 1);
+        this.journalDAO.createJournal("Test Body 1", new MoodLevel(Mood.GOOD), 1);
+        this.journalDAO.createJournal("Test Body 2", new MoodLevel(Mood.BAD), 1);
 
-        assertEquals(2, journalDAO.getJournals(1).length);
+        assertEquals(2, this.journalDAO.getJournals(1).length);
     }
 
     @Test
     void testDeleteJournal() {
-        journalDAO.createJournal("Test Body", new MoodLevel(Mood.GOOD), 1);
-        journalDAO.deleteJournal(1);
+        this.journalDAO.createJournal("Test Body", new MoodLevel(Mood.GOOD), 1);
+        this.journalDAO.deleteJournal(1);
 
-        assertNull(journalDAO.getJournal(1));
+        assertNull(this.journalDAO.getJournal(1));
     }
 
     @Test
     void testUpdateJournal() {
-        journalDAO.createJournal("Test Body", new MoodLevel(Mood.GOOD), 1);
-        journalDAO.updateJournal(1, "Updated Body");
+        this.journalDAO.createJournal("Test Body", new MoodLevel(Mood.GOOD), 1);
+        this.journalDAO.updateJournal(1, "Updated Body");
 
-        assertEquals("Updated Body", journalDAO.getJournal(1).getBody());
+        assertEquals("Updated Body", this.journalDAO.getJournal(1).getBody());
     }
 }

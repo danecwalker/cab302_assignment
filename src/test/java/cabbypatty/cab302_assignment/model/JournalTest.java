@@ -14,63 +14,63 @@ class JournalTest {
     @BeforeEach
     void setUp() {
         MoodLevel level = new MoodLevel(Mood.GOOD);
-        journal = new Journal(1, "Test Content", new Date(103, Calendar.JUNE, 1), 1, level);
+        this.journal = new Journal(1, "Test Content", new Date(103, Calendar.JUNE, 1), 1, level);
     }
 
     @Test
     void getId() {
-        assertEquals(1, journal.getId());
+        assertEquals(1, this.journal.getId());
     }
 
     @Test
     void getTitle() {
-        assertEquals("01 June 2003 - 12:00am - Mood: Good", journal.getTitle());
+        assertEquals("01 June 2003 - 12:00am - Mood: Good", this.journal.getTitle());
     }
 
     @Test
     void getBody() {
-        assertEquals("Test Content", journal.getBody());
+        assertEquals("Test Content", this.journal.getBody());
     }
 
     @Test
     void setBody() {
-        assertDoesNotThrow(() -> journal.setBody("Updated Content"));
-        assertEquals("Updated Content", journal.getBody());
+        assertDoesNotThrow(() -> this.journal.setBody("Updated Content"));
+        assertEquals("Updated Content", this.journal.getBody());
     }
 
     @Test
     void setBody_Null() {
-        assertThrows(IllegalArgumentException.class, () -> journal.setBody(null));
+        assertThrows(IllegalArgumentException.class, () -> this.journal.setBody(null));
     }
 
     @Test
     void setBody_Empty() {
-        assertThrows(IllegalArgumentException.class, () -> journal.setBody(""));
+        assertThrows(IllegalArgumentException.class, () -> this.journal.setBody(""));
     }
 
     @Test
     void getDate() {
-        assertEquals(new Date(103, Calendar.JUNE, 1), journal.getDate());
+        assertEquals(new Date(103, Calendar.JUNE, 1), this.journal.getDate());
     }
 
     @Test
     void getAuthorID() {
-        assertEquals(1, journal.getAuthorID());
+        assertEquals(1, this.journal.getAuthorID());
     }
 
     @Test
     void getMood() {
-        assertEquals(new MoodLevel(Mood.GOOD).toString(), journal.getMood().toString());
+        assertEquals(new MoodLevel(Mood.GOOD).toString(), this.journal.getMood().toString());
     }
 
     @Test
     void setMood() {
-        assertDoesNotThrow(() -> journal.setMood(new MoodLevel(Mood.BAD)));
-        assertEquals(new MoodLevel(Mood.BAD).toString(), journal.getMood().toString());
+        assertDoesNotThrow(() -> this.journal.setMood(new MoodLevel(Mood.BAD)));
+        assertEquals(new MoodLevel(Mood.BAD).toString(), this.journal.getMood().toString());
     }
 
     @Test
     void setMood_Null() {
-        assertThrows(IllegalArgumentException.class, () -> journal.setMood(null));
+        assertThrows(IllegalArgumentException.class, () -> this.journal.setMood(null));
     }
 }

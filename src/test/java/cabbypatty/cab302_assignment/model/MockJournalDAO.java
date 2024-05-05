@@ -10,27 +10,27 @@ public class MockJournalDAO implements IJournalDAO {
 
     @Override
     public Journal getJournal(int id) {
-        return journals.stream().filter(j -> j.getId() == id).findFirst().orElse(null);
+        return this.journals.stream().filter(j -> j.getId() == id).findFirst().orElse(null);
     }
 
     @Override
     public void createJournal(String body, MoodLevel mood, Integer author_id) {
-        Journal journal = new Journal(journals.size() + 1, body, new Date(), author_id, mood);
-        journals.add(journal);
+        Journal journal = new Journal(this.journals.size() + 1, body, new Date(), author_id, mood);
+        this.journals.add(journal);
     }
 
     @Override
     public Journal[] getJournals(Integer author_id) {
-        return journals.stream().filter(j -> j.getAuthorID().equals(author_id)).toArray(Journal[]::new);
+        return this.journals.stream().filter(j -> j.getAuthorID().equals(author_id)).toArray(Journal[]::new);
     }
 
     @Override
     public void deleteJournal(int id) {
-        journals.removeIf(j -> j.getId() == id);
+        this.journals.removeIf(j -> j.getId() == id);
     }
 
     @Override
     public void updateJournal(int id, String body) {
-        journals.stream().filter(j -> j.getId() == id).findFirst().ifPresent(journal -> journal.setBody(body));
+        this.journals.stream().filter(j -> j.getId() == id).findFirst().ifPresent(journal -> journal.setBody(body));
     }
 }

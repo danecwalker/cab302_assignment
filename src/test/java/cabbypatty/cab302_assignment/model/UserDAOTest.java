@@ -12,12 +12,12 @@ class UserDAOTest {
 
     @BeforeEach
     void setUp() {
-        userDAO = new MockUserDAO();
+        this.userDAO = new MockUserDAO();
     }
 
     @Test
     void testCreateUser() {
-        User user = userDAO.createUser("John Doe", "john@example.com", "Password1234@",
+        User user = this.userDAO.createUser("John Doe", "john@example.com", "Password1234@",
                 new Date(2000 - 1900, Calendar.JANUARY, 1), "Male");
         assertNotNull(user);
         assertEquals("John Doe", user.getName());
@@ -30,12 +30,12 @@ class UserDAOTest {
     @Test
     void testGetUser() {
 
-        User newUser = userDAO.createUser("John Doe", "john12@example.com", "Password1234@",
+        User newUser = this.userDAO.createUser("John Doe", "john12@example.com", "Password1234@",
                 new Date(2000 - 1900, Calendar.JANUARY, 1), "Male");
         assertNotNull(newUser, "User should be created");
 
         // Attempt to retrieve the user immediately after creation
-        User retrievedUser = userDAO.getUser("john12@example.com");
+        User retrievedUser = this.userDAO.getUser("john12@example.com");
         assertNotNull(retrievedUser, "Retrieved user should not be null");
 
         // Verify details to ensure the retrieved user matches the created user
@@ -49,6 +49,6 @@ class UserDAOTest {
 
     @Test
     void testGetUserNotFound() {
-        assertNull(userDAO.getUser("nonexistent@example.com"));
+        assertNull(this.userDAO.getUser("nonexistent@example.com"));
     }
 }

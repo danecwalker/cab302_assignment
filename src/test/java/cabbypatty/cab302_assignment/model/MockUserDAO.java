@@ -10,15 +10,15 @@ public class MockUserDAO implements IUserDAO {
 
     @Override
     public User getUser(String email) {
-        return users.stream().filter(u -> {
+        return this.users.stream().filter(u -> {
             return u.getEmail().equals(email);
         }).findFirst().orElse(null);
     }
 
     @Override
     public User createUser(String name, String email, String password, Date dob, String gender) {
-        User user = new User(users.size() + 1, email, name, password, dob, gender);
-        users.add(user);
+        User user = new User(this.users.size() + 1, email, name, password, dob, gender);
+        this.users.add(user);
         return user;
     }
 }

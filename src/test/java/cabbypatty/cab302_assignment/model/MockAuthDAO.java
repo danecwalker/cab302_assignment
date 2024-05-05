@@ -11,22 +11,22 @@ public class MockAuthDAO implements IAuthDAO {
 
     @Override
     public void deleteExpiredSessions() {
-        sessions.removeIf(s -> s.expiresAt.before(new Date()));
+        this.sessions.removeIf(s -> s.expiresAt.before(new Date()));
     }
 
     @Override
     public void deleteSession(String sessionId) {
-        sessions.removeIf(s -> s.sessionID.equals(sessionId));
+        this.sessions.removeIf(s -> s.sessionID.equals(sessionId));
     }
 
     @Override
     public void deleteUserSessions(Integer userId) {
-        sessions.removeIf(s -> s.userID.equals(userId));
+        this.sessions.removeIf(s -> s.userID.equals(userId));
     }
 
     @Override
     public SessionAndUser getSessionAndUser(String sessionId) {
-        Session session = sessions.stream().filter(s -> s.sessionID.equals(sessionId)).findFirst().orElse(null);
+        Session session = this.sessions.stream().filter(s -> s.sessionID.equals(sessionId)).findFirst().orElse(null);
         if (session == null) {
             return null;
         }
@@ -36,16 +36,16 @@ public class MockAuthDAO implements IAuthDAO {
 
     @Override
     public Session[] getUserSessions(Integer userId) {
-        return sessions.stream().filter(s -> s.userID.equals(userId)).toArray(Session[]::new);
+        return this.sessions.stream().filter(s -> s.userID.equals(userId)).toArray(Session[]::new);
     }
 
     @Override
     public void setSession(Session session) {
-        sessions.add(session);
+        this.sessions.add(session);
     }
 
     @Override
     public void updateSessionExpiration(String sessionId, Date expiresAt) {
-        sessions.stream().filter(s -> s.sessionID.equals(sessionId)).findFirst().ifPresent(s -> s.expiresAt = expiresAt);
+        this.sessions.stream().filter(s -> s.sessionID.equals(sessionId)).findFirst().ifPresent(s -> s.expiresAt = expiresAt);
     }
 }
