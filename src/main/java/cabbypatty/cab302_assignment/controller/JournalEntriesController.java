@@ -29,7 +29,8 @@ public class JournalEntriesController implements Initializable {
 
     @FXML
     private VBox journalEntries;
-
+    @FXML
+    private Label username;
     //Constructor
     public JournalEntriesController(Config config) {
         System.out.println("JournalEntriesController created");
@@ -313,7 +314,7 @@ public class JournalEntriesController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        username.setText(sessionAndUser.getUser().name);
         try {
             Integer userId = getUser().id;
             System.out.println(userId);

@@ -119,10 +119,10 @@
         </font>
     </Label>
     <TextArea layoutX="338.0" layoutY="165.0" prefHeight="80.0" prefWidth="198.0" text="Two Factor Authenticaion: On&#10;Encrypt Data: On&#10;Login Devices: This Computer &#10;Backup: On&#10;&#10;&#10;&#10;&#10;" />
-   <Label layoutX="536.0" layoutY="6.0" text="User" textAlignment="CENTER">
-      <font>
-         <Font name="System Bold" size="23.0" />
-      </font>
-   </Label>
+    <Label fx:id="username" layoutX="528.0" text="User" textAlignment="CENTER">
+        <font>
+            <Font name="System Bold" size="16.0" />
+        </font>
+    </Label>
 
 </AnchorPane>

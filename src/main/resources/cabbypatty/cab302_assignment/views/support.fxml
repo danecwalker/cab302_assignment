@@ -121,10 +121,10 @@
             <Font name="System Bold" size="15.0" />
         </font>
     </Label>
-   <Label layoutX="537.0" layoutY="6.0" text="User" textAlignment="CENTER">
-      <font>
-         <Font name="System Bold" size="23.0" />
-      </font>
-   </Label>
+    <Label fx:id="username" layoutX="528.0" text="User" textAlignment="CENTER">
+        <font>
+            <Font name="System Bold" size="16.0" />
+        </font>
+    </Label>
 
 </AnchorPane>

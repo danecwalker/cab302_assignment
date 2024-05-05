@@ -8,18 +8,23 @@ import cabbypatty.cab302_assignment.model.SessionAndUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.prefs.BackingStoreException;
 
 //Settings Controller Methods
-public class SettingsController {
+public class SettingsController implements Initializable {
 
     private Config config;
     private SessionAndUser sessionAndUser;
-
+    @FXML
+    private Label username;
     //Constructor
     public SettingsController(Config config) {
         this.config = config;
@@ -234,5 +239,10 @@ public class SettingsController {
         } catch (IOException e) {
             e.printStackTrace(); // Handle the exception appropriately
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        username.setText(sessionAndUser.getUser().name);
     }
 }

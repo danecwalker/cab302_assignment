@@ -7,16 +7,20 @@ import cabbypatty.cab302_assignment.model.SessionAndUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.prefs.BackingStoreException;
 
-public class JournalEntryPageController {
+public class JournalEntryPageController implements Initializable {
 
     private Config config;
     private SessionAndUser sessionAndUser;
@@ -26,6 +30,9 @@ public class JournalEntryPageController {
 
     @FXML
     private Slider moodSlider;
+
+    @FXML
+    private Label username;
 
     public JournalEntryPageController(Config config) {
         System.out.println("JournalEntryPageController created");
@@ -41,36 +48,6 @@ public class JournalEntryPageController {
 
         if (sessionAndUser == null) {
             navigateToLogin();
-        }
-    }
-
-    private void navigateToJournalPage() {
-        try {
-            // Load the FXML file for the login page
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/journal-entries.fxml"));
-
-            fxmlLoader.setControllerFactory((Class<?> type) -> {
-                if (type == JournalEntriesController.class) {
-                    return new JournalEntriesController(config);
-                } else {
-                    try {
-                        return type.getDeclaredConstructor().newInstance();
-                    } catch (Exception exc) {
-                        throw new RuntimeException(exc);
-                    }
-                }
-            });
-
-            Scene loginScene = new Scene(fxmlLoader.load());
-
-            // Get the stage from the event source
-            Stage stage = new Stage();
-
-            // Set the new scene on the stage
-            stage.setScene(loginScene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception appropriately
         }
     }
 
@@ -327,5 +304,11 @@ public class JournalEntryPageController {
         config.getJournalDAO().createJournal(body, mood, sessionAndUser.getUser().id);
 
         navigateToJournalPage(event);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("JournalEntryPageController initialized");
+        username.setText(sessionAndUser.getUser().name);
     }
 }

@@ -101,19 +101,9 @@
          <Font name="System Bold" size="23.0" />
       </font>
    </Label>
-   <Label layoutX="153.0" layoutY="283.0" text="1" textAlignment="CENTER">
+   <Label fx:id="username" layoutX="528.0" text="User" textAlignment="CENTER">
       <font>
-         <Font name="System Bold" size="23.0" />
-      </font>
-   </Label>
-   <Label layoutX="270.0" layoutY="283.0" text="10" textAlignment="CENTER">
-      <font>
-         <Font name="System Bold" size="23.0" />
-      </font>
-   </Label>
-   <Label layoutX="528.0" prefHeight="46.0" prefWidth="49.0" text="User" textAlignment="CENTER">
-      <font>
-         <Font name="System Bold" size="23.0" />
+         <Font name="System Bold" size="16.0" />
       </font>
    </Label>
 

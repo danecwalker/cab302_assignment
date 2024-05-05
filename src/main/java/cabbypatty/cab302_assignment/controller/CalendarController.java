@@ -8,16 +8,21 @@ import cabbypatty.cab302_assignment.model.SessionAndUser;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import java.util.prefs.BackingStoreException;
 
-public class CalendarController {
+public class CalendarController implements Initializable {
     private Config config;
     private SessionAndUser sessionAndUser;
-
+    @FXML
+    private Label username;
     //Constructor
     public CalendarController(Config config) {
         System.out.println("CalendarController created");
@@ -229,5 +234,10 @@ public class CalendarController {
         } catch (IOException e) {
             e.printStackTrace(); // Handle the exception appropriately
         }
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        username.setText(sessionAndUser.getUser().name);
     }
 }
