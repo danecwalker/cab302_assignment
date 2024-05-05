@@ -1,3 +1,5 @@
+package cabbypatty.cab302_assignment.model;
+
 import cabbypatty.cab302_assignment.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

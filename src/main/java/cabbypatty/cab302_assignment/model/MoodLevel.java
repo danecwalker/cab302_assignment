@@ -1,39 +1,32 @@
 package cabbypatty.cab302_assignment.model;
 
-public enum MoodLevel {
-    // Define mood levels with corresponding integer values
-    VERY_BAD(0),
-    BAD(1),
-    NEUTRAL(2),
-    GOOD(3),
-    VERY_GOOD(4);
 
+
+public class MoodLevel {
     // Instance variable to hold the integer value of the mood level
-    private final int level;
+    private final Mood mood;
 
     // Constructor to initialize the mood level with an integer value
-    MoodLevel(int level) {
-        this.level = level;
+    MoodLevel(Mood mood) {
+        this.mood = mood;
     }
 
     public int getLevel() {
-        return this.level + 1;
+        return this.mood.ordinal() + 1;
     }
 
-//    public MoodLevel fromLevel(int level) {
-//        this.level = MoodLevel.values()[level-1];
-//        return .this.level;
-////        throw new IllegalArgumentException("Invalid mood level: " + level);
-//    }
+    public static MoodLevel fromLevel(int level) {
+        return new MoodLevel(Mood.values()[level-1]);
+    }
 
     public String toString(){
-        return switch (level) {
-            case 0 -> "Very bad";
-            case 1 -> "Bad";
-            case 2 -> "Neutral";
-            case 3 -> "Good";
-            case 4 -> "Very Good";
-            default -> "";
+        return switch (this.mood) {
+            case VERY_BAD -> "Very bad";
+            case BAD -> "Bad";
+            case NEUTRAL -> "Neutral";
+            case GOOD -> "Good";
+            case VERY_GOOD -> "Very Good";
+            default -> "-";
         };
     }
 }

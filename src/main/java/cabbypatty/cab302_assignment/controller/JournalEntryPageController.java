@@ -2,6 +2,8 @@ package cabbypatty.cab302_assignment.controller;
 
 import cabbypatty.cab302_assignment.Config;
 import cabbypatty.cab302_assignment.SessionStorage;
+import cabbypatty.cab302_assignment.model.Mood;
+import cabbypatty.cab302_assignment.model.MoodLevel;
 import cabbypatty.cab302_assignment.model.Session;
 import cabbypatty.cab302_assignment.model.SessionAndUser;
 import javafx.event.ActionEvent;
@@ -301,7 +303,7 @@ public class JournalEntryPageController implements Initializable {
 
         Integer mood = (int) moodSlider.getValue();
 
-        config.getJournalDAO().createJournal(body, mood, sessionAndUser.getUser().id);
+        config.getJournalDAO().createJournal(body, MoodLevel.fromLevel(mood), sessionAndUser.getUser().id);
 
         navigateToJournalPage(event);
     }

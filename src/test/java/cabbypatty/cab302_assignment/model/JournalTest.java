@@ -13,7 +13,7 @@ class JournalTest {
 
     @BeforeEach
     void setUp() {
-        MoodLevel level = MoodLevel.GOOD;
+        MoodLevel level = new MoodLevel(Mood.GOOD);
         journal = new Journal(1, "Test Content", new Date(103, Calendar.JUNE, 1), 1, level);
     }
 
@@ -60,13 +60,13 @@ class JournalTest {
 
     @Test
     void getMood() {
-        assertEquals(MoodLevel.GOOD, journal.getMood());
+        assertEquals(new MoodLevel(Mood.GOOD), journal.getMood());
     }
 
     @Test
     void setMood() {
-        assertDoesNotThrow(() -> journal.setMood(MoodLevel.BAD));
-        assertEquals(MoodLevel.BAD, journal.getMood());
+        assertDoesNotThrow(() -> journal.setMood(new MoodLevel(Mood.BAD)));
+        assertEquals(new MoodLevel(Mood.BAD), journal.getMood());
     }
 
     @Test
