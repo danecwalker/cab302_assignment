@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -301,7 +302,7 @@ public class JournalEntryPageController implements Initializable {
             return;
         }
 
-        Integer mood = (int) moodSlider.getValue();
+        int mood = (int) moodSlider.getValue();
 
         config.getJournalDAO().createJournal(body, MoodLevel.fromLevel(mood), sessionAndUser.getUser().id);
 
@@ -312,5 +313,22 @@ public class JournalEntryPageController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("JournalEntryPageController initialized");
         username.setText(sessionAndUser.getUser().name);
+        moodSlider.setLabelFormatter(new StringConverter<Double>() {
+            @Override
+            public String toString(Double object) {
+                return MoodLevel.fromLevel(object.intValue()).toString();
+            }
+
+            @Override
+            public Double fromString(String string) {
+                return switch (string) {
+                    case "Very Bad" -> 1.0;
+                    case "Bad" -> 2.0;
+                    case "Good" -> 4.0;
+                    case "Very Good" -> 5.0;
+                    default -> 3.0;
+                };
+            }
+        });
     }
 }

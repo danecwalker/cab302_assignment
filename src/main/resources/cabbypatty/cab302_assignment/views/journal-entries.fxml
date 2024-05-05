@@ -84,18 +84,18 @@
             <Font name="System Bold" size="23.0" />
         </font>
     </Label>
-    <Button layoutX="486.0" layoutY="314.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #A6E873;" text="New Entry" onAction="#newJournalPage" textFill="#666666">
+    <Button layoutX="412.0" layoutY="48.0" mnemonicParsing="false" onAction="#newJournalPage" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #A6E873;" text="New Entry" textFill="#666666">
         <font>
             <Font name="System Bold" size="12.0" />
         </font>
     </Button>
-    <Button layoutX="486.0" layoutY="347.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #A6E873;" text="Export Data" textFill="#666666">
+    <Button layoutX="501.0" layoutY="48.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" style="-fx-background-color: #A6E873;" text="Export Data" textFill="#666666">
         <font>
             <Font name="System Bold" size="12.0" />
         </font>
     </Button>
-    <ComboBox layoutX="305.0" layoutY="51.0" prefWidth="150.0" promptText="Sort " />
-   <ScrollPane fitToWidth="true" hbarPolicy="NEVER" hmax="0.0" layoutX="159.0" layoutY="86.0" prefHeight="300.0" prefWidth="292.0" style="-fx-border-color: transparent; -fx-border-width: 0; -fx-background-color: transparent;">
+    <ComboBox layoutX="159.0" layoutY="48.0" prefWidth="150.0" promptText="Sort " />
+   <ScrollPane fitToWidth="true" hbarPolicy="NEVER" hmax="0.0" layoutX="159.0" layoutY="86.0" prefHeight="300.0" prefWidth="425.0" style="-fx-border-color: transparent; -fx-border-width: 0; -fx-background-color: transparent;">
     <content>
             <VBox fx:id="journalEntries" prefWidth="290.0" spacing="20" style="-fx-padding: 4;">
                 <children>

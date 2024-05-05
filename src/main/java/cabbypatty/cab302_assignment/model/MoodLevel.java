@@ -23,10 +23,9 @@ public class MoodLevel {
         return switch (this.mood) {
             case VERY_BAD -> "Very bad";
             case BAD -> "Bad";
-            case NEUTRAL -> "Neutral";
             case GOOD -> "Good";
             case VERY_GOOD -> "Very Good";
-            default -> "-";
+            default -> "Neutral";
         };
     }
 }

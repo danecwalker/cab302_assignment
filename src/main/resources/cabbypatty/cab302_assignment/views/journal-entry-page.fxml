@@ -94,9 +94,9 @@
             <Font name="System Bold" size="12.0" />
         </font>
     </Button>
-   <TextArea fx:id="journalEntry" layoutX="158.0" layoutY="75.0" prefHeight="147.0" prefWidth="296.0" />
-   <Slider fx:id="moodSlider" layoutX="153.0" layoutY="268.0" majorTickUnit="1" max="10.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
-   <Label layoutX="158.0" layoutY="234.0" text="Mood" textAlignment="CENTER">
+   <TextArea fx:id="journalEntry" layoutX="158.0" layoutY="75.0" prefHeight="147.0" prefWidth="415.0" />
+   <Slider fx:id="moodSlider" layoutX="183.0" layoutY="278.0" majorTickUnit="1" max="5.0" min="1.0" minorTickCount="0" prefHeight="38.0" prefWidth="381.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="3.0" />
+   <Label layoutX="341.0" layoutY="235.0" text="Mood" textAlignment="CENTER">
       <font>
          <Font name="System Bold" size="23.0" />
       </font>
