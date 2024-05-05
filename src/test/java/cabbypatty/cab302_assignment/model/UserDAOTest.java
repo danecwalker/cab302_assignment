@@ -40,7 +40,7 @@ class UserDAOTest {
 
         // Verify details to ensure the retrieved user matches the created user
         assertEquals("John Doe", retrievedUser.getName());
-        assertEquals("john@example.com", retrievedUser.getEmail());
+        assertEquals("john12@example.com", retrievedUser.getEmail());
         assertEquals("Password1234@", retrievedUser.getPassword());
         assertEquals(new Date(2000 - 1900, Calendar.JANUARY, 1), retrievedUser.getDob());
         assertEquals("Male", retrievedUser.getGender());
