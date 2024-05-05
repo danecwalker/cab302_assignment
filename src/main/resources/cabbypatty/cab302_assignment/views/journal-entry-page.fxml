@@ -79,11 +79,6 @@
         <Image url="@../image/Logo.png" />
     </ImageView>
 
-    <!-- Profile -->
-    <ImageView fitHeight="35.0" fitWidth="110.0" layoutX="473.0" layoutY="14.0">
-        <Image url="@../image/Profile.png" />
-    </ImageView>
-
     <Label layoutX="158.0" layoutY="6.0" text="New Entry" textAlignment="CENTER">
         <font>
             <Font name="System Bold" size="23.0" />
@@ -112,6 +107,11 @@
       </font>
    </Label>
    <Label layoutX="270.0" layoutY="283.0" text="10" textAlignment="CENTER">
+      <font>
+         <Font name="System Bold" size="23.0" />
+      </font>
+   </Label>
+   <Label layoutX="528.0" prefHeight="46.0" prefWidth="49.0" text="User" textAlignment="CENTER">
       <font>
          <Font name="System Bold" size="23.0" />
       </font>

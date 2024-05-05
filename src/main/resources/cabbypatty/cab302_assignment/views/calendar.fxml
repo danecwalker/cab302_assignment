@@ -83,11 +83,6 @@
         <Image url="@../image/calendar_image.png" />
     </ImageView>
 
-    <!-- Profile -->
-    <ImageView fitHeight="35.0" fitWidth="110.0" layoutX="473.0" layoutY="14.0">
-        <Image url="@../image/Profile.png" />
-    </ImageView>
-
     <Label layoutX="158.0" layoutY="6.0" text="Calendar" textAlignment="CENTER">
         <font>
             <Font name="System Bold" size="23.0" />
@@ -98,5 +93,10 @@
             <Font name="System Bold" size="12.0" />
         </font>
     </Button>
+   <Label layoutX="535.0" layoutY="6.0" text="User" textAlignment="CENTER">
+      <font>
+         <Font name="System Bold" size="23.0" />
+      </font>
+   </Label>
 
 </AnchorPane>
