@@ -41,7 +41,7 @@
             <ImageView fitHeight="16.0" fitWidth="16.0">
                 <Image url="@../image/journal_icon.png" />
             </ImageView>
-            <Label style="-fx-text-fill: white;" text="Journal" />
+            <Hyperlink onAction="#navigateToJournalPage" style="-fx-text-fill: white;" text="Journal" />
         </HBox>
 
         <Label prefHeight="35.0" prefWidth="20.0" style="-fx-text-fill: white;" text="" />
