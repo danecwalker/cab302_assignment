@@ -1,12 +1,11 @@
-import com.example.cab302_personal.model.User;
+import cabbypatty.cab302_assignment.model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeParseException;
 
-import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class UserTest {
     private User user;
