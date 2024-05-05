@@ -83,6 +83,10 @@ public class MindfulApplication extends Application {
         stage.setScene(scene);
         stage.setTitle(TITLE);
         stage.show();
+
+        stage.onCloseRequestProperty().setValue(e -> {
+            sqliteConnection.close();
+        });
     }
 
     public static void main(String[] args) {

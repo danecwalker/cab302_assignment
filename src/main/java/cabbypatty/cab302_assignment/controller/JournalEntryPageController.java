@@ -9,6 +9,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Slider;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,6 +20,12 @@ public class JournalEntryPageController {
 
     private Config config;
     private SessionAndUser sessionAndUser;
+
+    @FXML
+    private TextArea journalEntry;
+
+    @FXML
+    private Slider moodSlider;
 
     public JournalEntryPageController(Config config) {
         System.out.println("JournalEntryPageController created");
@@ -33,6 +41,36 @@ public class JournalEntryPageController {
 
         if (sessionAndUser == null) {
             navigateToLogin();
+        }
+    }
+
+    private void navigateToJournalPage() {
+        try {
+            // Load the FXML file for the login page
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/journal-entries.fxml"));
+
+            fxmlLoader.setControllerFactory((Class<?> type) -> {
+                if (type == JournalEntriesController.class) {
+                    return new JournalEntriesController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
+            Scene loginScene = new Scene(fxmlLoader.load());
+
+            // Get the stage from the event source
+            Stage stage = new Stage();
+
+            // Set the new scene on the stage
+            stage.setScene(loginScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately
         }
     }
 
@@ -261,5 +299,33 @@ public class JournalEntryPageController {
         } catch (IOException e) {
             e.printStackTrace(); // Handle the exception appropriately
         }
+    }
+
+    @FXML
+    private void submitJournal(ActionEvent event) {
+        try {
+            String sessionID = SessionStorage.loadToken();
+            this.sessionAndUser = Session.validateSession(sessionID, config.getAuthDAO());
+        } catch (BackingStoreException e) {
+            throw new RuntimeException(e);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        if (sessionAndUser == null) {
+            navigateToLogin();
+        }
+
+        String body = journalEntry.getText();
+
+        if (body.isEmpty()) {
+            return;
+        }
+
+        Integer mood = (int) moodSlider.getValue();
+
+        config.getJournalDAO().createJournal(body, mood, sessionAndUser.getUser().id);
+
+        navigateToJournalPage(event);
     }
 }

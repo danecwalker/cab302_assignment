@@ -17,7 +17,7 @@ public class Journal {
 
     private Integer mood;
 
-    public Journal(int id, String body, Date date, Integer author_id) {
+    public Journal(int id, String body, Date date, Integer author_id, Integer mood) {
         this.id = id;
         ZoneId systemTimeZone = ZoneId.systemDefault();
 
@@ -25,9 +25,10 @@ public class Journal {
         ZonedDateTime localDateTime = date.toInstant().atZone(systemTimeZone);
         // 19 August 2021 - 12:00pm local time
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy - h:mma");
-        this.title = localDateTime.format(formatter);
+        this.title = localDateTime.format(formatter) + " - Mood: " + mood + "/10";
         this.body = body;
         this.date = date;
+        this.mood = mood;
         this.author_id = author_id;
     }
 
@@ -45,6 +46,10 @@ public class Journal {
 
     public Date getDate() {
         return date;
+    }
+
+    public Integer getMood() {
+        return mood;
     }
 
     public Integer getAuthorID() {

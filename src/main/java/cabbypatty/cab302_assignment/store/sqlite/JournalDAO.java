@@ -19,15 +19,20 @@ public class JournalDAO implements IJournalDAO {
 
     @Override
     public Journal getJournal(int id) {
-        String query = "SELECT id, body, date, author FROM journal_entry WHERE id = '"+id+"'";
+        String query = "SELECT id, body, mood, created_at, author_id FROM journal_entry WHERE id = '"+id+"'";
         ResultSet result = connection.exec(query);
         try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+            sdf.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));
+            String createdAt = result.getString("created_at");
+            Date created = sdf.parse(createdAt);
             if (result.next()) {
                 return new Journal(
                         result.getInt("id"),
                         result.getString("body"),
-                        result.getTimestamp("created_at"),
-                        result.getInt("author_id")
+                        created,
+                        result.getInt("author_id"),
+                        result.getInt("mood")
                 );
             } else {
                 return null;
@@ -40,8 +45,8 @@ public class JournalDAO implements IJournalDAO {
     }
 
     @Override
-    public Journal createJournal(String body, Integer author_id) {
-        String query = "INSERT INTO journal_entry (body, author_id, created_at, updated_at) VALUES ('"+body+"', '"+author_id+"', strftime(\"%Y-%m-%dT%H:%M:%SZ\", \"now\"), strftime(\"%Y-%m-%dT%H:%M:%SZ\", \"now\")) RETURNING id";
+    public Journal createJournal(String body, Integer mood, Integer author_id) {
+        String query = "INSERT INTO journal_entry (body, mood, author_id, created_at, updated_at) VALUES ('"+body+"', '"+mood+"', '"+author_id+"', strftime(\"%Y-%m-%dT%H:%M:%SZ\", \"now\"), strftime(\"%Y-%m-%dT%H:%M:%SZ\", \"now\")) RETURNING id";
         ResultSet result = connection.exec(query);
         try {
             if (result.next()) {
@@ -68,7 +73,7 @@ public class JournalDAO implements IJournalDAO {
         }
         Journal[] journals = new Journal[l];
 
-        query = "SELECT id, body, created_at, author_id FROM journal_entry WHERE author_id = '"+author_id+"'";
+        query = "SELECT id, body, mood, created_at, author_id FROM journal_entry WHERE author_id = '"+author_id+"' ORDER BY created_at DESC ";
         result = connection.exec(query);
         try {
             int i = 0;
@@ -81,7 +86,8 @@ public class JournalDAO implements IJournalDAO {
                         result.getInt("id"),
                         result.getString("body"),
                         created,
-                        result.getInt("author_id")
+                        result.getInt("author_id"),
+                        result.getInt("mood")
                 );
                 i++;
             }

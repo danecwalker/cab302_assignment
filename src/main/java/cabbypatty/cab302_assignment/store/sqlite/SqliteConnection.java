@@ -97,6 +97,7 @@ public class SqliteConnection {
                     + "id INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + "author_id INTEGER NOT NULL,"
                     + "body TEXT NOT NULL,"
+                    + "mood INTEGER NOT NULL DEFAULT 0,"
                     + "created_at TIMESTAMP NOT NULL,"
                     + "updated_at TIMESTAMP NOT NULL,"
                     + "FOREIGN KEY(author_id) REFERENCES user(id)"

@@ -152,35 +152,7 @@ public class RegistrationController implements Initializable {
             return;
         }
 
-
-        // If everything is valid, continue with registration process
-        // Close the current registration window
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        stage.close();
-
-        // Open the main page or perform registration process
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/login.fxml"));
-
-            loader.setControllerFactory((Class<?> type) -> {
-                if (type == LoginController.class) {
-                    return new LoginController(config);
-                } else {
-                    try {
-                        return type.getDeclaredConstructor().newInstance();
-                    } catch (Exception exc) {
-                        throw new RuntimeException(exc);
-                    }
-                }
-            });
-
-            Parent root = loader.load();
-            Scene scene = new Scene(root);
-            Stage mainStage = new Stage();
-            mainStage.setScene(scene);
-            mainStage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        // User registration successful, show a success message
+        onCancelClick(event);
     }
 }

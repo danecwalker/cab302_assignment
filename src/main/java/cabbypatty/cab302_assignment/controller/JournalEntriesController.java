@@ -158,6 +158,37 @@ public class JournalEntriesController implements Initializable {
     }
 
     @FXML
+    private void newJournalPage(ActionEvent event) {
+        try {
+            // Load the FXML file for the journal entry page
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/journal-entry-page.fxml"));
+
+            fxmlLoader.setControllerFactory((Class<?> type) -> {
+                if (type == JournalEntryPageController.class) {
+                    return new JournalEntryPageController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
+            Scene journalEntryScene = new Scene(fxmlLoader.load());
+
+            // Get the stage from the event source
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Set the new scene on the stage
+            stage.setScene(journalEntryScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+    }
+
+    @FXML
     private void navigateToCalendar(ActionEvent event) {
         try {
             // Load the FXML file for the journal entry page
@@ -287,7 +318,7 @@ public class JournalEntriesController implements Initializable {
             Integer userId = getUser().id;
             System.out.println(userId);
             Journal[] journals = config.getJournalDAO().getJournals(userId);
-
+            System.out.println(journals.length);
             for (Journal journal : journals) {
                 if (journal == null) {
                     continue;
