@@ -24,7 +24,7 @@ class JournalTest {
 
     @Test
     void getTitle() {
-        assertEquals("01 June 2003 - 12:00am - Mood: GOOD/10", journal.getTitle());
+        assertEquals("01 June 2003 - 12:00am - Mood: Good/10", journal.getTitle());
     }
 
     @Test
@@ -60,13 +60,13 @@ class JournalTest {
 
     @Test
     void getMood() {
-        assertEquals(new MoodLevel(Mood.GOOD), journal.getMood());
+        assertEquals(new MoodLevel(Mood.GOOD).toString(), journal.getMood().toString());
     }
 
     @Test
     void setMood() {
         assertDoesNotThrow(() -> journal.setMood(new MoodLevel(Mood.BAD)));
-        assertEquals(new MoodLevel(Mood.BAD), journal.getMood());
+        assertEquals(new MoodLevel(Mood.BAD).toString(), journal.getMood().toString());
     }
 
     @Test

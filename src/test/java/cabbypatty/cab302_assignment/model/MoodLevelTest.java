@@ -9,11 +9,11 @@ class MoodLevelTest {
 
     @Test
     void testOrdinalOfLevel() {
-        assertEquals(0, MoodLevel.VERY_BAD.ordinal());
-        assertEquals(1, MoodLevel.BAD.ordinal());
-        assertEquals(2, MoodLevel.NEUTRAL.ordinal());
-        assertEquals(3, MoodLevel.GOOD.ordinal());
-        assertEquals(4, MoodLevel.VERY_GOOD.ordinal());
+        assertEquals(0, Mood.VERY_BAD.ordinal());
+        assertEquals(1, Mood.BAD.ordinal());
+        assertEquals(2, Mood.NEUTRAL.ordinal());
+        assertEquals(3, Mood.GOOD.ordinal());
+        assertEquals(4, Mood.VERY_GOOD.ordinal());
     }
 
 //    @Test
