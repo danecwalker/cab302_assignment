@@ -15,9 +15,9 @@ public class Journal {
     private Date date;
     private Integer author_id;
 
-    private Integer mood;
+    private MoodLevel mood;
 
-    public Journal(int id, String body, Date date, Integer author_id, Integer mood) {
+    public Journal(int id, String body, Date date, Integer author_id, MoodLevel mood) {
         this.id = id;
         ZoneId systemTimeZone = ZoneId.systemDefault();
 
@@ -44,15 +44,29 @@ public class Journal {
         return body;
     }
 
+    public void setBody(String body){
+        if (body == null || body.trim().isEmpty()) {
+            throw new IllegalArgumentException("Body cannot be null or empty");
+        }
+        this.body = body;
+    }
+
     public Date getDate() {
         return date;
     }
 
-    public Integer getMood() {
-        return mood;
-    }
 
     public Integer getAuthorID() {
         return author_id;
+    }
+    public MoodLevel getMood() {
+        return mood;
+    }
+
+    public void setMood(MoodLevel moodLevel) {
+        if (moodLevel == null) {
+            throw new IllegalArgumentException("MoodLevel cannot be null");
+        }
+        this.mood = moodLevel;
     }
 }

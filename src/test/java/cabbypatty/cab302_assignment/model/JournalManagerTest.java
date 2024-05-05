@@ -8,8 +8,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class EntryManagerTest {
-    private EntryManager entryManager;
+class JournalManagerTest {
+    private JournalManager journalManager;
 
     private Entry[] entries = {
             new Entry(LocalDateTime.of(2021,1,4, 1,11,11),
@@ -27,14 +27,14 @@ class EntryManagerTest {
     };
     @BeforeEach
     public void setUp() {
-        entryManager = new EntryManager(new MockEntryDAO());
-        entryManager.deleteAllEntry();
+        journalManager = new JournalManager(new MockEntryDAO());
+        journalManager.deleteAllEntry();
     }
     @Test
     public void testSearchInOneEntry() {
-        entryManager.addEntry(entries[0]);
-        assertEquals(1, entryManager.getAllEntries().size());
-        List<Entry> entries = entryManager.searchEntries("Title");
+        journalManager.addEntry(entries[0]);
+        assertEquals(1, journalManager.getAllEntries().size());
+        List<Entry> entries = journalManager.searchEntries("Title");
         assertEquals(1, entries.size());
         assertEquals(this.entries[0], entries.getFirst());
     }
@@ -42,9 +42,9 @@ class EntryManagerTest {
     @Test
     public void testSearchInMultipleEntries() {
         for (Entry entry : entries) {
-            entryManager.addEntry(entry);
+            journalManager.addEntry(entry);
         }
-        List<Entry> entries = entryManager.searchEntries("Description");
+        List<Entry> entries = journalManager.searchEntries("Description");
         assertEquals(4, entries.size());
         for (Entry entry : entries) {
             assertTrue(entry.getDescription().contains("Description"));
@@ -54,36 +54,36 @@ class EntryManagerTest {
     @Test
     public void testSearchNoResults() {
         for (Entry entry : entries) {
-            entryManager.addEntry(entry);
+            journalManager.addEntry(entry);
         }
-        List<Entry> entries = entryManager.searchEntries("Messi");
+        List<Entry> entries = journalManager.searchEntries("Messi");
         assertEquals(0, entries.size());
     }
 
     @Test
     public void testSearchEmptyQuery() {
         for (Entry entry : entries) {
-            entryManager.addEntry(entry);
+            journalManager.addEntry(entry);
         }
-        List<Entry> entries = entryManager.searchEntries("");
+        List<Entry> entries = journalManager.searchEntries("");
         assertEquals(6, entries.size());
     }
 
     @Test
     public void testSearchNullQuery() {
         for (Entry entry : entries) {
-            entryManager.addEntry(entry);
+            journalManager.addEntry(entry);
         }
-        List<Entry> entries = entryManager.searchEntries(null);
+        List<Entry> entries = journalManager.searchEntries(null);
         assertEquals(6, entries.size());
     }
 
     @Test
     public void testSearchCaseInsensitive() {
         for (Entry entry : entries) {
-            entryManager.addEntry(entry);
+            journalManager.addEntry(entry);
         }
-        List<Entry> entries = entryManager.searchEntries("day");
+        List<Entry> entries = journalManager.searchEntries("day");
         assertEquals(3, entries.size());
         assertEquals("Day 1", entries.get(0).getTitle());
         assertEquals("Day 2", entries.get(1).getTitle());
@@ -93,9 +93,9 @@ class EntryManagerTest {
     @Test
     public void testSearchPartialQuery() {
         for (Entry entry : entries) {
-            entryManager.addEntry(entry);
+            journalManager.addEntry(entry);
         }
-        List<Entry> entries = entryManager.searchEntries("ah");
+        List<Entry> entries = journalManager.searchEntries("ah");
         assertEquals(2, entries.size());
         assertEquals("Nah", entries.get(0).getContent());
         assertEquals("Brah", entries.get(1).getContent());
@@ -103,23 +103,23 @@ class EntryManagerTest {
 
     @Test
     public void testSearchEmptyEntries() {
-        List<Entry> entries = entryManager.searchEntries("Description");
+        List<Entry> entries = journalManager.searchEntries("Description");
         assertEquals(0, entries.size());
     }
     @Test
     public void testSearchByDate() {
         for (Entry entry : entries) {
-            entryManager.addEntry(entry);
+            journalManager.addEntry(entry);
         }
-        List<Entry> entries = entryManager.searchEntries("2024");
+        List<Entry> entries = journalManager.searchEntries("2024");
         assertEquals(3, entries.size());
     }
     @Test
     public void testSearchByTime() {
         for (Entry entry : entries) {
-            entryManager.addEntry(entry);
+            journalManager.addEntry(entry);
         }
-        List<Entry> entries = entryManager.searchEntries("55");
+        List<Entry> entries = journalManager.searchEntries("55");
         assertEquals(2, entries.size());
     }
 }

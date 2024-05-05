@@ -8,7 +8,7 @@ import cabbypatty.cab302_assignment.store.IAuthDAO;
 import cabbypatty.cab302_assignment.store.IJournalDAO;
 import cabbypatty.cab302_assignment.store.IUserDAO;
 import cabbypatty.cab302_assignment.store.sqlite.AuthDAO;
-import cabbypatty.cab302_assignment.store.sqlite.JournalDAO;
+//import cabbypatty.cab302_assignment.store.sqlite.JournalDAO;
 import cabbypatty.cab302_assignment.store.sqlite.SqliteConnection;
 import cabbypatty.cab302_assignment.store.sqlite.UserDAO;
 import javafx.application.Application;
