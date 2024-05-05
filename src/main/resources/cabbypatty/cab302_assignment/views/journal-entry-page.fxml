@@ -79,11 +79,6 @@
         <Image url="@../image/Logo.png" />
     </ImageView>
 
-    <!-- Profile -->
-    <ImageView fitHeight="35.0" fitWidth="110.0" layoutX="473.0" layoutY="14.0">
-        <Image url="@../image/Profile.png" />
-    </ImageView>
-
     <Label layoutX="158.0" layoutY="6.0" text="New Entry" textAlignment="CENTER">
         <font>
             <Font name="System Bold" size="23.0" />
@@ -102,6 +97,21 @@
    <TextArea fx:id="journalEntry" layoutX="158.0" layoutY="75.0" prefHeight="147.0" prefWidth="296.0" />
    <Slider fx:id="moodSlider" layoutX="153.0" layoutY="268.0" majorTickUnit="1" max="10.0" minorTickCount="0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
    <Label layoutX="158.0" layoutY="234.0" text="Mood" textAlignment="CENTER">
+      <font>
+         <Font name="System Bold" size="23.0" />
+      </font>
+   </Label>
+   <Label layoutX="153.0" layoutY="283.0" text="1" textAlignment="CENTER">
+      <font>
+         <Font name="System Bold" size="23.0" />
+      </font>
+   </Label>
+   <Label layoutX="270.0" layoutY="283.0" text="10" textAlignment="CENTER">
+      <font>
+         <Font name="System Bold" size="23.0" />
+      </font>
+   </Label>
+   <Label layoutX="528.0" prefHeight="46.0" prefWidth="49.0" text="User" textAlignment="CENTER">
       <font>
          <Font name="System Bold" size="23.0" />
       </font>

@@ -79,11 +79,6 @@
         <Image url="@../image/Logo.png" />
     </ImageView>
 
-    <!-- Profile -->
-    <ImageView fitHeight="35.0" fitWidth="110.0" layoutX="473.0" layoutY="14.0">
-        <Image url="@../image/Profile.png" />
-    </ImageView>
-
     <Label layoutX="158.0" layoutY="6.0" text="Journal Entries " textAlignment="CENTER">
         <font>
             <Font name="System Bold" size="23.0" />
@@ -109,5 +104,10 @@
             </VBox>
         </content>
    </ScrollPane>
+   <Label layoutX="537.0" layoutY="6.0" text="User" textAlignment="CENTER">
+      <font>
+         <Font name="System Bold" size="23.0" />
+      </font>
+   </Label>
 
 </AnchorPane>

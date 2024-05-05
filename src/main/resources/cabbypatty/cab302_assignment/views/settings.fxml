@@ -85,11 +85,6 @@
         <Image url="@../image/Logo.png" />
     </ImageView>
 
-    <!-- Profile -->
-    <ImageView fitHeight="35.0" fitWidth="110.0" layoutX="473.0" layoutY="14.0">
-        <Image url="@../image/Profile.png" />
-    </ImageView>
-
     <Label layoutX="158.0" layoutY="6.0" text="Settings  " textAlignment="CENTER">
         <font>
             <Font name="System Bold" size="23.0" />
@@ -124,5 +119,10 @@
         </font>
     </Label>
     <TextArea layoutX="338.0" layoutY="165.0" prefHeight="80.0" prefWidth="198.0" text="Two Factor Authenticaion: On&#10;Encrypt Data: On&#10;Login Devices: This Computer &#10;Backup: On&#10;&#10;&#10;&#10;&#10;" />
+   <Label layoutX="536.0" layoutY="6.0" text="User" textAlignment="CENTER">
+      <font>
+         <Font name="System Bold" size="23.0" />
+      </font>
+   </Label>
 
 </AnchorPane>
