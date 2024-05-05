@@ -24,7 +24,7 @@ class JournalTest {
 
     @Test
     void getTitle() {
-        assertEquals("01 June 2003 - 12:00am - Mood: Good/10", journal.getTitle());
+        assertEquals("01 June 2003 - 12:00am - Mood: Good", journal.getTitle());
     }
 
     @Test
