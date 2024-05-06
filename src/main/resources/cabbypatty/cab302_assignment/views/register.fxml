@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cabbypatty.cab302_assignment.controller.RegistrationController" style="-fx-background-color: #FFFFFF;">
+
+    <!-- Title: Register -->
+    <Label alignment="CENTER" layoutY="14.0" prefWidth="600.0" text="Register" textFill="#717171">
+      <font>
+         <Font name="System Bold" size="36.0" />
+      </font></Label>
+
+    <!-- Your Name Label and TextField -->
+    <Label layoutX="50.0" layoutY="86.0" text="Your Name:" />
+    <TextField fx:id="nameField" layoutX="50.0" layoutY="104.0" prefHeight="26.0" prefWidth="230.0" />
+
+    <!-- Email Address Label and TextField -->
+    <Label layoutX="326.0" layoutY="86.0" text="Email Address:" />
+    <TextField fx:id="emailField" layoutX="326.0" layoutY="104.0" prefHeight="26.0" prefWidth="230.0" />
+
+    <!-- Date of Birth Label and DatePicker -->
+    <Label layoutX="50.0" layoutY="152.0" text="Date of Birth:" />
+    <DatePicker fx:id="dobDatePicker" layoutX="50.0" layoutY="170.0" prefHeight="26.0" prefWidth="230.0" />
+
+    <!-- Gender Label and TextField -->
+    <Label layoutX="326.0" layoutY="152.0" text="Gender:" />
+    <ComboBox fx:id="genderCombo" layoutX="326.0" layoutY="170.0" prefHeight="26.0" prefWidth="230.0" />
+
+    <!-- Password Label and PasswordField -->
+    <Label layoutX="50.0" layoutY="214.0" text="Password:" />
+    <PasswordField fx:id="passwordField" layoutX="50.0" layoutY="232.0" prefHeight="26.0" prefWidth="230.0" />
+
+    <!-- Confirm Password Label and PasswordField -->
+    <Label layoutX="326.0" layoutY="214.0" text="Confirm Password:" />
+    <PasswordField fx:id="confirmPasswordField" layoutX="326.0" layoutY="232.0" prefHeight="26.0" prefWidth="230.0" />
+
+    <!-- Mindful Moments Label -->
+    <Label alignment="CENTER" layoutY="352.0" prefWidth="600.0" style="-fx-font-size: 18px;" text="Mindful Moments" />
+
+    <!-- Cancel Button -->
+    <Button layoutX="115.0" layoutY="292.0" onAction="#onCancelClick" prefHeight="26.0" prefWidth="98.0" text="Cancel" />
+
+    <!-- Register Button -->
+    <Button layoutX="392.0" layoutY="292.0" onAction="#onRegisterClick" prefHeight="26.0" prefWidth="98.0" text="Register" />
+    
+</AnchorPane>

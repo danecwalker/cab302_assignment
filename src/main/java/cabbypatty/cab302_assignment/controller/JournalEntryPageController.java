@@ -2,10 +2,10 @@ package cabbypatty.cab302_assignment.controller;
 
 import cabbypatty.cab302_assignment.Config;
 import cabbypatty.cab302_assignment.SessionStorage;
-import cabbypatty.cab302_assignment.model.Mood;
 import cabbypatty.cab302_assignment.model.MoodLevel;
 import cabbypatty.cab302_assignment.model.Session;
 import cabbypatty.cab302_assignment.model.SessionAndUser;
+import cabbypatty.cab302_assignment.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,8 +13,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.StringConverter;
 
@@ -35,7 +38,10 @@ public class JournalEntryPageController implements Initializable {
     private Slider moodSlider;
 
     @FXML
-    private Label username;
+    private ImageView moodImage;
+
+    @FXML
+    private MenuButton username;
 
     public JournalEntryPageController(Config config) {
         System.out.println("JournalEntryPageController created");
@@ -79,38 +85,6 @@ public class JournalEntryPageController implements Initializable {
 
             // Set the new scene on the stage
             stage.setScene(loginScene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception appropriately
-        }
-    }
-
-    //Home
-    @FXML
-    private void home(ActionEvent event) {
-        try {
-            // Load the FXML file for the main page
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/main-page.fxml"));
-
-            fxmlLoader.setControllerFactory((Class<?> type) -> {
-                if (type == MainPageController.class) {
-                    return new MainPageController(config);
-                } else {
-                    try {
-                        return type.getDeclaredConstructor().newInstance();
-                    } catch (Exception exc) {
-                        throw new RuntimeException(exc);
-                    }
-                }
-            });
-
-            Scene mainPageScene = new Scene(fxmlLoader.load());
-
-            // Get the stage from the event source
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Set the new scene on the stage
-            stage.setScene(mainPageScene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace(); // Handle the exception appropriately
@@ -180,14 +154,14 @@ public class JournalEntryPageController implements Initializable {
     }
 
     @FXML
-    private void navigateToJournalPage(ActionEvent event) {
+    private void navigateToJournalNew(ActionEvent event) {
         try {
             // Load the FXML file for the journal entry page
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/journal-entries.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/journal-new.fxml"));
 
             fxmlLoader.setControllerFactory((Class<?> type) -> {
-                if (type == JournalEntriesController.class) {
-                    return new JournalEntriesController(config);
+                if (type == JournalEntryPageController.class) {
+                    return new JournalEntryPageController(config);
                 } else {
                     try {
                         return type.getDeclaredConstructor().newInstance();
@@ -241,9 +215,8 @@ public class JournalEntryPageController implements Initializable {
         }
     }
 
-
     @FXML
-    private void logout(ActionEvent event) {
+    private void navigateToLogout(ActionEvent event) {
         try {
             String sessionId = SessionStorage.loadToken();
             config.getAuthDAO().deleteSession(sessionId);
@@ -281,6 +254,70 @@ public class JournalEntryPageController implements Initializable {
         }
     }
 
+    //Home
+    @FXML
+    private void navigateToHome(ActionEvent event) {
+        try {
+            // Load the FXML file for the main page
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/main.fxml"));
+
+            fxmlLoader.setControllerFactory((Class<?> type) -> {
+                if (type == MainPageController.class) {
+                    return new MainPageController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
+            Scene mainPageScene = new Scene(fxmlLoader.load());
+
+            // Get the stage from the event source
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Set the new scene on the stage
+            stage.setScene(mainPageScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+    }
+
+    //Home
+    @FXML
+    private void navigateToJournal(ActionEvent event) {
+        try {
+            // Load the FXML file for the main page
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/journal.fxml"));
+
+            fxmlLoader.setControllerFactory((Class<?> type) -> {
+                if (type == JournalEntriesController.class) {
+                    return new JournalEntriesController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
+            Scene mainPageScene = new Scene(fxmlLoader.load());
+
+            // Get the stage from the event source
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Set the new scene on the stage
+            stage.setScene(mainPageScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+    }
+
     @FXML
     private void submitJournal(ActionEvent event) {
         try {
@@ -306,7 +343,7 @@ public class JournalEntryPageController implements Initializable {
 
         config.getJournalDAO().createJournal(body, MoodLevel.fromLevel(mood), sessionAndUser.getUser().id);
 
-        navigateToJournalPage(event);
+        navigateToJournal(event);
     }
 
     @Override
@@ -329,6 +366,11 @@ public class JournalEntryPageController implements Initializable {
                     default -> 3.0;
                 };
             }
+        });
+
+        moodSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            Image image = new Image(getClass().getResourceAsStream(MoodLevel.fromLevel(Math.round(newValue.floatValue())).getImage()));
+            moodImage.setImage(image);
         });
     }
 }

@@ -110,7 +110,7 @@ public class SupportController implements Initializable {
     private void navigateToJournalPage(ActionEvent event) {
         try {
             // Load the FXML file for the journal entry page
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/journal-entries.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/journal.fxml"));
 
             fxmlLoader.setControllerFactory((Class<?> type) -> {
                 if (type == JournalEntriesController.class) {
@@ -213,7 +213,7 @@ public class SupportController implements Initializable {
     private void home(ActionEvent event) {
         try {
             // Load the FXML file for the main page
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/main-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/main.fxml"));
 
             fxmlLoader.setControllerFactory((Class<?> type) -> {
                 if (type == MainPageController.class) {

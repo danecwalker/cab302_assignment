@@ -2,8 +2,6 @@ package cabbypatty.cab302_assignment.controller;
 
 import cabbypatty.cab302_assignment.Config;
 import cabbypatty.cab302_assignment.SessionStorage;
-import cabbypatty.cab302_assignment.model.Session;
-import cabbypatty.cab302_assignment.model.SessionAndUser;
 import cabbypatty.cab302_assignment.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,8 +10,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -110,7 +106,7 @@ public class MainPageController implements Initializable {
     private void navigateToJournalPage(ActionEvent event) {
         try {
             // Load the FXML file for the journal entry page
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/journal-entries.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/journal.fxml"));
 
             fxmlLoader.setControllerFactory((Class<?> type) -> {
                 if (type == JournalEntriesController.class) {

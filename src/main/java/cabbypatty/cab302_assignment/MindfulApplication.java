@@ -3,7 +3,6 @@ package cabbypatty.cab302_assignment;
 import cabbypatty.cab302_assignment.controller.LoginController;
 import cabbypatty.cab302_assignment.controller.MainPageController;
 import cabbypatty.cab302_assignment.model.SessionAndUser;
-import cabbypatty.cab302_assignment.model.User;
 import cabbypatty.cab302_assignment.store.IAuthDAO;
 import cabbypatty.cab302_assignment.store.IJournalDAO;
 import cabbypatty.cab302_assignment.store.IUserDAO;
@@ -17,9 +16,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.net.URL;
-import java.security.KeyStore;
 
 public class MindfulApplication extends Application {
     // Constants defining the window title and size
@@ -53,7 +50,7 @@ public class MindfulApplication extends Application {
                 SessionAndUser session_user = config.getAuthDAO().getSessionAndUser(sessionToken);
 
                 if (session_user != null) {
-                    location = "/cabbypatty/cab302_assignment/views/main-page.fxml";
+                    location = "/cabbypatty/cab302_assignment/views/main.fxml";
                 } else {
                     SessionStorage.clearToken();
                 }

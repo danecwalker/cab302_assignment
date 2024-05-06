@@ -26,9 +26,9 @@ public class Journal {
         // Convert the Instant to ZonedDateTime in the local time zone
         ZonedDateTime localDateTime = date.toInstant().atZone(systemTimeZone);
         // 19 August 2021 - 12:00pm local time
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy - h:mma");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy - h:mma");
 
-        this.title = localDateTime.format(formatter).replace("AM", "am").replace("PM","pm") + " - Mood: " + mood;
+        this.title = localDateTime.format(formatter).replace("AM", "am").replace("PM","pm");
         this.body = body;
         this.date = date;
         this.mood = mood;

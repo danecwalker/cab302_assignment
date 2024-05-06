@@ -28,4 +28,14 @@ public class MoodLevel {
             default -> "Neutral";
         };
     }
+
+    public String getImage() {
+        return switch (this.mood) {
+            case VERY_BAD -> "/cabbypatty/cab302_assignment/image/very_bad.png";
+            case BAD -> "/cabbypatty/cab302_assignment/image/bad.png";
+            case GOOD -> "/cabbypatty/cab302_assignment/image/good.png";
+            case VERY_GOOD -> "/cabbypatty/cab302_assignment/image/very_good.png";
+            default -> "/cabbypatty/cab302_assignment/image/neutral.png";
+        };
+    }
 }

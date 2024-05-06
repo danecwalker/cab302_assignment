@@ -1,0 +1,31 @@
+.profile > .arrow-button {
+    -fx-background-color: transparent;
+    -fx-opacity: 0.0;
+    -fx-padding: 0;
+    -fx-pref-width: 0;
+}
+
+.profile {
+    -fx-background-color: null;
+    -fx-border-color: white;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-padding: 8;
+    -fx-alignment: CENTER;
+    -fx-pref-width: Infinity;
+}
+
+.profile > .label {
+    -fx-background-color: null;
+    -fx-padding: 0;
+}
+
+.journal-entry {
+    -fx-background-color: null;
+    -fx-border-color: white;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-padding: 8;
+    -fx-alignment: CENTER;
+    -fx-pref-width: Infinity;
+}

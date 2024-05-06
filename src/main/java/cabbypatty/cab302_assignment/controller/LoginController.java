@@ -4,10 +4,6 @@ import cabbypatty.cab302_assignment.Config;
 import cabbypatty.cab302_assignment.SessionStorage;
 import cabbypatty.cab302_assignment.model.Session;
 import cabbypatty.cab302_assignment.model.User;
-import cabbypatty.cab302_assignment.store.IAuthDAO;
-import cabbypatty.cab302_assignment.store.IUserDAO;
-import cabbypatty.cab302_assignment.store.sqlite.SqliteConnection;
-import cabbypatty.cab302_assignment.store.sqlite.UserDAO;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -24,7 +20,7 @@ import java.util.ResourceBundle;
 import static cabbypatty.cab302_assignment.utils.Alert.showAlert;
 import static cabbypatty.cab302_assignment.utils.Email.isValidEmail;
 
-public class LoginController {
+public class LoginController implements Initializable {
     private Config config;
 
     @FXML
@@ -41,7 +37,7 @@ public class LoginController {
     private void navigateToRegistrationPage(ActionEvent event) {
         try {
             // Load the FXML file for the registration page
-            URL registrationView = getClass().getResource("/cabbypatty/cab302_assignment/views/registration.fxml");
+            URL registrationView = getClass().getResource("/cabbypatty/cab302_assignment/views/register.fxml");
             FXMLLoader fxmlLoader = new FXMLLoader(registrationView);
 
             fxmlLoader.setControllerFactory((Class<?> type) -> {
@@ -71,7 +67,7 @@ public class LoginController {
     private void navigateToMainPage(ActionEvent event) {
         try {
             // Load the FXML file for the registration page
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/main-page.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/main.fxml"));
 
             fxmlLoader.setControllerFactory((Class<?> type) -> {
                 if (type == MainPageController.class) {
@@ -133,5 +129,10 @@ public class LoginController {
 
 
         navigateToMainPage(event);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        System.out.println("LoginController initialized");
     }
 }
