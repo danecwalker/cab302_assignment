@@ -256,7 +256,7 @@ public class JournalEntriesController implements Initializable {
 
             Scene loginScene = new Scene(fxmlLoader.load());
 
-            // Get the stage from the event source
+            // Get the stage from the event source which is a menu item
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             // Set the new scene on the stage
