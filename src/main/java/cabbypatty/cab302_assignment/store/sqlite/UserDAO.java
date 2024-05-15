@@ -51,8 +51,16 @@ public class UserDAO implements IUserDAO {
         }
     }
 
+
     /**
      * A method that executes a SQL query to create the users table if it does not already exist.
+     *
+     * @param name The name of user
+     * @param email The email of user
+     * @param password The passwoed of the user
+     * @param dob The date of birth of the user
+     * @param gender The gender of the user
+     * @return create a user with the email
      */
     @Override
     public User createUser(String name, String email, String password, Date dob, String gender) {

@@ -9,14 +9,27 @@ public enum MoodLevel {
 
     private final int level;
 
+    /**
+     * A simple model class representing a mood with level.
+     * @param level The level of mood
+     */
     MoodLevel(int level) {
         this.level = level;
     }
 
+    /**
+     * Returns the level of the Mood class represented by this Mood object as an int.
+     * @return level The level of mood
+     */
     public int getLevel() {
         return level;
     }
 
+    /**
+     * A method that provides a convenient way to convert an integer mood level to the corresponding MoodLevel enum constant, ensuring type safety and preventing invalid inputs.
+     * @param level The level of mood
+     * @return The mood level
+     */
     public static MoodLevel fromLevel(int level) {
         for (MoodLevel mood : MoodLevel.values()) {
             if (mood.getLevel() == level) {

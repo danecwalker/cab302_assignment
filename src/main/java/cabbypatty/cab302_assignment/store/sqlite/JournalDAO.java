@@ -71,6 +71,11 @@ public class JournalDAO implements IJournalDAO {
         return null;
     }
 
+    /**
+     * A method that retrieves journals authored by a specific user from the database.
+     * @param author_id The id of author
+     * @return an array containing the constructed Journal objects
+     */
     @Override
     public Journal[] getJournals(Integer author_id) {
         String query = "SELECT COUNT(*) FROM journal_entry WHERE author_id = '"+author_id+"'";
