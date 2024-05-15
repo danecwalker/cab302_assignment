@@ -14,11 +14,20 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.prefs.BackingStoreException;
 
+/**
+ * A class that controls Journal entry page.
+ */
 public class JournalEntryPageController {
 
     private Config config;
     private SessionAndUser sessionAndUser;
 
+    /**
+     * A method that sets up a controller for managing journal entries.
+     * It initializes necessary configurations, validates a session, and ensures that the user is logged in before proceeding with any further actions.
+     * If there are any errors during initialization or if the session is not valid, it throws a RuntimeException.
+     * @param config The config that contains information related to authentication or session management,
+     */
     public JournalEntryPageController(Config config) {
         System.out.println("JournalEntryPageController created");
         this.config = config;
@@ -36,7 +45,9 @@ public class JournalEntryPageController {
         }
     }
 
-    //Navigate to Login
+    /**
+     * A method that loads the login page layout from an FXML file, initializes its controller, creates a scene with the layout, opens a new stage, sets the scene on the stage, and displays the login page to the user.
+     */
     private void navigateToLogin() {
         try {
             // Load the FXML file for the login page
@@ -67,7 +78,11 @@ public class JournalEntryPageController {
         }
     }
 
-    //Home
+    /**
+     * Handling an action event, clicking a Home button. It shows the stage from the event source, page of home/main.
+     * If exception occurs, this prints the stack trace for the diagnosing.
+     * @param event The event a user clicks home button
+     */
     @FXML
     private void home(ActionEvent event) {
         try {
@@ -99,6 +114,10 @@ public class JournalEntryPageController {
         }
     }
 
+    /**
+     * An event handler that loads a support page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the support page to the user when triggered by an action event, clicked the support button.
+     * @param event The event clicking the support button
+     */
     @FXML
     private void navigateToSupport(ActionEvent event) {
         try {
@@ -130,6 +149,10 @@ public class JournalEntryPageController {
         }
     }
 
+    /**
+     * An event handler that loads a setting page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the setting page to the user when triggered by an action event, clicked the setting button.
+     * @param event The event clicking the setting button
+     */
     @FXML
     private void navigateToSettings(ActionEvent event) {
         try {
@@ -161,6 +184,10 @@ public class JournalEntryPageController {
         }
     }
 
+    /**
+     * An event handler that loads the main page (journal) layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the main page (journal) to the user when triggered by an action event, clicked a journal button.
+     * @param event The event clicking a journal button
+     */
     @FXML
     private void navigateToJournalPage(ActionEvent event) {
         try {
@@ -192,6 +219,10 @@ public class JournalEntryPageController {
         }
     }
 
+    /**
+     * Acting as an event handler for navigating to a calendar view. It loads the calendar view layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the calendar view to the user when triggered by an action event, clicked a calendar button.
+     * @param event The event clicking a celendar button
+     */
     @FXML
     private void navigateToCalendar(ActionEvent event) {
         try {
@@ -224,6 +255,10 @@ public class JournalEntryPageController {
     }
 
 
+    /**
+     * A method that logs out the user by deleting the session, clears the session token, loads the login page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the login page to the user when triggered by an action event which is clicked the logout button.
+     * @param event the event clicking logout button
+     */
     @FXML
     private void logout(ActionEvent event) {
         try {

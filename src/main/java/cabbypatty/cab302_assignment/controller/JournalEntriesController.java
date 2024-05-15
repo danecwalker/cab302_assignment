@@ -23,6 +23,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.prefs.BackingStoreException;
 
+/**
+ * A class that controls entries for journal function page.
+ */
 public class JournalEntriesController implements Initializable {
     private Config config;
     private SessionAndUser sessionAndUser;
@@ -30,7 +33,12 @@ public class JournalEntriesController implements Initializable {
     @FXML
     private VBox journalEntries;
 
-    //Constructor
+    /**
+     * A method that sets up a controller for managing journal entries.
+     * It initializes necessary configurations, validates a session, and ensures that the user is logged in before proceeding with any further actions.
+     * If there are any errors during initialization or if the session is not valid, it throws a RuntimeException.
+     * @param config The config that contains information related to authentication or session management.
+     */
     public JournalEntriesController(Config config) {
         System.out.println("JournalEntriesController created");
         this.config = config;
@@ -48,7 +56,9 @@ public class JournalEntriesController implements Initializable {
         }
     }
 
-    //Navigate to Login
+    /**
+     * A method that loads the login page layout from an FXML file, initializes its controller, creates a scene with the layout, opens a new stage, sets the scene on the stage, and displays the login page to the user.
+     */
     private void navigateToLogin() {
         try {
             // Load the FXML file for the login page
@@ -78,6 +88,13 @@ public class JournalEntriesController implements Initializable {
             e.printStackTrace(); // Handle the exception appropriately
         }
     }
+
+    /**
+     * A method that is responsible for retrieving the user associated with the current session.
+     * Attempts to retrieve the user associated with the current session.
+     * If the session is valid, it returns the associated user; otherwise, it redirects to the login page or returns null depending on the session validity. Any exceptions that occur during this process are wrapped and rethrown as RuntimeExceptions.
+     * @return User object
+     */
     private User getUser() {
         try {
             String sessionID = SessionStorage.loadToken();
@@ -95,6 +112,10 @@ public class JournalEntriesController implements Initializable {
         return null;
     }
 
+    /**
+     * An event handler that loads a support page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the support page to the user when triggered by an action event, clicked the support button.
+     * @param event The event clicking the support button
+     */
     @FXML
     private void navigateToSupport(ActionEvent event) {
         try {
@@ -126,6 +147,10 @@ public class JournalEntriesController implements Initializable {
         }
     }
 
+    /**
+     * An event handler that loads a setting page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the setting page to the user when triggered by an action event, clicked the setting button.
+     * @param event The event clicking the setting button
+     */
     @FXML
     private void navigateToSettings(ActionEvent event) {
         try {
@@ -157,6 +182,10 @@ public class JournalEntriesController implements Initializable {
         }
     }
 
+    /**
+     * Acting as an event handler for navigating to a calendar view. It loads the calendar view layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the calendar view to the user when triggered by an action event, clicked a calendar button.
+     * @param event The event clicking a celendar button
+     */
     @FXML
     private void navigateToCalendar(ActionEvent event) {
         try {
@@ -189,6 +218,10 @@ public class JournalEntriesController implements Initializable {
     }
 
 
+    /**
+     * A method that logs out the user by deleting the session, clears the session token, loads the login page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the login page to the user when triggered by an action event which is clicked the logout button.
+     * @param event the event clicking logout button
+     */
     @FXML
     private void logout(ActionEvent event) {
         try {
@@ -228,7 +261,11 @@ public class JournalEntriesController implements Initializable {
         }
     }
 
-    //Home
+    /**
+     * Handling an action event, clicking a Home button. It shows the stage from the event source, page of home/main.
+     * If exception occurs, this prints the stack trace for the diagnosing.
+     * @param event The event a user clicks home button
+     */
     @FXML
     private void home(ActionEvent event) {
         try {
@@ -260,7 +297,10 @@ public class JournalEntriesController implements Initializable {
         }
     }
 
-    //Add journal entry
+    /**
+     * A method that add a new visual journal entry with a title, body, and mood image, and adds it to the UI.
+     * @param journal The new journal entry
+     */
     private void addJournalEntry(Journal journal) {
         Label journalEntryLabel = new Label(journal.getTitle());
         journalEntryLabel.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
@@ -280,6 +320,11 @@ public class JournalEntriesController implements Initializable {
         journalEntries.getChildren().add(vBox);
     }
 
+    /**
+     * A method that initializes and populates the UI with a userId and journal entry.
+     * @param location The location of the url
+     * @param resources The resources of resource bundle
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 

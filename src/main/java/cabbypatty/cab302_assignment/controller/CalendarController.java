@@ -14,11 +14,19 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.prefs.BackingStoreException;
 
+/**
+ * A class that controls Calendar page.
+ */
 public class CalendarController {
     private Config config;
     private SessionAndUser sessionAndUser;
 
-    //Constructor
+    /**
+     * A method that sets up a controller for managing calendar.
+     * It initializes necessary configurations, validates a session, and ensures that the user is logged in before proceeding with any further actions.
+     * If there are any errors during initialization or if the session is not valid, it throws a RuntimeException.
+     * @param config The config that contains information related to authentication or session management,
+     */
     public CalendarController(Config config) {
         System.out.println("CalendarController created");
         this.config = config;
@@ -36,7 +44,9 @@ public class CalendarController {
         }
     }
 
-    //Navigate to Login
+    /**
+     * A method that loads the login page layout from an FXML file, initializes its controller, creates a scene with the layout, opens a new stage, sets the scene on the stage, and displays the login page to the user.
+     */
     private void navigateToLogin() {
         try {
             // Load the FXML file for the login page
@@ -66,6 +76,11 @@ public class CalendarController {
             e.printStackTrace(); // Handle the exception appropriately
         }
     }
+
+    /**
+     * An event handler that loads a support page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the support page to the user when triggered by an action event, clicked the support button.
+     * @param event The event clicking the support button
+     */
     @FXML
     private void navigateToSupport(ActionEvent event) {
         try {
@@ -97,6 +112,10 @@ public class CalendarController {
         }
     }
 
+    /**
+    * An event handler that loads a setting page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the setting page to the user when triggered by an action event, clicked the setting button.
+     * @param event The event clicking the setting button
+     */
     @FXML
     private void navigateToSettings(ActionEvent event) {
         try {
@@ -128,6 +147,10 @@ public class CalendarController {
         }
     }
 
+    /**
+     * An event handler that loads a journal entry page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the journal entry page to the user when triggered by an action event, clicked creat new button.
+     * @param event The event clicking creating a new journal button
+     */
     @FXML
     private void navigateToJournalPage(ActionEvent event) {
         try {
@@ -160,6 +183,10 @@ public class CalendarController {
     }
 
 
+    /**
+     * A method that logs out the user by deleting the session, clears the session token, loads the login page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the login page to the user when triggered by an action event which is clicked the logout button.
+     * @param event the event clicking logout button
+     */
     @FXML
     private void logout(ActionEvent event) {
         try {
@@ -199,7 +226,12 @@ public class CalendarController {
         }
     }
 
-    //Home
+
+    /**
+     * Handling an action event, clicking a Home button. It shows the stage from the event source, page of home/main.
+     * If exception occurs, this prints the stack trace for the diagnosing.
+     * @param event The event a user clicks home button
+     */
     @FXML
     private void home(ActionEvent event) {
         try {

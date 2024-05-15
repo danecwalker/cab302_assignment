@@ -24,6 +24,9 @@ import java.util.ResourceBundle;
 import static cabbypatty.cab302_assignment.utils.Alert.showAlert;
 import static cabbypatty.cab302_assignment.utils.Email.isValidEmail;
 
+/**
+ * A class that controls Login page.
+ */
 public class LoginController {
     private Config config;
 
@@ -32,11 +35,19 @@ public class LoginController {
     @FXML
     private PasswordField passwordField;
 
+    /**
+     * initializes a new instance of the LoginController class
+     * @param config The config object to the config field of the LoginController instance
+     */
     public LoginController(Config config) {
         System.out.println("LoginController created");
         this.config = config;
     }
 
+    /**
+     * A method that serves as an event handler for navigating to the registration page. It loads the registration page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the registration page to the user when triggered by an action event, clicking the registration event button.
+     * @param event The event of clicking the registration event button.
+     */
     @FXML
     private void navigateToRegistrationPage(ActionEvent event) {
         try {
@@ -67,6 +78,10 @@ public class LoginController {
         }
     }
 
+    /**
+     * A method that serves as an event handler for navigating to the main page of the application. It loads the main page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the main page to the user when triggered by an action event, clicked the main button.
+     * @param event The event of clicking main/home button
+     */
     @FXML
     private void navigateToMainPage(ActionEvent event) {
         try {
@@ -98,6 +113,11 @@ public class LoginController {
         }
     }
 
+    /**
+     * A method that handles the login process by validating the user's credentials, creating a session upon successful authentication, and navigating to the main page of the application.
+     * @param event The event of clicking login button.
+     * @throws Exception
+     */
     public void login(ActionEvent event) throws Exception {
         // Get the email and password from the fields
         String email = emailField.getText();
