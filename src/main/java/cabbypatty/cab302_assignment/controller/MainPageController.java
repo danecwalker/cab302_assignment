@@ -19,11 +19,19 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * A class that controls main page.
+ */
 public class MainPageController implements Initializable {
 
     @FXML
     private Label welcomeText;
 
+    /**
+     * A method that initializes the main page by retrieving the user's session information, extracting their first name, and displaying a personalized greeting in the UI.
+     * @param location The location of url
+     * @param resources The resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("MainPageController initialized");
@@ -39,11 +47,19 @@ public class MainPageController implements Initializable {
 
     private Config config;
 
+    /**
+     * A method that initializes a new instance of the MainPageController class.
+     * @param config The application's configuration
+     */
     public MainPageController(Config config) {
         System.out.println("MainPageController created");
         this.config = config;
     }
 
+    /**
+     * An event handler that loads a support page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the support page to the user when triggered by an action event, clicked the support button.
+     * @param event The event of clicking the support button
+     */
     @FXML
     private void navigateToSupport(ActionEvent event) {
         try {
@@ -75,6 +91,10 @@ public class MainPageController implements Initializable {
         }
     }
 
+    /**
+     * An event handler that loads a setting page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the setting page to the user when triggered by an action event, clicked the setting button.
+     * @param event The event clicking the setting button
+     */
     @FXML
     private void navigateToSettings(ActionEvent event) {
         try {
@@ -106,6 +126,10 @@ public class MainPageController implements Initializable {
         }
     }
 
+    /**
+     * An event handler that loads a journal entry page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the journal entry page to the user when triggered by an action event, clicked creat new button.
+     * @param event The event clicking creating a new journal button
+     */
     @FXML
     private void navigateToJournalPage(ActionEvent event) {
         try {
@@ -137,6 +161,10 @@ public class MainPageController implements Initializable {
         }
     }
 
+    /**
+     * Acting as an event handler for navigating to a calendar view. It loads the calendar view layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the calendar view to the user when triggered by an action event, clicked a calendar button.
+     * @param event The event clicking a celendar button
+     */
     @FXML
     private void navigateToCalendar(ActionEvent event) {
         try {
@@ -168,7 +196,10 @@ public class MainPageController implements Initializable {
         }
     }
 
-
+    /**
+     * A method that logs out the user by deleting the session, clears the session token, loads the login page layout from an FXML file, initializes its controller, creates a scene with the layout, sets it on the stage obtained from the event source, and displays the login page to the user when triggered by an action event which is clicked the logout button.
+     * @param event the event clicking logout button
+     */
     @FXML
     private void logout(ActionEvent event) {
         try {

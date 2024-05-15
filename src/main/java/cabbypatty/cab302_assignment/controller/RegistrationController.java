@@ -26,6 +26,9 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+/**
+ * A class that controls Registration page.
+ */
 public class RegistrationController implements Initializable {
     String[] genders = {"Male", "Female", "Other"};
 
@@ -49,16 +52,29 @@ public class RegistrationController implements Initializable {
 
     private Config config;
 
+    /**
+     * initializes a new instance of the RegistrationController class
+     * @param config The config object to the config field of the RegistrationController instance
+     */
     public RegistrationController(Config config) {
         System.out.println("RegistrationController created");
         this.config = config;
     }
 
+    /**
+     * A method that prints out initiarized message.
+     * @param url The url
+     * @param resource The resource
+     */
     @Override
     public void initialize(URL url, ResourceBundle resource) {
         genderCombo.setItems(FXCollections.observableArrayList(genders));
     }
 
+    /**
+     * A method that closes the current registration window/stage and opens the login view in a new window/stage when the cancel button is clicked. This allows the user to abort the registration process and return to the login view.
+     * @param event The event of clicking the cancel button
+     */
     @FXML
     private void onCancelClick(ActionEvent event) {
         // Close the current registration window
@@ -91,6 +107,11 @@ public class RegistrationController implements Initializable {
         }
     }
 
+    /**
+     * A method that validates the user input, creates a new user if the input is valid, and handles appropriate actions based on the success or failure of the registration process.
+     * @param event The event of clicking the registration button
+     * @throws Exception
+     */
     //DO USER REGISTRATION WITH DATABASE HERE -> LOGAN AND DANE
     @FXML
     private void onRegisterClick(ActionEvent event) throws Exception {
