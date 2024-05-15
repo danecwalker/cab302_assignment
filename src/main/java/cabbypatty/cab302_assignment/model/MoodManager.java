@@ -4,13 +4,24 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.Year;
 import java.util.List;
+
+/**
+ * A class that manage mood inputs.
+ */
 public class MoodManager {
     private IMoodDAO moodDAO;
 
+    /**
+     * @param moodDAO
+     */
     public MoodManager(IMoodDAO moodDAO) {
         this.moodDAO = moodDAO;
     }
 
+    /**
+     * @param date
+     * @return
+     */
     public List<Mood> filterMoodByDate(LocalDate date) {
         return moodDAO.getAllMoods()
                 .stream()
@@ -18,6 +29,10 @@ public class MoodManager {
                 .toList();
     }
 
+    /**
+     * @param month
+     * @return
+     */
     public List<Mood> filterMoodByMonth(Month month) {
         return moodDAO.getAllMoods()
                 .stream()
@@ -25,6 +40,10 @@ public class MoodManager {
                 .toList();
     }
 
+    /**
+     * @param year
+     * @return
+     */
     public List<Mood> filterMoodByYear(Year year) {
         return moodDAO.getAllMoods()
                 .stream()
@@ -32,6 +51,10 @@ public class MoodManager {
                 .toList();
     }
 
+    /**
+     * @param level
+     * @return
+     */
     public List<Mood> filterMoodByLevel(MoodLevel level) {
         return moodDAO.getAllMoods()
                 .stream()
@@ -40,11 +63,18 @@ public class MoodManager {
     }
 
 
+    /**
+     * @param mood
+     */
     // add mood
     public void addMood(Mood mood) {
         moodDAO.addMood(mood);
     }
     // get all mood
+
+    /**
+     * @return
+     */
     public List<Mood> getAllMoods() {
         return moodDAO.getAllMoods();
     }
