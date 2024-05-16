@@ -25,7 +25,7 @@
             <ImageView fitHeight="16.0" fitWidth="16.0">
                 <Image url="@../image/home_icon.png" />
             </ImageView>
-            <Hyperlink onAction="#home" style="-fx-text-fill: white;" text="Home" />
+            <Hyperlink onAction="#navigateToHome" style="-fx-text-fill: white;" text="Home" />
         </HBox>
 
         <!-- Calendar -->
