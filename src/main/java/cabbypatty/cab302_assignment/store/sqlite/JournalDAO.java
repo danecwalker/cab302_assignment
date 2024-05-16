@@ -11,13 +11,25 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * A model class which is responsible for handling the CRUD operations with the SQLite database for journal.
+ */
 public class JournalDAO implements IJournalDAO {
     private SqliteConnection connection;
 
+    /**
+     * interacting with a database to perform operations related to journals.
+     * @param connection The JournalDAO instance
+     */
     public JournalDAO(SqliteConnection connection) {
         this.connection = connection;
     }
 
+    /**
+     * A method that returns a single user based on the provided email.
+     * @param id The id of the journal
+     * @return a single user or null
+     */
     @Override
     public Journal getJournal(int id) {
         String query = "SELECT id, body, mood, created_at, author_id FROM journal_entry WHERE id = '"+id+"'";
@@ -46,12 +58,21 @@ public class JournalDAO implements IJournalDAO {
         return null;
     }
 
+    /**
+     * A method that executes a SQL query to create the journals table if it does not already exist.
+     */
     @Override
     public void createJournal(String body, MoodLevel mood, Integer author_id) {
         String query = "INSERT INTO journal_entry (body, mood, author_id, created_at, updated_at) VALUES ('"+body+"', '"+mood.getLevel()+"', '"+author_id+"', strftime(\"%Y-%m-%dT%H:%M:%SZ\", \"now\"), strftime(\"%Y-%m-%dT%H:%M:%SZ\", \"now\")) RETURNING id";
         ResultSet result = connection.exec(query);
     }
 
+
+    /**
+     * A method that retrieves journals authored by a specific user from the database.
+     * @param author_id The id of author
+     * @return an array containing the constructed Journal objects
+     */
     @Override
     public Journal[] getJournals(Integer author_id) {
         String query = "SELECT COUNT(*) FROM journal_entry WHERE author_id = '"+author_id+"'";
@@ -90,12 +111,21 @@ public class JournalDAO implements IJournalDAO {
         return new Journal[0];
     }
 
+    /**
+     * A method that deletes the journal with the id of the journal.
+     * @param id The id of the journal
+     */
     @Override
     public void deleteJournal(int id) {
         String query = "DELETE FROM journal_entry WHERE id = '"+id+"'";
         connection.exec(query);
     }
 
+    /**
+     * A method that updates the journal's body with the id.
+     * @param id The id of the journal
+     * @param body The body of the journal
+     */
     @Override
     public void updateJournal(int id, String body) {
         String query = "UPDATE journal_entry SET body = '"+body+"' WHERE id = '"+id+"'";
