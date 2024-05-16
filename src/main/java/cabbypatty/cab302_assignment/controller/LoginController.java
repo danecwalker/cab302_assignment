@@ -20,6 +20,10 @@ import java.util.ResourceBundle;
 import static cabbypatty.cab302_assignment.utils.Alert.showAlert;
 import static cabbypatty.cab302_assignment.utils.Email.isValidEmail;
 
+/**
+ * Controller class for managing the login page.
+ * Implements Initializable interface to initialize controller after its root element has been completely processed.
+ */
 public class LoginController implements Initializable {
     private Config config;
 
@@ -28,11 +32,23 @@ public class LoginController implements Initializable {
     @FXML
     private PasswordField passwordField;
 
+    /**
+     * Constructor for LoginController.
+     * Initializes the controller with the provided configuration.
+     *
+     * @param config The configuration object used for initializing the controller.
+     */
     public LoginController(Config config) {
         System.out.println("LoginController created");
         this.config = config;
     }
 
+    /**
+     * Navigates to the registration page.
+     * Loads the FXML file for the registration page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToRegistrationPage(ActionEvent event) {
         try {
@@ -63,6 +79,12 @@ public class LoginController implements Initializable {
         }
     }
 
+    /**
+     * Navigates to the main page.
+     * Loads the FXML file for the main page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToMainPage(ActionEvent event) {
         try {
@@ -94,6 +116,13 @@ public class LoginController implements Initializable {
         }
     }
 
+    /**
+     * Handles the login action.
+     * Validates the email and password, creates a new session if the credentials are correct, and navigates to the main page.
+     *
+     * @param event The action event triggered by the user.
+     * @throws Exception If an error occurs during login.
+     */
     public void login(ActionEvent event) throws Exception {
         // Get the email and password from the fields
         String email = emailField.getText();
@@ -131,6 +160,12 @@ public class LoginController implements Initializable {
         navigateToMainPage(event);
     }
 
+    /**
+     * Initializes the controller after its root element has been completely processed.
+     *
+     * @param location The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resources The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("LoginController initialized");
