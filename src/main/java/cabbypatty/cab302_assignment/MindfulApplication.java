@@ -18,6 +18,10 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 
+/**
+ * Main application class for the Mindful application.
+ * Extends the JavaFX Application class to create a JavaFX application.
+ */
 public class MindfulApplication extends Application {
     // Constants defining the window title and size
     public static final String TITLE = "Mindful";
@@ -28,6 +32,13 @@ public class MindfulApplication extends Application {
 
     private final SqliteConnection sqliteConnection = new SqliteConnection();
 
+    /**
+     * The main entry point for all JavaFX applications.
+     * This method is called when the application is launched.
+     *
+     * @param stage The primary stage for this application, onto which the application scene can be set.
+     * @throws Exception If an error occurs during application startup.
+     */
     @Override
     public void start(Stage stage) throws Exception {
         sqliteConnection.setupTables();
@@ -87,6 +98,12 @@ public class MindfulApplication extends Application {
         });
     }
 
+    /**
+     * The main method.
+     * This is the entry point for the Java application.
+     *
+     * @param args The command line arguments.
+     */
     public static void main(String[] args) {
         launch();
     }
