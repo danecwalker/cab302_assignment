@@ -26,6 +26,10 @@ import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class for managing the registration page.
+ * Implements Initializable interface to initialize controller after its root element has been completely processed.
+ */
 public class RegistrationController implements Initializable {
     String[] genders = {"Male", "Female", "Other"};
 
@@ -49,16 +53,35 @@ public class RegistrationController implements Initializable {
 
     private Config config;
 
+    /**
+     * Constructor for RegistrationController.
+     * Initializes the controller with the provided configuration.
+     *
+     * @param config The configuration object used for initializing the controller.
+     */
     public RegistrationController(Config config) {
         System.out.println("RegistrationController created");
         this.config = config;
     }
 
+    /**
+     * Initializes the controller after its root element has been completely processed.
+     * Sets up the gender combo box with predefined options.
+     *
+     * @param url The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resource The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resource) {
         genderCombo.setItems(FXCollections.observableArrayList(genders));
     }
 
+    /**
+     * Handles the cancel action.
+     * Closes the current registration window and opens the login page.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void onCancelClick(ActionEvent event) {
         // Close the current registration window
@@ -91,7 +114,13 @@ public class RegistrationController implements Initializable {
         }
     }
 
-    //DO USER REGISTRATION WITH DATABASE HERE -> LOGAN AND DANE
+    /**
+     * Handles the register action.
+     * Validates the registration form and creates a new user if the form is valid.
+     *
+     * @param event The action event triggered by the user.
+     * @throws Exception If an error occurs during registration.
+     */
     @FXML
     private void onRegisterClick(ActionEvent event) throws Exception {
         String name = nameField.getText();
