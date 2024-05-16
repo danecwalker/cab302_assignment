@@ -204,7 +204,7 @@ public class CalendarController implements Initializable {
      * @param event The action event triggered by the user.
      */
     @FXML
-    private void logout(ActionEvent event) {
+    private void navigateToLogout(ActionEvent event) {
         try {
             String sessionId = SessionStorage.loadToken();
             config.getAuthDAO().deleteSession(sessionId);
@@ -249,7 +249,7 @@ public class CalendarController implements Initializable {
      * @param event The action event triggered by the user.
      */
     @FXML
-    private void home(ActionEvent event) {
+    private void navigateToHome(ActionEvent event) {
         try {
             // Load the FXML file for the main page
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/main.fxml"));
