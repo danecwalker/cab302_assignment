@@ -26,6 +26,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.prefs.BackingStoreException;
 
+/**
+ * Controller class for managing the journal entry page.
+ * Implements Initializable interface to initialize controller after its root element has been completely processed.
+ */
 public class JournalEntryPageController implements Initializable {
 
     private Config config;
@@ -43,6 +47,12 @@ public class JournalEntryPageController implements Initializable {
     @FXML
     private MenuButton username;
 
+    /**
+     * Constructor for JournalEntryPageController.
+     * Initializes the controller with the provided configuration and validates the user session.
+     *
+     * @param config The configuration object used for initializing the controller.
+     */
     public JournalEntryPageController(Config config) {
         System.out.println("JournalEntryPageController created");
         this.config = config;
@@ -60,7 +70,10 @@ public class JournalEntryPageController implements Initializable {
         }
     }
 
-    //Navigate to Login
+    /**
+     * Navigates to the login page.
+     * Loads the FXML file for the login page and sets the controller factory.
+     */
     private void navigateToLogin() {
         try {
             // Load the FXML file for the login page
@@ -91,6 +104,12 @@ public class JournalEntryPageController implements Initializable {
         }
     }
 
+    /**
+     * Navigates to the support page.
+     * Loads the FXML file for the support page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToSupport(ActionEvent event) {
         try {
@@ -122,6 +141,12 @@ public class JournalEntryPageController implements Initializable {
         }
     }
 
+    /**
+     * Navigates to the settings page.
+     * Loads the FXML file for the settings page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToSettings(ActionEvent event) {
         try {
@@ -153,6 +178,12 @@ public class JournalEntryPageController implements Initializable {
         }
     }
 
+    /**
+     * Navigates to the new journal entry page.
+     * Loads the FXML file for the new journal entry page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToJournalNew(ActionEvent event) {
         try {
@@ -184,6 +215,12 @@ public class JournalEntryPageController implements Initializable {
         }
     }
 
+    /**
+     * Navigates to the calendar page.
+     * Loads the FXML file for the calendar page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToCalendar(ActionEvent event) {
         try {
@@ -215,6 +252,13 @@ public class JournalEntryPageController implements Initializable {
         }
     }
 
+    /**
+     * Logs out the user.
+     * Deletes the session from the authentication DAO and clears the session storage.
+     * Navigates to the login page.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToLogout(ActionEvent event) {
         try {
@@ -254,7 +298,12 @@ public class JournalEntryPageController implements Initializable {
         }
     }
 
-    //Home
+    /**
+     * Navigates to the home page.
+     * Loads the FXML file for the main page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToHome(ActionEvent event) {
         try {
@@ -286,7 +335,12 @@ public class JournalEntryPageController implements Initializable {
         }
     }
 
-    //Home
+    /**
+     * Navigates to the journal entries page.
+     * Loads the FXML file for the journal entries page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToJournal(ActionEvent event) {
         try {
@@ -318,6 +372,13 @@ public class JournalEntryPageController implements Initializable {
         }
     }
 
+    /**
+     * Submits the journal entry.
+     * Creates a new journal entry with the text and mood level from the slider.
+     * Navigates to the journal entries page.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void submitJournal(ActionEvent event) {
         try {
@@ -346,6 +407,13 @@ public class JournalEntryPageController implements Initializable {
         navigateToJournal(event);
     }
 
+    /**
+     * Initializes the controller after its root element has been completely processed.
+     * Sets the username label with the current user's name and sets up the mood slider.
+     *
+     * @param location The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resources The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("JournalEntryPageController initialized");

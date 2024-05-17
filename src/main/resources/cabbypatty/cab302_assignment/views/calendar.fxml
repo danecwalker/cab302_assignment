@@ -25,7 +25,7 @@
             <ImageView fitHeight="16.0" fitWidth="16.0">
                 <Image url="@../image/home_icon.png" />
             </ImageView>
-            <Hyperlink onAction="#home" style="-fx-text-fill: white;" text="Home" />
+            <Hyperlink onAction="#navigateToHome" style="-fx-text-fill: white;" text="Home" />
         </HBox>
 
         <!-- Calendar -->
@@ -69,7 +69,7 @@
             <ImageView fitHeight="16.0" fitWidth="16.0">
                 <Image url="@../image/logout_icon.png" />
             </ImageView>
-            <Hyperlink onAction="#logout" style="-fx-text-fill: white;" text="Logout" />
+            <Hyperlink onAction="#navigateToLogout" style="-fx-text-fill: white;" text="Logout" />
         </HBox>
 
     </VBox>

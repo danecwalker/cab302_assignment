@@ -15,11 +15,22 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class for managing the main page.
+ * Implements Initializable interface to initialize controller after its root element has been completely processed.
+ */
 public class MainPageController implements Initializable {
 
     @FXML
     private Label welcomeText;
 
+    /**
+     * Initializes the controller after its root element has been completely processed.
+     * Sets the welcome text with the current user's first name.
+     *
+     * @param location The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resources The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         System.out.println("MainPageController initialized");
@@ -35,11 +46,23 @@ public class MainPageController implements Initializable {
 
     private Config config;
 
+    /**
+     * Constructor for MainPageController.
+     * Initializes the controller with the provided configuration.
+     *
+     * @param config The configuration object used for initializing the controller.
+     */
     public MainPageController(Config config) {
         System.out.println("MainPageController created");
         this.config = config;
     }
 
+    /**
+     * Navigates to the support page.
+     * Loads the FXML file for the support page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToSupport(ActionEvent event) {
         try {
@@ -71,6 +94,12 @@ public class MainPageController implements Initializable {
         }
     }
 
+    /**
+     * Navigates to the settings page.
+     * Loads the FXML file for the settings page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToSettings(ActionEvent event) {
         try {
@@ -102,6 +131,12 @@ public class MainPageController implements Initializable {
         }
     }
 
+    /**
+     * Navigates to the journal entries page.
+     * Loads the FXML file for the journal entries page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToJournalPage(ActionEvent event) {
         try {
@@ -133,6 +168,12 @@ public class MainPageController implements Initializable {
         }
     }
 
+    /**
+     * Navigates to the calendar page.
+     * Loads the FXML file for the calendar page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToCalendar(ActionEvent event) {
         try {
@@ -164,7 +205,13 @@ public class MainPageController implements Initializable {
         }
     }
 
-
+    /**
+     * Logs out the user.
+     * Deletes the session from the authentication DAO and clears the session storage.
+     * Navigates to the login page.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void logout(ActionEvent event) {
         try {

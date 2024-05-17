@@ -18,14 +18,23 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.prefs.BackingStoreException;
 
-//Settings Controller Methods
+/**
+ * Controller class for managing the settings page.
+ * Implements Initializable interface to initialize controller after its root element has been completely processed.
+ */
 public class SettingsController implements Initializable {
 
     private Config config;
     private SessionAndUser sessionAndUser;
     @FXML
     private Label username;
-    //Constructor
+
+    /**
+     * Constructor for SettingsController.
+     * Initializes the controller with the provided configuration and validates the user session.
+     *
+     * @param config The configuration object used for initializing the controller.
+     */
     public SettingsController(Config config) {
         this.config = config;
 
@@ -43,7 +52,11 @@ public class SettingsController implements Initializable {
         }
     }
 
-    //Navigate to Login
+
+    /**
+     * Navigates to the login page.
+     * Loads the FXML file for the login page and sets the controller factory.
+     */
     private void navigateToLogin() {
         try {
             // Load the FXML file for the login page
@@ -74,6 +87,12 @@ public class SettingsController implements Initializable {
         }
     }
 
+    /**
+     * Navigates to the support page.
+     * Loads the FXML file for the support page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToSupport(ActionEvent event) {
         try {
@@ -105,7 +124,12 @@ public class SettingsController implements Initializable {
         }
     }
 
-
+    /**
+     * Navigates to the journal entries page.
+     * Loads the FXML file for the journal entries page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToJournalPage(ActionEvent event) {
         try {
@@ -137,6 +161,12 @@ public class SettingsController implements Initializable {
         }
     }
 
+    /**
+     * Navigates to the calendar page.
+     * Loads the FXML file for the calendar page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void navigateToCalendar(ActionEvent event) {
         try {
@@ -168,7 +198,13 @@ public class SettingsController implements Initializable {
         }
     }
 
-
+    /**
+     * Logs out the user.
+     * Deletes the session from the authentication DAO and clears the session storage.
+     * Navigates to the login page.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
     private void logout(ActionEvent event) {
         try {
@@ -208,10 +244,14 @@ public class SettingsController implements Initializable {
         }
     }
 
-
-    //Home
+    /**
+     * Navigates to the home page.
+     * Loads the FXML file for the main page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
     @FXML
-    private void home(ActionEvent event) {
+    private void navigateToHome(ActionEvent event) {
         try {
             // Load the FXML file for the main page
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/main.fxml"));
@@ -241,6 +281,13 @@ public class SettingsController implements Initializable {
         }
     }
 
+    /**
+     * Initializes the controller after its root element has been completely processed.
+     * Sets the username label with the current user's name.
+     *
+     * @param location The location used to resolve relative paths for the root object, or null if the location is not known.
+     * @param resources The resources used to localize the root object, or null if the root object was not localized.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         username.setText(sessionAndUser.getUser().name);
