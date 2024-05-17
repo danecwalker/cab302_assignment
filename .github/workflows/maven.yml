@@ -18,6 +18,8 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
     - uses: actions/checkout@v4
@@ -37,3 +39,11 @@ jobs:
       with:
         name: surefire-reports
         path: target/surefire-reports
+        
+    - name: Generate Javadoc
+      run: mvn javadoc:javadoc
+
+    - name: Publish Javadoc
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        folder: target/docs/javadoc
