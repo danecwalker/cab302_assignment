@@ -1,0 +1,6 @@
+module:cabbypatty.cab302_assignment
+cabbypatty.cab302_assignment
+cabbypatty.cab302_assignment.controller
+cabbypatty.cab302_assignment.model
+cabbypatty.cab302_assignment.store
+cabbypatty.cab302_assignment.utils
