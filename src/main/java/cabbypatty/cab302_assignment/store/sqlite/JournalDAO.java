@@ -66,8 +66,7 @@ public class JournalDAO implements IJournalDAO {
         String query = "INSERT INTO journal_entry (body, mood, author_id, created_at, updated_at) VALUES ('"+body+"', '"+mood.getLevel()+"', '"+author_id+"', strftime(\"%Y-%m-%dT%H:%M:%SZ\", \"now\"), strftime(\"%Y-%m-%dT%H:%M:%SZ\", \"now\")) RETURNING id";
         ResultSet result = connection.exec(query);
     }
-
-
+    
     /**
      * A method that retrieves journals authored by a specific user from the database.
      * @param author_id The id of author
