@@ -101,7 +101,7 @@
                 <children>
                     <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                         <children>
-                     <LineChart>
+                     <LineChart maxHeight="300.0">
                        <xAxis>
                          <CategoryAxis side="BOTTOM" />
                        </xAxis>
@@ -109,6 +109,16 @@
                          <NumberAxis side="LEFT" />
                        </yAxis>
                      </LineChart>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How Do You Feel Today?">
+                        <font>
+                           <Font name="System Bold" size="24.0" />
+                        </font>
+                     </Text>
+                     <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="280.0" style="-fx-background-color: C8FF9E;" text="Mark Now">
+                        <font>
+                           <Font name="System Bold" size="16.0" />
+                        </font>
+                     </Button>
                         </children>
                         <HBox.margin>
                             <Insets />
