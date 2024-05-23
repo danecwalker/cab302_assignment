@@ -80,16 +80,6 @@
         <Image url="@../image/Logo.png" />
     </ImageView>
 
-    <!-- Profile -->
-    <ImageView fitHeight="35.0" fitWidth="110.0" layoutX="473.0" layoutY="14.0">
-        <Image url="@../image/Profile.png" />
-    </ImageView>
-
-    <!-- Calendar -->
-    <ImageView fitHeight="108.0" fitWidth="129.0" layoutX="464.0" layoutY="56.0">
-        <Image url="@../image/calendar_image.png" />
-    </ImageView>
-
     <!-- Green Box -->
     <Region layoutX="173.0" layoutY="195.0" prefHeight="86.0" prefWidth="236.0" style="-fx-background-color: C8FF9E; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" />
 
@@ -112,7 +102,7 @@
       </font>
    </Label>
 
-    <LineChart layoutX="150.0" layoutY="46.0" prefHeight="150.0" prefWidth="300.0">
+    <LineChart layoutX="150.0" layoutY="46.0" prefHeight="150.0" prefWidth="442.0">
         <xAxis>
             <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -120,5 +110,6 @@
             <NumberAxis side="LEFT" />
         </yAxis>
     </LineChart>
+   <Text layoutX="540.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ISAAC" />
 
 </AnchorPane>
