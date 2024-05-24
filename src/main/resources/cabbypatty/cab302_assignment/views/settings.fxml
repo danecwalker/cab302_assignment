@@ -98,65 +98,33 @@
                 </Text>
             </HBox>
             <Separator prefWidth="200.0" />
-            <HBox prefHeight="20.0" prefWidth="200.0">
-                <children>
-               <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Feedback">
-                  <font>
-                     <Font name="System Bold" size="24.0" />
-                  </font>
-               </Text>
-                </children>
-            </HBox>
             <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: null;" VBox.vgrow="ALWAYS">
                 <VBox id="journalEntries" fx:id="journalEntries" style="-fx-padding: 20; -fx-spacing: 20;">
                <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Rate">
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="User">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Text>
-                  <Slider />
-                  <HBox prefHeight="20.0" prefWidth="200.0">
+                  <TextArea prefHeight="80.0" prefWidth="200.0" text="Name:&#10;Email:&#10;Gender:&#10;DoB:" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Theme">
+                     <font>
+                        <Font name="System Bold" size="24.0" />
+                     </font>
+                  </Text>
+                  <ComboBox prefWidth="150.0" promptText="Colour" />
+                  <VBox prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <HBox prefHeight="50.0" prefWidth="200.0">
+                        <VBox prefHeight="124.0" prefWidth="606.0">
                            <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Notification">
                                  <font>
                                     <Font name="System Bold" size="24.0" />
                                  </font>
                               </Text>
-                           </children></HBox>
-                        <HBox prefHeight="50.0" prefWidth="200.0" />
-                        <HBox prefHeight="50.0" prefWidth="200.0" />
-                        <Text layoutX="579.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Text>
-                     </children>
-                  </HBox>
-                  <VBox prefHeight="150.0" prefWidth="100.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="What can we Fix/Improve">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Text>
-                        <TextArea prefHeight="150.0" prefWidth="200.0" promptText="Write Here..." />
-                     </children>
-                  </VBox>
-                  <VBox prefHeight="100.0" prefWidth="100.0">
-                     <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="We Appreciate your Support">
-                           <font>
-                              <Font name="System Bold" size="24.0" />
-                           </font>
-                        </Text>
-                        <Button minWidth="100.0" mnemonicParsing="false" style="-fx-background-color: C8FF9E;" text="Send">
-                           <font>
-                              <Font name="System Bold" size="14.0" />
-                           </font>
-                        </Button>
+                              <TextArea prefHeight="80.0" prefWidth="200.0" text="Notification: On&#10;Frequency: Every 3 Hours&#10;Receiving Time: 8:00am" />
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
                </children></VBox>
@@ -164,6 +132,16 @@
                     <Insets top="20.0" />
                 </VBox.margin>
             </ScrollPane>
+         <HBox layoutX="30.0" layoutY="65.0" prefHeight="0.0" prefWidth="660.0" />
+         <HBox layoutX="30.0" layoutY="65.0" prefHeight="20.0" prefWidth="200.0">
+            <children>
+               <Button minWidth="80.0" mnemonicParsing="false" style="-fx-background-color: C8FF9E;" text="Update">
+                  <font>
+                     <Font name="System Bold" size="13.0" />
+                  </font>
+               </Button>
+            </children>
+         </HBox>
         </VBox>
     </HBox>
 </VBox>
