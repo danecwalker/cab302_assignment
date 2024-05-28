@@ -32,21 +32,14 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Hyperlink?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cabbypatty.cab302_assignment.controller.JournalEntriesController">
+<VBox minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cabbypatty.cab302_assignment.controller.JournalEntriesController">
     <HBox VBox.vgrow="ALWAYS">
         <VBox prefWidth="200.0" style="-fx-background-color: #000000; -fx-spacing: 8; -fx-padding: 20;">
             <opaqueInsets>
@@ -90,15 +83,27 @@
         </VBox>
         <VBox style="-fx-padding: 20;" HBox.hgrow="ALWAYS">
             <HBox alignment="CENTER_LEFT">
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Journals">
-                    <font>
-                        <Font size="24.0" />
-                    </font>
-                </Text>
-                <HBox HBox.hgrow="ALWAYS" />
-                <Hyperlink onAction="#navigateToJournalNew" text="Add Journal" />
+                <HBox HBox.hgrow="ALWAYS">
+               <children>
+                      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Journals">
+                          <font>
+                              <Font size="24.0" />
+                          </font>
+                      </Text>
+               </children></HBox>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="User ">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
             </HBox>
             <Separator prefWidth="200.0" />
+         <HBox prefHeight="20.0" prefWidth="200.0">
+            <children>
+               <ComboBox prefWidth="150.0" />
+                   <Hyperlink alignment="TOP_CENTER" onAction="#navigateToJournalNew" text="Add Journal" textAlignment="CENTER" />
+            </children>
+         </HBox>
             <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: null;" VBox.vgrow="ALWAYS">
                 <VBox id="journalEntries" fx:id="journalEntries" style="-fx-padding: 20; -fx-spacing: 20;">
                </VBox>

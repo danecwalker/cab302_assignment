@@ -1,124 +1,134 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.chart.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cabbypatty.cab302_assignment.controller.MainPageController">
-
-    <VBox alignment="CENTER" prefHeight="400.0" prefWidth="150" style="-fx-background-color: #181819;">
-
-        <!-- Labels for the navigation menu -->
-        <Label prefHeight="45.0" prefWidth="46.0" style="-fx-text-fill: white;" text="" />
-        <!-- Mindful Moments Title -->
-        <Label prefHeight="20.0" prefWidth="120.0" style="-fx-text-fill: white;" text="Mindful Moments">
-            <font>
-                <Font name="System Bold" size="14.0" />
-            </font>
-        </Label>
-
-        <Label prefHeight="0.0" prefWidth="2.0" style="-fx-text-fill: white;" text="" />
-
-        <!-- Home -->
-        <HBox alignment="CENTER" spacing="5">
-            <ImageView fitHeight="16.0" fitWidth="16.0">
-                <Image url="@../image/home_icon.png" />
-            </ImageView>
-            <Label prefHeight="25.0" prefWidth="34.0" style="-fx-text-fill: white;" text="Home" />
-        </HBox>
-
-        <!-- Calendar -->
-        <HBox alignment="CENTER" spacing="5">
-            <ImageView fitHeight="16.0" fitWidth="16.0">
-                <Image url="@../image/calendar_icon.png" />
-            </ImageView>
-            <Hyperlink onAction="#navigateToCalendar" style="-fx-text-fill: white;" text="Calendar" />
-        </HBox>
-
-        <!-- Journal -->
-        <HBox alignment="CENTER" spacing="5">
-            <ImageView fitHeight="16.0" fitWidth="16.0">
-                <Image url="@../image/journal_icon.png" />
-            </ImageView>
-            <Hyperlink onAction="#navigateToJournalPage" style="-fx-text-fill: white;" text="Journal" />
-        </HBox>
-
-        <Label prefHeight="35.0" prefWidth="20.0" style="-fx-text-fill: white;" text="" />
-
-        <!-- Support -->
-        <HBox alignment="CENTER" spacing="5">
-            <ImageView fitHeight="16.0" fitWidth="16.0">
-                <Image url="@../image/support_icon.png" />
-            </ImageView>
-            <Hyperlink onAction="#navigateToSupport" style="-fx-text-fill: white;" text="Support" />
-        </HBox>
-
-        <!-- Setting -->
-        <HBox alignment="CENTER" spacing="5">
-            <ImageView fitHeight="16.0" fitWidth="16.0">
-                <Image url="@../image/setting_icon.png" />
-            </ImageView>
-            <Hyperlink onAction="#navigateToSettings" style="-fx-text-fill: white;" text="Settings" />
-        </HBox>
-
-
-        <Label prefHeight="35.0" prefWidth="46.0" style="-fx-text-fill: white;" text="" />
-
-        <HBox alignment="CENTER" spacing="5">
-            <ImageView fitHeight="16.0" fitWidth="16.0">
-                <Image url="@../image/logout_icon.png" />
-            </ImageView>
-            <Hyperlink onAction="#logout" style="-fx-text-fill: white;" text="Logout" />
-        </HBox>
-
-    </VBox>
-
-    <!-- Logo Image -->
-    <ImageView fitHeight="130.0" fitWidth="150.0" layoutX="1.0" layoutY="-9.0">
-        <Image url="@../image/Logo.png" />
-    </ImageView>
-
-    <!-- Profile -->
-    <ImageView fitHeight="35.0" fitWidth="110.0" layoutX="473.0" layoutY="14.0">
-        <Image url="@../image/Profile.png" />
-    </ImageView>
-
-    <!-- Calendar -->
-    <ImageView fitHeight="108.0" fitWidth="129.0" layoutX="464.0" layoutY="56.0">
-        <Image url="@../image/calendar_image.png" />
-    </ImageView>
-
-    <!-- Green Box -->
-    <Region layoutX="173.0" layoutY="195.0" prefHeight="86.0" prefWidth="236.0" style="-fx-background-color: C8FF9E; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" />
-
-    <!-- Main Region Heading -->
-    <Label fx:id="welcomeText" layoutX="186.0" layoutY="206.0" text="How Do You Feel Today?" textAlignment="CENTER">
-      <font>
-         <Font name="System Bold" size="14.0" />
-      </font></Label>
-
-    <!-- Main Button -->
-    <Button layoutX="241.0" layoutY="238.0" onAction="#navigateToJournalPage" prefWidth="100.0" style="-fx-background-color: #A6E873;" text="Mark Now" textAlignment="CENTER">
-      <font>
-         <Font name="System Bold" size="12.0" />
-      </font></Button>
-
-    <!-- Main Page Heading -->
-   <Label layoutX="163.0" layoutY="22.0" text="14 June, 2022" textAlignment="CENTER">
-      <font>
-         <Font name="System Bold" size="14.0" />
-      </font>
-   </Label>
-
-    <LineChart layoutX="150.0" layoutY="46.0" prefHeight="150.0" prefWidth="300.0">
-        <xAxis>
-            <CategoryAxis side="BOTTOM" />
-        </xAxis>
-        <yAxis>
-            <NumberAxis side="LEFT" />
-        </yAxis>
-    </LineChart>
-
-</AnchorPane>
+<VBox minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cabbypatty.cab302_assignment.controller.JournalEntryPageController">
+    <HBox VBox.vgrow="ALWAYS">
+        <VBox prefWidth="200.0" style="-fx-background-color: #000000; -fx-spacing: 8; -fx-padding: 20;">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <HBox alignment="CENTER_LEFT" style="-fx-spacing: 8;">
+                <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../image/Logo.png" />
+                </ImageView>
+                <VBox>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Mindful">
+                        <font>
+                            <Font name="System Bold" size="14.0" />
+                        </font>
+                    </Text>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Moments">
+                        <font>
+                            <Font name="System Bold" size="18.0" />
+                        </font>
+                    </Text>
+                </VBox>
+            </HBox>
+            <VBox prefHeight="8.0" prefWidth="100.0" />
+            <Hyperlink onAction="#navigateToHome" opacity="0.6" text="Home" textFill="WHITE" />
+            <Hyperlink onAction="#navigateToJournal" text="Journal" textFill="WHITE">
+                <font>
+                    <Font name="System Bold" size="12.0" />
+                </font></Hyperlink>
+            <Hyperlink onAction="#navigateToCalendar" opacity="0.6" text="Calendar" textFill="WHITE" />
+            <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+            <Hyperlink onAction="#navigateToSettings" opacity="0.6" text="Settings" textFill="WHITE" />
+            <Hyperlink onAction="#navigateToSupport" opacity="0.6" text="Support" textFill="WHITE" />
+            <MenuButton fx:id="username" mnemonicParsing="false" popupSide="TOP" styleClass="profile" stylesheets="@styles/styles.css" text="Name" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
+                <items>
+                    <MenuItem mnemonicParsing="false" onAction="#navigateToLogout" text="Logout" />
+                </items>
+                <cursor>
+                    <Cursor fx:constant="HAND" />
+                </cursor>
+            </MenuButton>
+        </VBox>
+        <VBox style="-fx-padding: 20;" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Date">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Text>
+                <HBox HBox.hgrow="ALWAYS" />
+                <Text layoutX="10.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Text>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                <children>
+                    <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                        <children>
+                     <LineChart maxHeight="300.0">
+                       <xAxis>
+                         <CategoryAxis side="BOTTOM" />
+                       </xAxis>
+                       <yAxis>
+                         <NumberAxis side="LEFT" />
+                       </yAxis>
+                     </LineChart>
+                     <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How Do You Feel Today?">
+                        <font>
+                           <Font name="System Bold" size="24.0" />
+                        </font>
+                     </Text>
+                     <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="280.0" style="-fx-background-color: C8FF9E;" text="Mark Now">
+                        <font>
+                           <Font name="System Bold" size="16.0" />
+                        </font>
+                     </Button>
+                        </children>
+                        <HBox.margin>
+                            <Insets />
+                        </HBox.margin>
+                    </VBox>
+                </children>
+                <VBox.margin>
+                    <Insets top="20.0" />
+                </VBox.margin>
+            </HBox>
+        </VBox>
+    </HBox>
+</VBox>
