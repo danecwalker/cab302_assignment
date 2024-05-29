@@ -21,7 +21,7 @@
 
     <!-- Date of Birth Label and DatePicker -->
     <Label layoutX="50.0" layoutY="152.0" text="Date of Birth:" />
-    <DatePicker fx:id="dobDatePicker" layoutX="50.0" layoutY="170.0" prefHeight="26.0" prefWidth="230.0" />
+    <DatePicker fx:id="dobDatePicker" layoutX="50.0" layoutY="170.0" prefHeight="26.0" prefWidth="230.0" editable="false"/>
 
     <!-- Gender Label and TextField -->
     <Label layoutX="326.0" layoutY="152.0" text="Gender:" />
