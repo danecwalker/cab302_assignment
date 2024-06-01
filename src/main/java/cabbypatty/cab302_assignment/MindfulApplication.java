@@ -1,5 +1,6 @@
 package cabbypatty.cab302_assignment;
 
+import cabbypatty.cab302_assignment.controller.JournalEntryPageController;
 import cabbypatty.cab302_assignment.controller.LoginController;
 import cabbypatty.cab302_assignment.controller.MainPageController;
 import cabbypatty.cab302_assignment.model.SessionAndUser;
@@ -25,8 +26,8 @@ import java.net.URL;
 public class MindfulApplication extends Application {
     // Constants defining the window title and size
     public static final String TITLE = "Mindful";
-    public static final int WIDTH = 640;
-    public static final int HEIGHT = 360;
+    public static final int WIDTH = 900;
+    public static final int HEIGHT = 600;
 
     public Config config;
 
@@ -73,8 +74,8 @@ public class MindfulApplication extends Application {
 
         URL main_view = MindfulApplication.class.getResource(location);
         FXMLLoader fxmlLoader = new FXMLLoader(main_view);
-
         fxmlLoader.setControllerFactory((Class<?> type) -> {
+            System.out.println("Main view: " + type);
             if (type == LoginController.class) {
                 return new LoginController(config);
             } else if (type == MainPageController.class) {

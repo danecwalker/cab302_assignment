@@ -10,9 +10,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -22,7 +27,16 @@ import java.util.ResourceBundle;
 public class MainPageController implements Initializable {
 
     @FXML
-    private Label welcomeText;
+    private Text welcomeText;
+
+    @FXML
+    private Text usernameText;
+
+    @FXML
+    private Text currentDate;
+
+    @FXML
+    private MenuButton username;
 
     /**
      * Initializes the controller after its root element has been completely processed.
@@ -39,6 +53,9 @@ public class MainPageController implements Initializable {
             User user = config.getAuthDAO().getSessionAndUser(sessionId).getUser();
             String firstName = user.name.split(" ")[0];
             welcomeText.setText("How Do You Feel Today, " + firstName + "?");
+            username.setText(firstName);
+            usernameText.setText(firstName);
+            currentDate.setText(new Date().toString());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

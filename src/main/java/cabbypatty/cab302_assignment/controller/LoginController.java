@@ -89,7 +89,8 @@ public class LoginController implements Initializable {
     private void navigateToMainPage(ActionEvent event) {
         try {
             // Load the FXML file for the registration page
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/main.fxml"));
+            URL registrationView = getClass().getResource("/cabbypatty/cab302_assignment/views/main.fxml");
+            FXMLLoader fxmlLoader = new FXMLLoader(registrationView);
 
             fxmlLoader.setControllerFactory((Class<?> type) -> {
                 if (type == MainPageController.class) {
