@@ -66,7 +66,7 @@
         </VBox>
         <VBox style="-fx-padding: 20;" HBox.hgrow="ALWAYS">
             <HBox alignment="CENTER_LEFT">
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Register">
                     <font>
                         <Font size="24.0" />
                     </font>
