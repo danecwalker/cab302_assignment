@@ -112,7 +112,7 @@
                                        <Font name="System Bold" size="24.0" />
                                     </font>
                                  </Text>
-                                 <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="280.0" style="-fx-background-color: C8FF9E;" text="Mark Now" textAlignment="CENTER">
+                                 <Button onAction="#navigateToJournalPage" mnemonicParsing="false" prefHeight="50.0" prefWidth="280.0" style="-fx-background-color: C8FF9E;" text="Mark Now" textAlignment="CENTER">
                                     <font>
                                        <Font name="System Bold" size="16.0" />
                                     </font>

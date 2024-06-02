@@ -37,9 +37,6 @@ public class MainPageController implements Initializable {
     private Text welcomeText;
 
     @FXML
-    private Text usernameText;
-
-    @FXML
     private Text currentDate;
 
     @FXML
@@ -67,6 +64,7 @@ public class MainPageController implements Initializable {
             User user = config.getAuthDAO().getSessionAndUser(sessionId).getUser();
             String firstName = user.name.split(" ")[0];
             welcomeText.setText("How Do You Feel Today, " + firstName + "?");
+            username.setText(user.name);
             LocalDate date = LocalDate.now();
             currentDate.setText(date.format(java.time.format.DateTimeFormatter.ofPattern("MMMM dd, yyyy")));
             weekly_mood.setTitle("Weekly Mood");
