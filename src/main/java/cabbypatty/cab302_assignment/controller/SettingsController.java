@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -27,7 +28,7 @@ public class SettingsController implements Initializable {
     private Config config;
     private SessionAndUser sessionAndUser;
     @FXML
-    private Label username;
+    private MenuButton username;
 
     /**
      * Constructor for SettingsController.
