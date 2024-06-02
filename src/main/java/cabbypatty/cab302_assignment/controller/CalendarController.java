@@ -281,6 +281,43 @@ public class CalendarController implements Initializable {
     }
 
     /**
+     * Navigates to the new journal entry page.
+     * Loads the FXML file for the new journal entry page and sets the controller factory.
+     *
+     * @param event The action event triggered by the user.
+     */
+    @FXML
+    private void navigateToJournalNew(ActionEvent event) {
+        try {
+            // Load the FXML file for the journal entry page
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/journal-new.fxml"));
+
+            fxmlLoader.setControllerFactory((Class<?> type) -> {
+                if (type == JournalEntryPageController.class) {
+                    return new JournalEntryPageController(config);
+                } else {
+                    try {
+                        return type.getDeclaredConstructor().newInstance();
+                    } catch (Exception exc) {
+                        throw new RuntimeException(exc);
+                    }
+                }
+            });
+
+            Scene journalEntryScene = new Scene(fxmlLoader.load());
+
+            // Get the stage from the event source
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            // Set the new scene on the stage
+            stage.setScene(journalEntryScene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle the exception appropriately
+        }
+    }
+
+    /**
      * Initializes the controller after its root element has been completely processed.
      * Sets the username label with the current user's name.
      *
