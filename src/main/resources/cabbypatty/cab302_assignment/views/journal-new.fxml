@@ -74,7 +74,7 @@
             <Hyperlink onAction="#navigateToSupport" opacity="0.6" text="Support" textFill="WHITE" />
             <MenuButton fx:id="username" mnemonicParsing="false" popupSide="TOP" styleClass="profile" stylesheets="@styles/styles.css" text="Name" textAlignment="CENTER" textFill="WHITE" VBox.vgrow="ALWAYS">
                 <items>
-                    <MenuItem mnemonicParsing="false" onAction="#navigateToLogout" text="Logout" />
+                    <MenuItem mnemonicParsing="false" onAction="#logout" text="Logout" />
                 </items>
                 <cursor>
                     <Cursor fx:constant="HAND" />

@@ -5,14 +5,12 @@ import cabbypatty.cab302_assignment.SessionStorage;
 import cabbypatty.cab302_assignment.model.MoodLevel;
 import cabbypatty.cab302_assignment.model.Session;
 import cabbypatty.cab302_assignment.model.SessionAndUser;
-import cabbypatty.cab302_assignment.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
@@ -260,7 +258,7 @@ public class JournalEntryPageController implements Initializable {
      * @param event The action event triggered by the user.
      */
     @FXML
-    private void navigateToLogout(ActionEvent event) {
+    private void logout(ActionEvent event) {
         try {
             String sessionId = SessionStorage.loadToken();
             config.getAuthDAO().deleteSession(sessionId);
