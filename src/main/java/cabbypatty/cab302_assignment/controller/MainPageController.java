@@ -77,7 +77,9 @@ public class MainPageController implements Initializable {
             Journal[] journals = config.getJournalDAO().getLast7DaysJournals(user.id);
             XYChart.Series<String, String> series = new XYChart.Series<>();
             ZoneId systemTimeZone = ZoneId.systemDefault();
-            for (Journal journal : journals) {
+
+            for (int i = journals.length-1; i > -1; i--) {
+                Journal journal = journals[i];
                 System.out.println(journal.getTitle());
                 ZonedDateTime localDateTime = journal.getDate().toInstant().atZone(systemTimeZone);
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM");
