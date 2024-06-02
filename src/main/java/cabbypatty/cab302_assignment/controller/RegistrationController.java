@@ -33,7 +33,7 @@ import java.util.ResourceBundle;
 public class RegistrationController implements Initializable {
     String[] genders = {"Male", "Female", "Other"};
 
-    @FXML // fx:id="genderCombo"
+    @FXML
     private ComboBox<String> genderCombo;
 
     @FXML

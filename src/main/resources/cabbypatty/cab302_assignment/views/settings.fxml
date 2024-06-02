@@ -41,8 +41,8 @@
 
 <VBox minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cabbypatty.cab302_assignment.controller.SettingsController">
     <HBox VBox.vgrow="ALWAYS">
-        <VBox prefWidth="200.0" style="-fx-background-color: #000000; -fx-spacing: 8; -fx-padding: 20;">
-            <opaqueInsets>
+    <VBox prefWidth="200.0" style="-fx-background-color: #000000; -fx-spacing: 8; -fx-padding: 20;">
+        <opaqueInsets>
                 <Insets />
             </opaqueInsets>
             <HBox alignment="CENTER_LEFT" style="-fx-spacing: 8;">
@@ -91,7 +91,7 @@
                             </font>
                         </Text>
                     </children></HBox>
-                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="User ">
+                <Text fx:id="usernameText" layoutX="10.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User">
                     <font>
                         <Font size="24.0" />
                     </font>
@@ -99,34 +99,29 @@
             </HBox>
             <Separator prefWidth="200.0" />
             <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: null;" VBox.vgrow="ALWAYS">
-                <VBox id="journalEntries" fx:id="journalEntries" style="-fx-padding: 20; -fx-spacing: 20;">
+                <VBox id="settings" fx:id="settings" style="-fx-padding: 20; -fx-spacing: 20;">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="User">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>
                   </Text>
-                  <TextArea prefHeight="80.0" prefWidth="200.0" text="Name:&#10;Email:&#10;Gender:&#10;DoB:" />
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Theme">
-                     <font>
-                        <Font name="System Bold" size="24.0" />
-                     </font>
-                  </Text>
-                  <ComboBox prefWidth="150.0" promptText="Colour" />
-                  <VBox prefHeight="200.0" prefWidth="100.0">
-                     <children>
-                        <VBox prefHeight="124.0" prefWidth="606.0">
-                           <children>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Notification">
-                                 <font>
-                                    <Font name="System Bold" size="24.0" />
-                                 </font>
-                              </Text>
-                              <TextArea prefHeight="80.0" prefWidth="200.0" text="Notification: On&#10;Frequency: Every 3 Hours&#10;Receiving Time: 8:00am" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </VBox>
+                   <HBox spacing="10">
+                       <Label text="Name:" />
+                       <TextField fx:id="nameField" promptText="Enter your name" />
+                   </HBox>
+                   <HBox spacing="10">
+                       <Label text="Email:" />
+                       <TextField fx:id="emailField" promptText="Enter your email" />
+                   </HBox>
+                   <HBox spacing="10">
+                       <Label text="Date of Birth:" />
+                       <DatePicker fx:id="dobDatePicker" layoutX="50.0" layoutY="170.0" prefHeight="26.0" prefWidth="162.0" />
+                   </HBox>
+                   <HBox spacing="10">
+                       <Label text="Gender:" />
+                       <ComboBox fx:id="genderCombo" layoutX="326.0" layoutY="170.0" prefHeight="26.0" prefWidth="159.0" />
+                   </HBox>
                </children></VBox>
                 <VBox.margin>
                     <Insets top="20.0" />
