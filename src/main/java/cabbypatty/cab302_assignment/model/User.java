@@ -38,6 +38,10 @@ public class User {
         this.hash_password = hash_password;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
     /**
      * Returns the name of the user class represented by this Class object as a String.
      * @return name The name of user

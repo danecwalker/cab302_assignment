@@ -28,4 +28,6 @@ public interface IUserDAO {
      * @return a User object representing the newly created user
      */
     User createUser(String name, String email, String password, Date dob, String gender);
+
+    User updateUser(Integer id, String name, String email, Date dob, String gender);
 }

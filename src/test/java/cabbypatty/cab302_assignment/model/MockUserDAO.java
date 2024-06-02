@@ -21,4 +21,20 @@ public class MockUserDAO implements IUserDAO {
         this.users.add(user);
         return user;
     }
+
+    @Override
+    public User updateUser(Integer id, String name, String email, Date dob, String gender) {
+        User user = this.users.stream().filter(u -> {
+            return u.getId().equals(id);
+        }).findFirst().orElse(null);
+
+        if (user != null) {
+            user.setName(name);
+            user.setEmail(email);
+            user.setDob(dob);
+            user.setGender(gender);
+        }
+
+        return user;
+    }
 }

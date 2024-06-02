@@ -99,7 +99,7 @@
             </HBox>
             <Separator prefWidth="200.0" />
             <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: null;" VBox.vgrow="ALWAYS">
-                <VBox id="settings" fx:id="settings" style="-fx-padding: 20; -fx-spacing: 20;">
+                <VBox id="settings" style="-fx-padding: 20; -fx-spacing: 20;">
                <children>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="User">
                      <font>
@@ -130,7 +130,7 @@
          <HBox layoutX="30.0" layoutY="65.0" prefHeight="0.0" prefWidth="660.0" />
          <HBox layoutX="30.0" layoutY="65.0" prefHeight="20.0" prefWidth="200.0">
             <children>
-               <Button minWidth="80.0" mnemonicParsing="false" style="-fx-background-color: C8FF9E;" text="Update">
+               <Button onAction="#onSaveDetailsClick" minWidth="80.0" mnemonicParsing="false" style="-fx-background-color: C8FF9E;" text="Update">
                   <font>
                      <Font name="System Bold" size="13.0" />
                   </font>

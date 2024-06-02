@@ -12,14 +12,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.Date;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 import java.util.prefs.BackingStoreException;
+
+import static cabbypatty.cab302_assignment.utils.Alert.showAlert;
+import static cabbypatty.cab302_assignment.utils.Email.isValidEmail;
 
 /**
  * Controller class for managing the settings page.
@@ -33,6 +37,18 @@ public class SettingsController implements Initializable {
     private ComboBox<String> genderCombo;
     @FXML
     private MenuButton username;
+
+    @FXML
+    private TextField nameField;
+
+    @FXML
+    private TextField emailField;
+
+    @FXML
+    private DatePicker dobDatePicker;
+
+    @FXML
+    private Button saveDetails;
 
     /**
      * Constructor for SettingsController.
@@ -297,5 +313,49 @@ public class SettingsController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         genderCombo.setItems(FXCollections.observableArrayList(genders));
         username.setText(sessionAndUser.getUser().name);
+        genderCombo.setValue(sessionAndUser.getUser().gender);
+        nameField.setText(sessionAndUser.getUser().name);
+        emailField.setText(sessionAndUser.getUser().email);
+        dobDatePicker.setValue(sessionAndUser.getUser().dob.toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+    }
+
+    @FXML
+    private void onSaveDetailsClick(ActionEvent event) {
+        String name = nameField.getText();
+        String email = emailField.getText();
+        LocalDate dob = dobDatePicker.getValue();
+        String gender = genderCombo.getValue();
+
+        if (name.isEmpty()) {
+            // Name field is empty, show an error message
+            showAlert("Invalid Name", "Please enter your name.");
+            return;
+        }
+
+        if (dob == null) {
+            // Date of Birth is not selected, show an error message
+            showAlert("Invalid Date of Birth", "Please select your date of birth.");
+            return;
+        }
+
+        // Check if the user is at least 13 years old
+        LocalDate today = LocalDate.now();
+        LocalDate minimumDateOfBirth = today.minusYears(13);
+        if (dob.isAfter(minimumDateOfBirth)) {
+            showAlert("Underage User", "You must be at least 13 years old to use the app.");
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            // Email is not well-formed, show an error message
+            showAlert("Invalid Email", "Please enter a valid email address.");
+            return;
+        }
+
+        try {
+            config.getUserDAO().updateUser(sessionAndUser.getUser().id , name , email , Date.valueOf(dob) , gender);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

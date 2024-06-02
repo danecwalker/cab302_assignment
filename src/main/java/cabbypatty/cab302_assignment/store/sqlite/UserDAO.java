@@ -67,4 +67,11 @@ public class UserDAO implements IUserDAO {
         connection.exec(query);
         return getUser(email);
     }
+
+    @Override
+    public User updateUser(Integer id, String name, String email, Date dob, String gender) {
+        String query = "UPDATE user SET name = '"+name+"', email = '"+email+"', dob = '"+dob+"', gender = '"+gender+"', updated_at = strftime(\"%Y-%m-%dT%H:%M:%SZ\", \"now\") WHERE id = "+id;
+        connection.exec(query);
+        return getUser(email);
+    }
 }

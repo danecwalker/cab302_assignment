@@ -67,7 +67,7 @@ public class MainPageController implements Initializable {
             User user = config.getAuthDAO().getSessionAndUser(sessionId).getUser();
             String firstName = user.name.split(" ")[0];
             welcomeText.setText("How Do You Feel Today, " + firstName + "?");
-            username.setText(firstName);
+            username.setText(user.name);
             usernameText.setText(firstName);
             LocalDate date = LocalDate.now();
             currentDate.setText(date.format(java.time.format.DateTimeFormatter.ofPattern("MMMM dd, yyyy")));
