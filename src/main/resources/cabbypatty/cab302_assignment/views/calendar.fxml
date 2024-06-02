@@ -91,11 +91,6 @@
                             </font>
                         </Text>
                     </children></HBox>
-                <Text fx:id="usernameText" layoutX="10.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User">
-                    <font>
-                        <Font size="24.0" />
-                    </font>
-                </Text>
             </HBox>
             <Separator prefWidth="200.0" />
             <HBox prefHeight="20.0" prefWidth="200.0">
@@ -112,21 +107,21 @@
                     <!-- Dummy Journal Entry Number 1 -->
                     <!-- The implementation is just like the Journal Entires page-->
                     <VBox style="-fx-padding: 8; -fx-border-color: #d5d5d5; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-color: #ececec; -fx-max-width: 600;">
-                        <Label text="June 1, 2024" style="-fx-font-weight: bold;" />
+                        <Label style="-fx-font-weight: bold;" text="June 1, 2024" />
                         <Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua." />
                         <Label text="Category: Personal" />
                     </VBox>
 
                     <!-- Dummy Journal Entry 2 -->
                     <VBox style="-fx-padding: 8; -fx-border-color: #d5d5d5; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-color: #ececec; -fx-max-width: 600;">
-                        <Label text="June 1, 2024" style="-fx-font-weight: bold;" />
+                        <Label style="-fx-font-weight: bold;" text="June 1, 2024" />
                         <Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat." />
                         <Label text="Category: Work" />
                     </VBox>
 
                     <!-- Dummy Journal Entry 3 -->
                     <VBox style="-fx-padding: 8; -fx-border-color: #d5d5d5; -fx-border-width: 1; -fx-border-radius: 5; -fx-background-color: #ececec; -fx-max-width: 600;">
-                        <Label text="June 1, 2024" style="-fx-font-weight: bold;" />
+                        <Label style="-fx-font-weight: bold;" text="June 1, 2024" />
                         <Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." />
                         <Label text="Category: Personal" />
                     </VBox>

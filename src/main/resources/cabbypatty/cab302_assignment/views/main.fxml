@@ -91,20 +91,15 @@
                     </font>
                 </Text>
                 <HBox HBox.hgrow="ALWAYS" />
-                <Text fx:id="usernameText" layoutX="10.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="User">
-                    <font>
-                        <Font size="24.0" />
-                    </font>
-                </Text>
             </HBox>
             <Separator prefWidth="200.0" />
             <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="ALWAYS">
                 <children>
                     <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                         <children>
-                     <LineChart VBox.vgrow="ALWAYS" fx:id="weekly_mood">
+                     <LineChart fx:id="weekly_mood" VBox.vgrow="ALWAYS">
                        <xAxis>
-                         <CategoryAxis fx:id="xAxis" side="BOTTOM" />
+                         <CategoryAxis side="BOTTOM" fx:id="xAxis" />
                        </xAxis>
                        <yAxis>
                          <CategoryAxis fx:id="yAxis" side="LEFT" />
