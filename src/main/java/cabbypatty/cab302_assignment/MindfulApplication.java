@@ -94,9 +94,9 @@ public class MindfulApplication extends Application {
         stage.setTitle(TITLE);
         stage.show();
 
-        stage.onCloseRequestProperty().setValue(e -> {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             sqliteConnection.close();
-        });
+        }));
     }
 
     /**
