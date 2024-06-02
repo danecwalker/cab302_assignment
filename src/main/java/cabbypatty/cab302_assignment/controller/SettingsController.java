@@ -5,12 +5,14 @@ import cabbypatty.cab302_assignment.Config;
 import cabbypatty.cab302_assignment.SessionStorage;
 import cabbypatty.cab302_assignment.model.Session;
 import cabbypatty.cab302_assignment.model.SessionAndUser;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.stage.Stage;
@@ -24,9 +26,11 @@ import java.util.prefs.BackingStoreException;
  * Implements Initializable interface to initialize controller after its root element has been completely processed.
  */
 public class SettingsController implements Initializable {
-
+    String[] genders = {"Male", "Female", "Other"};
     private Config config;
     private SessionAndUser sessionAndUser;
+    @FXML
+    private ComboBox<String> genderCombo;
     @FXML
     private MenuButton username;
 
@@ -291,6 +295,7 @@ public class SettingsController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        genderCombo.setItems(FXCollections.observableArrayList(genders));
         username.setText(sessionAndUser.getUser().name);
     }
 }
