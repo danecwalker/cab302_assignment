@@ -100,7 +100,6 @@
             <Separator prefWidth="200.0" />
          <HBox prefHeight="20.0" prefWidth="200.0">
             <children>
-               <ComboBox prefWidth="150.0" />
                    <Hyperlink alignment="TOP_CENTER" onAction="#navigateToJournalNew" text="Add Journal" textAlignment="CENTER" />
             </children>
          </HBox>

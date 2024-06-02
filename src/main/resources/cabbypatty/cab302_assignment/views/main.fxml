@@ -102,12 +102,12 @@
                 <children>
                     <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
                         <children>
-                     <LineChart VBox.vgrow="ALWAYS">
+                     <LineChart VBox.vgrow="ALWAYS" fx:id="weekly_mood">
                        <xAxis>
-                         <CategoryAxis side="BOTTOM" />
+                         <CategoryAxis fx:id="xAxis" side="BOTTOM" />
                        </xAxis>
                        <yAxis>
-                         <NumberAxis side="LEFT" />
+                         <CategoryAxis fx:id="yAxis" side="LEFT" />
                        </yAxis>
                      </LineChart>
                      <HBox alignment="CENTER" VBox.vgrow="ALWAYS">

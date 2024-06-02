@@ -2,6 +2,7 @@ package cabbypatty.cab302_assignment.controller;
 
 import cabbypatty.cab302_assignment.Config;
 import cabbypatty.cab302_assignment.SessionStorage;
+import cabbypatty.cab302_assignment.model.Journal;
 import cabbypatty.cab302_assignment.model.User;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +10,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.chart.CategoryAxis;
+import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
@@ -17,6 +21,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.ResourceBundle;
 
@@ -25,7 +33,6 @@ import java.util.ResourceBundle;
  * Implements Initializable interface to initialize controller after its root element has been completely processed.
  */
 public class MainPageController implements Initializable {
-
     @FXML
     private Text welcomeText;
 
@@ -37,6 +44,13 @@ public class MainPageController implements Initializable {
 
     @FXML
     private MenuButton username;
+
+    @FXML
+    private LineChart<String, String> weekly_mood;
+    @FXML
+    private CategoryAxis xAxis;
+    @FXML
+    private CategoryAxis yAxis;
 
     /**
      * Initializes the controller after its root element has been completely processed.
@@ -55,7 +69,28 @@ public class MainPageController implements Initializable {
             welcomeText.setText("How Do You Feel Today, " + firstName + "?");
             username.setText(firstName);
             usernameText.setText(firstName);
-            currentDate.setText(new Date().toString());
+            LocalDate date = LocalDate.now();
+            currentDate.setText(date.format(java.time.format.DateTimeFormatter.ofPattern("MMMM dd, yyyy")));
+
+            weekly_mood.setTitle("Weekly Mood");
+            weekly_mood.setAnimated(true);
+            xAxis.setLabel("Day");
+            yAxis.setLabel("Mood Level");
+
+            // Create a series for the mood levels
+            weekly_mood.getData().clear();
+            Journal[] journals = config.getJournalDAO().getLast7DaysJournals(user.id);
+            XYChart.Series<String, String> series = new XYChart.Series<>();
+            ZoneId systemTimeZone = ZoneId.systemDefault();
+            for (Journal journal : journals) {
+                System.out.println(journal.getTitle());
+                ZonedDateTime localDateTime = journal.getDate().toInstant().atZone(systemTimeZone);
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM");
+                series.getData().add(new XYChart.Data<>(localDateTime.format(formatter), journal.getMood().toString()));
+            }
+
+            weekly_mood.getData().add(series);
+            weekly_mood.legendVisibleProperty().setValue(false);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }

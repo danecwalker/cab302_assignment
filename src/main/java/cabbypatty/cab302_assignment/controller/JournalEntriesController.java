@@ -395,11 +395,33 @@ public class JournalEntriesController implements Initializable {
         VBox box = new VBox();
         box.setSpacing(8);
 
-
+        HBox tcontainer = new HBox();
+        tcontainer.setSpacing(8);
         Label title = new Label();
         title.setText(journal.getTitle());
         title.setStyle("-fx-text-fill: #949494;");
-        box.getChildren().add(title);
+        tcontainer.getChildren().add(title);
+
+        HBox tspacer = new HBox();
+        tspacer.setMinWidth(0);
+        HBox.setHgrow(tspacer, Priority.ALWAYS);
+        tcontainer.getChildren().add(tspacer);
+
+        Image deleteImage = new Image(getClass().getResourceAsStream("/cabbypatty/cab302_assignment/image/trash.png"));
+        ImageView deleteImageView = new ImageView(deleteImage);
+        deleteImageView.setFitHeight(16);
+        deleteImageView.setFitWidth(16);
+        deleteImageView.setPreserveRatio(true);
+        deleteImageView.setSmooth(true);
+        deleteImageView.onMouseClickedProperty().setValue(e -> {
+            try {
+                config.getJournalDAO().deleteJournal(journal.getId());
+                journalEntries.getChildren().remove(box);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+        tcontainer.getChildren().add(deleteImageView);
 
         HBox container = new HBox();
         container.setSpacing(8);
@@ -425,7 +447,7 @@ public class JournalEntriesController implements Initializable {
         moodImageView.setSmooth(true);
 
         container.getChildren().add(moodImageView);
-
+        box.getChildren().add(tcontainer);
         box.getChildren().add(container);
 
         //Add journal entry to the scene in the scroll pane
