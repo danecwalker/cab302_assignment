@@ -1,47 +1,205 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cabbypatty.cab302_assignment.controller.RegistrationController" style="-fx-background-color: #FFFFFF;">
+<VBox minHeight="600.0" minWidth="900.0" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cabbypatty.cab302_assignment.controller.RegistrationController">
+    <HBox VBox.vgrow="ALWAYS">
+        <VBox prefWidth="200.0" style="-fx-background-color: #000000; -fx-spacing: 8; -fx-padding: 20;">
+            <opaqueInsets>
+                <Insets />
+            </opaqueInsets>
+            <HBox alignment="CENTER_LEFT" style="-fx-spacing: 8;">
+                <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                    <Image url="@../image/Logo.png" />
+                </ImageView>
+                <VBox>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Mindful">
+                        <font>
+                            <Font name="System Bold" size="14.0" />
+                        </font>
+                    </Text>
+                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Moments">
+                        <font>
+                            <Font name="System Bold" size="18.0" />
+                        </font>
+                    </Text>
+                </VBox>
+            </HBox>
+            <VBox prefHeight="8.0" prefWidth="100.0" />
 
-    <!-- Title: Register -->
-    <Label alignment="CENTER" layoutY="14.0" prefWidth="600.0" text="Register" textFill="#717171">
-      <font>
-         <Font name="System Bold" size="36.0" />
-      </font></Label>
+        </VBox>
+        <VBox style="-fx-padding: 20;" HBox.hgrow="ALWAYS">
+            <HBox alignment="CENTER_LEFT">
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Text>
+                <HBox HBox.hgrow="ALWAYS" />
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="20.0" VBox.vgrow="ALWAYS">
+                <children>
+                    <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                        <children>
+                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                <children>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                        <children>
+                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Your Name:">
+                                                <font>
+                                                    <Font name="System Bold" size="24.0" />
+                                                </font>
+                                            </Text>
+                                        </children>
+                                    </HBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                        <children>
+                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Email Address:">
+                                                <font>
+                                                    <Font name="System Bold" size="24.0" />
+                                                </font>
+                                            </Text>
+                                            <Text layoutX="10.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                                                <font>
+                                                    <Font name="System Bold" size="24.0" />
+                                                </font>
+                                            </Text>
+                                        </children>
+                                    </HBox>
+                                    <HBox prefHeight="100.0" prefWidth="200.0" />
+                                </children>
+                            </HBox>
+                            <VBox prefHeight="118.0" prefWidth="660.0">
+                                <children>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                        <children>
+                                            <HBox prefHeight="29.0" prefWidth="200.0">
+                                                <children>
+                                                    <TextField fx:id="nameField" layoutX="151.0" layoutY="150.0" prefHeight="26.0" prefWidth="159.0" />
+                                                </children></HBox>
+                                            <HBox prefHeight="54.0" prefWidth="200.0" >
+                                                <children>
+                                                    <TextField fx:id="emailField" layoutX="151.0" layoutY="150.0" prefHeight="26.0" prefWidth="159.0" />
+                                                </children></HBox>
+                                            <HBox prefHeight="100.0" prefWidth="200.0" />
+                                        </children>
+                                    </HBox>
+                                    <VBox prefHeight="4.0" prefWidth="660.0" />
 
-    <!-- Your Name Label and TextField -->
-    <Label layoutX="50.0" layoutY="86.0" text="Your Name:" />
-    <TextField fx:id="nameField" layoutX="50.0" layoutY="104.0" prefHeight="26.0" prefWidth="230.0" />
 
-    <!-- Email Address Label and TextField -->
-    <Label layoutX="326.0" layoutY="86.0" text="Email Address:" />
-    <TextField fx:id="emailField" layoutX="326.0" layoutY="104.0" prefHeight="26.0" prefWidth="230.0" />
-
-    <!-- Date of Birth Label and DatePicker -->
-    <Label layoutX="50.0" layoutY="152.0" text="Date of Birth:" />
-    <DatePicker fx:id="dobDatePicker" layoutX="50.0" layoutY="170.0" prefHeight="26.0" prefWidth="230.0" />
-
-    <!-- Gender Label and TextField -->
-    <Label layoutX="326.0" layoutY="152.0" text="Gender:" />
-    <ComboBox fx:id="genderCombo" layoutX="326.0" layoutY="170.0" prefHeight="26.0" prefWidth="230.0" />
-
-    <!-- Password Label and PasswordField -->
-    <Label layoutX="50.0" layoutY="214.0" text="Password:" />
-    <PasswordField fx:id="passwordField" layoutX="50.0" layoutY="232.0" prefHeight="26.0" prefWidth="230.0" />
-
-    <!-- Confirm Password Label and PasswordField -->
-    <Label layoutX="326.0" layoutY="214.0" text="Confirm Password:" />
-    <PasswordField fx:id="confirmPasswordField" layoutX="326.0" layoutY="232.0" prefHeight="26.0" prefWidth="230.0" />
-
-    <!-- Mindful Moments Label -->
-    <Label alignment="CENTER" layoutY="352.0" prefWidth="600.0" style="-fx-font-size: 18px;" text="Mindful Moments" />
-
-    <!-- Cancel Button -->
-    <Button layoutX="115.0" layoutY="292.0" onAction="#onCancelClick" prefHeight="26.0" prefWidth="98.0" text="Cancel" />
-
-    <!-- Register Button -->
-    <Button layoutX="392.0" layoutY="292.0" onAction="#onRegisterClick" prefHeight="26.0" prefWidth="98.0" text="Register" />
-    
-</AnchorPane>
+                                </children>
+                            </VBox>
+                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                <children>
+                                    <HBox prefHeight="97.0" prefWidth="203.0">
+                                        <children>
+                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Date of Birth">
+                                                <font>
+                                                    <Font name="System Bold" size="24.0" />
+                                                </font>
+                                            </Text>
+                                        </children>
+                                    </HBox>
+                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gender">
+                                        <font>
+                                            <Font name="System Bold" size="24.0" />
+                                        </font>
+                                    </Text>
+                                    <HBox prefHeight="100.0" prefWidth="200.0" />
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                        <children>
+                                            <HBox prefHeight="100.0" prefWidth="200.0" />
+                                        </children>
+                                    </HBox>
+                                </children>
+                            </HBox>
+                            <VBox prefHeight="200.0" prefWidth="100.0">
+                                <children>
+                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                        <children>
+                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                <DatePicker fx:id="dobDatePicker" layoutX="50.0" layoutY="170.0" prefHeight="26.0" prefWidth="162.0" />
+                                            </HBox>
+                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                <children>
+                                                    <ComboBox fx:id="genderCombo" layoutX="326.0" layoutY="170.0" prefHeight="26.0" prefWidth="159.0" />
+                                                </children>
+                                            </HBox>
+                                        </children>
+                                    </HBox>
+                                    <VBox prefHeight="152.0" prefWidth="660.0">
+                                        <children>
+                                            <HBox prefHeight="100.0" prefWidth="200.0">
+                                                <children>
+                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                        <children>
+                                                            <PasswordField fx:id="passwordField" layoutX="50.0" layoutY="232.0" prefHeight="26.0" prefWidth="165.0" promptText="Password" />
+                                                        </children>
+                                                    </HBox>
+                                                    <HBox prefHeight="100.0" prefWidth="190.0">
+                                                        <children>
+                                                            <PasswordField fx:id="confirmPasswordField" layoutX="326.0" layoutY="232.0" prefHeight="26.0" prefWidth="158.0" promptText="Confirm Password" />
+                                                        </children>
+                                                    </HBox>
+                                                    <HBox prefHeight="100.0" prefWidth="200.0">
+                                                        <children>
+                                                            <!-- Cancel Button -->
+                                                            <Button layoutX="115.0" layoutY="292.0" onAction="#onCancelClick" prefHeight="26.0" prefWidth="98.0" text="Cancel" />
+                                                            <!-- Register Button -->
+                                                            <Button layoutX="392.0" layoutY="292.0" onAction="#onRegisterClick" prefHeight="26.0" prefWidth="98.0" text="Register" />
+                                                        </children></HBox>
+                                                </children>
+                                            </HBox>
+                                        </children></VBox>
+                                </children>
+                            </VBox>
+                        </children>
+                        <HBox.margin>
+                            <Insets />
+                        </HBox.margin>
+                    </VBox>
+                </children>
+                <VBox.margin>
+                    <Insets top="20.0" />
+                </VBox.margin>
+            </HBox>
+        </VBox>
+    </HBox>
+</VBox>
