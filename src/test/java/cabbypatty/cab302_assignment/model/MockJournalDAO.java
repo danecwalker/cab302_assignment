@@ -24,6 +24,10 @@ public class MockJournalDAO implements IJournalDAO {
         return this.journals.stream().filter(j -> j.getAuthorID().equals(author_id)).toArray(Journal[]::new);
     }
 
+    public Journal[] getLast7DaysJournals(Integer author_id) {
+        return this.journals.stream().filter(j -> j.getAuthorID().equals(author_id)).toArray(Journal[]::new);
+    }
+
     @Override
     public void deleteJournal(int id) {
         this.journals.removeIf(j -> j.getId() == id);
