@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuButton;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
@@ -26,7 +27,7 @@ public class CalendarController implements Initializable {
     private Config config;
     private SessionAndUser sessionAndUser;
     @FXML
-    private Label username;
+    private MenuButton username;
 
     /**
      * Constructor for CalendarController.
@@ -204,7 +205,7 @@ public class CalendarController implements Initializable {
      * @param event The action event triggered by the user.
      */
     @FXML
-    private void navigateToLogout(ActionEvent event) {
+    private void logout(ActionEvent event) {
         try {
             String sessionId = SessionStorage.loadToken();
             config.getAuthDAO().deleteSession(sessionId);
