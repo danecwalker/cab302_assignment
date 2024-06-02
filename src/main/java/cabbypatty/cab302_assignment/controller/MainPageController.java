@@ -67,11 +67,8 @@ public class MainPageController implements Initializable {
             User user = config.getAuthDAO().getSessionAndUser(sessionId).getUser();
             String firstName = user.name.split(" ")[0];
             welcomeText.setText("How Do You Feel Today, " + firstName + "?");
-            username.setText(user.name);
-            usernameText.setText(firstName);
             LocalDate date = LocalDate.now();
             currentDate.setText(date.format(java.time.format.DateTimeFormatter.ofPattern("MMMM dd, yyyy")));
-
             weekly_mood.setTitle("Weekly Mood");
             weekly_mood.setAnimated(true);
             xAxis.setLabel("Day");
@@ -107,43 +104,6 @@ public class MainPageController implements Initializable {
     public MainPageController(Config config) {
         System.out.println("MainPageController created");
         this.config = config;
-    }
-
-    /**
-     * Navigates to the support page.
-     * Loads the FXML file for the support page and sets the controller factory.
-     *
-     * @param event The action event triggered by the user.
-     */
-    @FXML
-    private void navigateToSupport(ActionEvent event) {
-        try {
-            // Load the FXML file for the journal entry page
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/support.fxml"));
-
-            fxmlLoader.setControllerFactory((Class<?> type) -> {
-                if (type == SupportController.class) {
-                    return new SupportController(config);
-                } else {
-                    try {
-                        return type.getDeclaredConstructor().newInstance();
-                    } catch (Exception exc) {
-                        throw new RuntimeException(exc);
-                    }
-                }
-            });
-
-            Scene journalEntryScene = new Scene(fxmlLoader.load());
-
-            // Get the stage from the event source
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Set the new scene on the stage
-            stage.setScene(journalEntryScene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception appropriately
-        }
     }
 
     /**
@@ -198,43 +158,6 @@ public class MainPageController implements Initializable {
             fxmlLoader.setControllerFactory((Class<?> type) -> {
                 if (type == JournalEntriesController.class) {
                     return new JournalEntriesController(config);
-                } else {
-                    try {
-                        return type.getDeclaredConstructor().newInstance();
-                    } catch (Exception exc) {
-                        throw new RuntimeException(exc);
-                    }
-                }
-            });
-
-            Scene journalEntryScene = new Scene(fxmlLoader.load());
-
-            // Get the stage from the event source
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Set the new scene on the stage
-            stage.setScene(journalEntryScene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception appropriately
-        }
-    }
-
-    /**
-     * Navigates to the calendar page.
-     * Loads the FXML file for the calendar page and sets the controller factory.
-     *
-     * @param event The action event triggered by the user.
-     */
-    @FXML
-    private void navigateToCalendar(ActionEvent event) {
-        try {
-            // Load the FXML file for the journal entry page
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/calendar.fxml"));
-
-            fxmlLoader.setControllerFactory((Class<?> type) -> {
-                if (type == CalendarController.class) {
-                    return new CalendarController(config);
                 } else {
                     try {
                         return type.getDeclaredConstructor().newInstance();

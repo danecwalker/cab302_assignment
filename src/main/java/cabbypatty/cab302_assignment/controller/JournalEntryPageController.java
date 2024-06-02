@@ -104,43 +104,6 @@ public class JournalEntryPageController implements Initializable {
     }
 
     /**
-     * Navigates to the support page.
-     * Loads the FXML file for the support page and sets the controller factory.
-     *
-     * @param event The action event triggered by the user.
-     */
-    @FXML
-    private void navigateToSupport(ActionEvent event) {
-        try {
-            // Load the FXML file for the journal entry page
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/support.fxml"));
-
-            fxmlLoader.setControllerFactory((Class<?> type) -> {
-                if (type == SupportController.class) {
-                    return new SupportController(config);
-                } else {
-                    try {
-                        return type.getDeclaredConstructor().newInstance();
-                    } catch (Exception exc) {
-                        throw new RuntimeException(exc);
-                    }
-                }
-            });
-
-            Scene journalEntryScene = new Scene(fxmlLoader.load());
-
-            // Get the stage from the event source
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Set the new scene on the stage
-            stage.setScene(journalEntryScene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception appropriately
-        }
-    }
-
-    /**
      * Navigates to the settings page.
      * Loads the FXML file for the settings page and sets the controller factory.
      *
@@ -192,43 +155,6 @@ public class JournalEntryPageController implements Initializable {
             fxmlLoader.setControllerFactory((Class<?> type) -> {
                 if (type == JournalEntryPageController.class) {
                     return new JournalEntryPageController(config);
-                } else {
-                    try {
-                        return type.getDeclaredConstructor().newInstance();
-                    } catch (Exception exc) {
-                        throw new RuntimeException(exc);
-                    }
-                }
-            });
-
-            Scene journalEntryScene = new Scene(fxmlLoader.load());
-
-            // Get the stage from the event source
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-            // Set the new scene on the stage
-            stage.setScene(journalEntryScene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace(); // Handle the exception appropriately
-        }
-    }
-
-    /**
-     * Navigates to the calendar page.
-     * Loads the FXML file for the calendar page and sets the controller factory.
-     *
-     * @param event The action event triggered by the user.
-     */
-    @FXML
-    private void navigateToCalendar(ActionEvent event) {
-        try {
-            // Load the FXML file for the journal entry page
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/cabbypatty/cab302_assignment/views/calendar.fxml"));
-
-            fxmlLoader.setControllerFactory((Class<?> type) -> {
-                if (type == CalendarController.class) {
-                    return new CalendarController(config);
                 } else {
                     try {
                         return type.getDeclaredConstructor().newInstance();
