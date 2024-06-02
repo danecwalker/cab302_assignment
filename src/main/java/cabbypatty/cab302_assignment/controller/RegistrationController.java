@@ -161,6 +161,12 @@ public class RegistrationController implements Initializable {
             return;
         }
 
+        if (password.length() < 12) {
+            // Password or Confirm Password is empty, show an error message
+            showAlert("Password Length", "Password is too short.");
+            return;
+        }
+
         if (!password.equals(confirmPassword)) {
             // Passwords don't match, show an error message
             showAlert("Password Mismatch", "Passwords do not match. Please try again.");

@@ -22,6 +22,7 @@ public class SqliteConnection {
             String url = "jdbc:sqlite:mockdb.sqlite";
             try {
                 instance = DriverManager.getConnection(url);
+                instance.createStatement().execute("PRAGMA journal_mode=MEMORY");
             } catch (SQLException sqlEx) {
                 System.err.println("Error connecting to database: "+sqlEx.getMessage());
             }
