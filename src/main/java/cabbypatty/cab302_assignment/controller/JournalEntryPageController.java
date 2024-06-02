@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuButton;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.Slider;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
@@ -259,6 +260,8 @@ public class JournalEntryPageController implements Initializable {
      */
     @FXML
     private void logout(ActionEvent event) {
+        Stage stage = (Stage) ((MenuItem) event.getTarget()).getParentPopup().getOwnerWindow();
+
         try {
             String sessionId = SessionStorage.loadToken();
             config.getAuthDAO().deleteSession(sessionId);
@@ -284,9 +287,6 @@ public class JournalEntryPageController implements Initializable {
             });
 
             Scene loginScene = new Scene(fxmlLoader.load());
-
-            // Get the stage from the event source
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
             // Set the new scene on the stage
             stage.setScene(loginScene);
