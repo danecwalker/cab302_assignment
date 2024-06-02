@@ -110,6 +110,44 @@ public class JournalDAO implements IJournalDAO {
         return new Journal[0];
     }
 
+    @Override
+    public Journal[] getLast7DaysJournals(Integer author_id) {
+        String query = "SELECT COUNT(*) FROM journal_entry WHERE author_id = '"+author_id+"' AND created_at >= datetime('now', '-7 days')";
+        ResultSet result = connection.exec(query);
+        Integer l = null;
+        try {
+            l = result.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        Journal[] journals = new Journal[l];
+
+        query = "SELECT id, body, mood, created_at, author_id FROM journal_entry WHERE author_id = '"+author_id+"' AND created_at >= datetime('now', '-7 days') ORDER BY created_at DESC ";
+        result = connection.exec(query);
+        try {
+            int i = 0;
+            while (result.next()) {
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+                sdf.setTimeZone(java.util.TimeZone.getTimeZone("UTC"));
+                String createdAt = result.getString("created_at");
+                Date created = sdf.parse(createdAt);
+                MoodLevel mood = MoodLevel.fromLevel(result.getInt("mood"));
+                journals[i] = new Journal(
+                        result.getInt("id"),
+                        result.getString("body"),
+                        created,
+                        result.getInt("author_id"),
+                        mood
+                );
+                i++;
+            }
+            return journals;
+        } catch (Exception ex) {
+            System.err.println("Error executing query: " + ex.getMessage() + " " + ex.getStackTrace());
+        }
+        return new Journal[0];
+    }
+
     /**
      * A method that deletes the journal with the id of the journal.
      * @param id The id of the journal
@@ -132,4 +170,6 @@ public class JournalDAO implements IJournalDAO {
         query = "UPDATE journal_entry SET updated_at = strftime(\"%Y-%m-%dT%H:%M:%SZ\", \"now\") WHERE id = '"+id+"'";
         connection.exec(query);
     }
+
+
 }

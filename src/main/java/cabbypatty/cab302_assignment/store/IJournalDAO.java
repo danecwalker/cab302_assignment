@@ -33,6 +33,8 @@ public interface IJournalDAO {
      */
     Journal[] getJournals(Integer author_id);
 
+    Journal[] getLast7DaysJournals(Integer author_id);
+
     /**
      * Deletes a specific journal entry based on the journal ID.
      *
